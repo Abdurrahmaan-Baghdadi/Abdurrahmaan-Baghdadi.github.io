@@ -5,7 +5,9 @@ function Home()
 {
     return (
         <>
-            <div style={{backgroundImage: `url(../images/BlackandWhiteBanner.JPG)`}}></div>
+            <div className='home-background-container'>
+            <p className='home-text'>Testing The home Page</p>
+            </div>
         </>
     )
 }
