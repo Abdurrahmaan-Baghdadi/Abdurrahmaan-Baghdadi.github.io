@@ -4,7 +4,7 @@ function Contact()
     return (
         <>
         <div className='page-container'>
-            <p className='contact-text'>Testing The Contact Page</p>
+            <p className='contact-text'>Contact Me:</p>
         </div>
         </>
     )

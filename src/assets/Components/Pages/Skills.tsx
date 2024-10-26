@@ -5,7 +5,7 @@ function Skills()
     return (
         <>
         <div className='page-container'>
-            <p className='skills-text'>Testing The Skills Page</p>
+            <p className='skills-text'>Skills:<br/>pHp<br/>React<br/>SQL</p>
         </div>
         </>
     )
