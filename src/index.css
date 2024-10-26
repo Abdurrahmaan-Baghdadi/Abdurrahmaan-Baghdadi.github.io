@@ -52,7 +52,7 @@
   justify-content: space-around;
 }
 .site-footer {
-  padding: 20px;
+  padding: 10px;
   background-color: white;
 }
 .site-wrapper {
@@ -60,7 +60,34 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.home-wrapper {
   background-image: url('./assets/images/BlackandWhiteBanner.jpg');
+  background-size: cover; 
+  background-position: center;
+}
+.projects-wrapper {
+  background-image: url('./assets/images/RazerLanceHead.jpg');
+  background-size: cover; 
+  background-position: center;
+}
+.about-me-wrapper {
+  background-image: url('./assets/images/SkateBoard.jpg');
+  background-size: cover; 
+  background-position: center;
+}
+.skills-wrapper {
+  background-image: url('./assets/images/NewOrleansGreenery.jpg');
+  background-size: cover; 
+  background-position: center;
+}
+.contact-wrapper {
+  background-image: url('./assets/images/LakeTree.jpg');
+  background-size: cover; 
+  background-position: center;
+}
+.resume-wrapper {
+  background-image: url('./assets/images/Crow.jpg');
   background-size: cover; 
   background-position: center;
 }
