@@ -1,4 +1,4 @@
-import {reactDOM} from 'react'
+import {React} from 'react'
 
 function Skills()
 {
