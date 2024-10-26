@@ -1,11 +1,18 @@
-.home-background-container {
-  
+.home-container {
+  margin-top: 100px;
+  margin-left: 25%;
+  margin-right: 25%;
+  color: black;
+  background-color: white;
+  box-shadow: 0 0 25px 0 black;
+  display: flex;
+  justify-content: center;
 }
 .black-white-banner {
   
 }
 .home-text {
-  color: white;
+  color: black;
 }
 .site-title {
   color: black;
@@ -44,10 +51,15 @@
   align-items: center;
   justify-content: space-around;
 }
+.site-footer {
+  padding: 20px;
+  background-color: white;
+}
 .site-wrapper {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   background-image: url('./assets/images/BlackandWhiteBanner.jpg');
   background-size: cover; 
   background-position: center;
