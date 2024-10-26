@@ -5,7 +5,7 @@ function Home()
 {
     return (
         <>
-            <div className='home-container'>
+            <div className='page-container'>
             <p className='home-text'>Testing The home Page</p>
             </div>
         </>

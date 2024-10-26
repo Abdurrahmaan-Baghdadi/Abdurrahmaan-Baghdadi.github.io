@@ -3,7 +3,9 @@ function AboutMe()
 {
     return (
         <>
-        <p>Hello! Below is a little bit about me and my interest</p>
+        <div className='page-container'>
+            <p className='about-text'>Hello! Below is a little bit about me and my interest</p>
+        </div>
         </>
     )
 }
