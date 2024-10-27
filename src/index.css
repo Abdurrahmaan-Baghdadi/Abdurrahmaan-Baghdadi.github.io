@@ -11,6 +11,86 @@
   align-items: center;
   justify-content: center;
 }
+
+#container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#center {
+  position: relative;
+  width: 500px;
+  height: 500px;
+}
+
+#main-square {
+  width: 300px;
+  height: 300px;
+  background-color: #330c54 ;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 10px;
+  box-shadow: 0 0 10px #000 , 0 0 20px #000 ;
+}
+
+.dot {
+  width: 25px;
+  height: 25px;
+  transform: translate(-50%, -50%);
+  background-color: #330c54;
+  border-radius: 50%;
+  position: absolute;
+  cursor: pointer;
+  box-shadow: 0 0 10px #7d47f9, 0 0 20px #7d47f9;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dot:hover {
+  background-color: #ff00ff;
+  box-shadow: 0 0 15px #ff00ff, 0 0 25px #ff00ff;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+.dot-label {
+  position: absolute;
+  color: #fff;
+  font-size: 12px;
+  white-space: nowrap;
+  transform: translate(-50%, -150%);
+  text-align: center;
+}
+
+#circuit-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.line {
+  stroke: #7d47f9;
+  stroke-width: 6;
+  filter: drop-shadow(0 0 4px #7d47f9) drop-shadow(0 0 8px #7d47f9);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+}
+}
 .black-white-banner {
   
 }
@@ -27,7 +107,6 @@
   display:flex;
   align-items: center;
   font-size: 24px;
-  line-height: 1.2; 
   height: 100%;
   padding: 0 10px; 
   transition: background-color 0.3s ease; 
@@ -67,36 +146,38 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background-image: linear-gradient(45deg, #001833 0%, #00257c 70%, #3f002f 100%);
+  
 }
 .home-wrapper {
-  background-image: url('./assets/images/BlackandWhiteBanner.jpg');
-  background-size: cover; 
-  background-position: center;
+  /* background-image: url('./assets/images/BlackandWhiteBanner.jpg'); */
+  /* background-size: cover;  */
+  /* background-position: center; */
 }
 .projects-wrapper {
-  background-image: url('./assets/images/RazerLanceHead.jpg');
-  background-size: cover; 
-  background-position: center;
+  /* background-image: url('./assets/images/RazerLanceHead.jpg'); */
+  /* background-size: cover;  */
+  /* background-position: center; */
 }
 .about-me-wrapper {
-  background-image: url('./assets/images/SkateBoard.jpg');
-  background-size: cover; 
-  background-position: center;
+  /* background-image: url('./assets/images/SkateBoard.jpg'); */
+  /* background-size: cover;  */
+  /* background-position: center; */
 }
 .skills-wrapper {
-  background-image: url('./assets/images/NewOrleansGreenery.jpg');
-  background-size: cover; 
-  background-position: center;
+  /* background-image: url('./assets/images/NewOrleansGreenery.jpg'); */
+  /* background-size: cover;  */
+  /* background-position: center; */
 }
 .contact-wrapper {
-  background-image: url('./assets/images/LakeTree.jpg');
-  background-size: cover; 
-  background-position: center;
+  /* background-image: url('./assets/images/LakeTree.jpg'); */
+  /* background-size: cover;  */
+  /* background-position: center; */
 }
 .resume-wrapper {
-  background-image: url('./assets/images/Crow.jpg');
-  background-size: cover; 
-  background-position: center;
+  /* background-image: url('./assets/images/Crow.jpg'); */
+  /* background-size: cover;  */
+  /* background-position: center; */
 }
 html, body {
   margin: 0;

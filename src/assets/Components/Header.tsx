@@ -1,13 +1,12 @@
 import { Link, NavLink } from "react-router-dom"
+import { HeaderProps } from "../types"
 
-interface HeaderProps{
-    onActivePageChange: (page: string) => void
-}
 
-export default function Header({ onActivePageChange } : HeaderProps ) {
+
+export default function Header({ setActivePage } : HeaderProps ) {
     const changeActivePage = (newPage: string) =>
     {
-        onActivePageChange(newPage)
+        setActivePage(newPage)
     }
     return (
         <header className="site-header">

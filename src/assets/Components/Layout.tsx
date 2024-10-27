@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom'
 import { Outlet } from "react-router-dom"
 import Header from "./Header"
 import Footer from "./Footer"
+import { HeaderProps } from '../types'
 
 export default function Layout() {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -17,9 +18,9 @@ export default function Layout() {
 
     return (
         <div className={`site-wrapper ${activePage}-wrapper`}>
-            <Header onActivePageChange={setActivePage}/>
+            <Header setActivePage={setActivePage}/>
             <main>
-                <Outlet />
+                <Outlet context={{setActivePage} as HeaderProps}/>
             </main>
             <Footer />
         </div>
