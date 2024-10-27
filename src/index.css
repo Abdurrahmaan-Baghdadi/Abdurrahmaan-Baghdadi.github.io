@@ -5,7 +5,7 @@
   padding-right: 30px;
   padding-left: 30px;
   color: #FF00FF;
-  background-color: rgba(0,0,0,);
+  background-color: rgba(255,255,255,.0);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,11 +15,27 @@
   
 }
 .home-text {
-  color: #964B00;
+  color: #8d5623f1;
   font-family: Poppins;
   font-weight: bold;
   font-size: 60px;
   text-align: center;
+}
+.projects-text {
+  color: white;
+  font-size: 32px;
+}
+.about-text {
+  color: white;
+  font-size: 32px;
+}
+.skills-text {
+  color: white;
+  font-size: 32px;
+}
+.contact-text {
+  color: white;
+  font-size: 32px;
 }
 .site-title {
   color: black;
@@ -37,8 +53,9 @@
   padding: 0 10px;
 }
 .site-page-link {
-  padding: 30px;
+  padding: 26px;
   color: black;
+  font-size: 24px;
   text-decoration: none;
   height: 100%;
   align-items: center;
@@ -47,7 +64,7 @@
   background-color: #eaeaea;
 }
 .site-header {
-  background-color: rgba(255,255,255,.1);
+  background-color: rgba(255,255,255,.2);
   position: fixed;
   top: 0;
   left: 0;
@@ -75,21 +92,25 @@
 }
 .projects-wrapper {
   background-image: url('./assets/images/RazerLanceHead.jpg');
+  filter: grayscale(80%);
   background-size: cover; 
   background-position: center;
 }
 .about-me-wrapper {
   background-image: url('./assets/images/SkateBoard.jpg');
+  filter: grayscale(50%);
   background-size: cover; 
   background-position: center;
 }
 .skills-wrapper {
-  background-image: url('./assets/images/NewOrleansGreenery.jpg');
+  background-image: url('./assets/images/Crow.jpg');
+  filter: grayscale(100%);
   background-size: cover; 
   background-position: center;
 }
 .contact-wrapper {
   background-image: url('./assets/images/LakeTree.jpg');
+  filter: grayscale(100%);
   background-size: cover; 
   background-position: center;
 }
