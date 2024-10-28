@@ -18,7 +18,7 @@ export default function Layout() {
 
     return (
         <div className={`site-wrapper ${activePage}-wrapper`}>
-            <Header setActivePage={setActivePage}/>
+            {/* <Header setActivePage={setActivePage}/> */}
             <main>
                 <Outlet context={{setActivePage} as HeaderProps}/>
             </main>
