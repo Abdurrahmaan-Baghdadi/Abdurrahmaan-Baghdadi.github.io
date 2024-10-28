@@ -6,9 +6,8 @@ function Home()
 {
     const navigate = useNavigate()
     const { setActivePage } = useOutletContext<HeaderProps>()
-    const handleNavigate = (page: string, lineRefs: SVGLineElement[]) => {
+    const handleNavigate = (page: string) => {
         setActivePage(page)
-        lineRefs.forEach(line => line.classList.add('animate'))
         setTimeout(()=>{
             navigate(`/${page}`)
         }, 500)
@@ -19,7 +18,7 @@ function Home()
         <>
             <div id="container">
                 <div id="center">
-                    <div id="main-square"></div>
+                    <div id="main-square">ABDURRAHMAAN BAGHDADI</div>
                         {/* Lines extending horizontally from the sides */}
 
                         {/*About Me*/}
