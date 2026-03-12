@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Global resets */
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Dark base for the entire app */
+body {
+  background-color: #030712; /* gray-950 */
+  color: #e2e8f0;
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
