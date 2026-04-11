@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Document Count</title>
+<link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/basic.css">
+<link rel="stylesheet" type="text/css" href="../assets/css/custom.css">
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="../index.html" style="color:#fff;">Loan Doc Management</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-nav">
+      <ul class="nav navbar-nav">
+        <li><a href="../index.html" style="color:#ccc;"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="../search.html" style="color:#ccc;"><i class="fa fa-search"></i> Search</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#ccc;"><i class="fa fa-bar-chart"></i> Reports <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="loanCompletion.html">Loan Completion</a></li>
+            <li><a href="loanInfo.html">Loan Info</a></li>
+            <li class="active"><a href="docCount.html">Document Count</a></li>
+            <li><a href="totalDocByType.html">Docs by Type</a></li>
+            <li><a href="uniqueLoans.html">Unique Loans</a></li>
+            <li><a href="apiFileSizes.html">API File Sizes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="alert alert-info" style="margin:0;border-radius:0;border-left:none;border-right:none;">
+  <i class="fa fa-info-circle"></i> <strong>Demo Mode:</strong> Static demo of a PHP/MySQL application originally deployed on AWS EC2. Data shown is sample data.
+</div>
+
+<div style="padding:15px;">
+  <h1 class="page-head-line">Document Count Report</h1>
+
+  <table class="table">
+    <tr><th>Name</th><th>Value</th></tr>
+    <tr><td>Total Docs</td><td>10</td></tr>
+    <tr><td>Average Doc Per Loan</td><td>2.50</td></tr>
+  </table>
+</div>
+
+<script src="../assets/js/jquery-1.10.2.js"></script>
+<script src="../assets/js/bootstrap.js"></script>
+</body>
+</html>
