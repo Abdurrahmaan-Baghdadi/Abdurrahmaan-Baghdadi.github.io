@@ -76,6 +76,52 @@ const MENU_ITEMS = [
   },
   {
     "category": "foothies",
+    "name": "Food dog",
+    "price": "10.99",
+    "image": "https://live.staticflickr.com/65535/53325834839_934052fd64_n.jpg",
+    "description": "hot dog in a cup",
+    "long_description": "Experience the unique blend of a hot dog in a cup, combining savory sausage, tangy ketchup, and a hint of mustard for a playful and unexpected flavor adventure.",
+    "calories": 350,
+    "ingredients": [
+      "Hot dog sausage",
+      "ketchup",
+      "mustard",
+      "ice",
+      "bun pieces"
+    ]
+  },
+  {
+    "category": "foothies",
+    "name": "Cupcake Delight (Vanilla)",
+    "price": "10.99",
+    "image": "https://live.staticflickr.com/65535/53324619112_569b50bf1e_n.jpg",
+    "description": "Delicious cupcake in a sip",
+    "long_description": "Indulge in the sweet delight of our Cupcake Delight Foothie, blending vanilla cupcake goodness with a hint of frosting for a truly delightful experience.",
+    "calories": 300,
+    "ingredients": [
+      "Vanilla cupcake",
+      "frosting",
+      "milk",
+      "ice"
+    ]
+  },
+  {
+    "category": "foothies",
+    "name": "Cupcake Delight (Chocolate)",
+    "price": "10.99",
+    "image": "https://live.staticflickr.com/65535/53325834774_a63b425154_w.jpg",
+    "description": "Delicious cupcake in a sip",
+    "long_description": "Indulge in the sweet delight of our Cupcake Delight Foothie, blending chocolate cupcake goodness with a hint of frosting for a truly delightful experience.",
+    "calories": 300,
+    "ingredients": [
+      "Chocolate cupcake",
+      "frosting",
+      "milk",
+      "ice"
+    ]
+  },
+  {
+    "category": "foothies",
     "name": "Bean Machine",
     "price": "4.49",
     "image": "https://live.staticflickr.com/65535/53325726708_b4089d4945_n.jpg",

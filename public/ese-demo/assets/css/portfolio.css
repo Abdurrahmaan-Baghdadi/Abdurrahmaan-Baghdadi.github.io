@@ -1,0 +1,92 @@
+/* ── Portfolio refinements for the ESE demo ──────────────────────
+   Fixes: Font Awesome icons (now loaded via CDN), navbar contrast,
+   link legibility, and general polish without changing the layout.
+   ──────────────────────────────────────────────────────────────── */
+
+/* Navbar — dark background, readable links */
+.navbar-default {
+  background-color: #1c1c2e;
+  border-color: #111;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.navbar-default .navbar-brand {
+  color: #ffffff !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.navbar-default .navbar-brand:hover {
+  color: #00CA79 !important;
+}
+
+/* Nav links — visible white, not grey */
+.navbar-default .navbar-nav > li > a {
+  color: #d0d0d0 !important;
+  font-weight: 500;
+  transition: color 0.15s, background-color 0.15s;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffffff !important;
+  background-color: #2e2e4a !important;
+}
+
+/* Active page highlight */
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #ffffff !important;
+  background-color: #00CA79 !important;
+}
+
+/* Dropdown menu */
+.navbar-default .navbar-nav .open > a,
+.navbar-default .navbar-nav .open > a:hover,
+.navbar-default .navbar-nav .open > a:focus {
+  color: #fff !important;
+  background-color: #00CA79 !important;
+}
+.dropdown-menu {
+  background-color: #1c1c2e;
+  border: 1px solid #333;
+}
+.dropdown-menu > li > a {
+  color: #ccc !important;
+}
+.dropdown-menu > li > a:hover,
+.dropdown-menu > li > a:focus {
+  background-color: #2e2e4a !important;
+  color: #fff !important;
+}
+
+/* Mobile toggle button */
+.navbar-default .navbar-toggle {
+  border-color: #555;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #2e2e4a;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ccc;
+}
+.navbar-default .navbar-collapse {
+  border-color: #333;
+}
+
+/* Spacing for Font Awesome icons in nav links */
+.nav > li > a > .fa {
+  margin-right: 6px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+/* Demo banner — slightly more prominent */
+.alert-info {
+  background-color: #e8f4fd;
+  border-color: #b8daff;
+  color: #1a5276;
+  font-size: 13px;
+}
+.alert-info strong {
+  color: #154360;
+}

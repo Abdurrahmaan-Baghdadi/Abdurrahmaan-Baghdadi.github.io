@@ -89,7 +89,10 @@ function renderCartPage() {
     itemsHtml +=
       '<div class="item-row">' +
         '<div class="item-img">' +
-          '<img src="assets/images/' + item.image + '" alt="' + item.name + '" />' +
+          (item.image
+            ? '<img src="assets/images/' + item.image + '" alt="' + item.name + '" />'
+            : '<div style="width:100%;height:80px;background:' + item.bg + ';display:flex;align-items:center;justify-content:center;font-size:36px;">' + item.emoji + '</div>'
+          ) +
         '</div>' +
         '<div class="item-info">' +
           '<div class="name">' + item.name + '</div>' +

@@ -5,7 +5,14 @@
       "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee1.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
       "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee2.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
       "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee3.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
-      "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee4.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')"
+      "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee4.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
+      "Read(//c/Users/abdur/OneDrive/Desktop/AR College/Masters Application and Program/Hackathon 2026/**)",
+      "Read(//c/Users/abdur/Downloads/Potential Photos for Portfolio/**)",
+      "Read(//c/Users/abdur/Downloads/**)",
+      "Bash(npx tsc:*)"
+    ],
+    "additionalDirectories": [
+      "C:\\Users\\abdur\\Downloads\\Potential Photos for Portfolio"
     ]
   }
 }
