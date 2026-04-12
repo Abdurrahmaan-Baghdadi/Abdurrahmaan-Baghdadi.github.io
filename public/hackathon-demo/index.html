@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Energy AI Hackathon — Mission Impossible</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #030712;
+      --surface: #0f172a;
+      --surface2: #1e293b;
+      --border: #334155;
+      --cyan: #22d3ee;
+      --cyan-dim: rgba(34,211,238,0.12);
+      --amber: #f59e0b;
+      --amber-dim: rgba(245,158,11,0.12);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --green: #34d399;
+      --mono: 'Courier New', Courier, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      min-height: 100vh;
+      padding: 2rem 1rem 5rem;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+      color: var(--amber);
+      font-size: 0.75rem;
+      border: 1px solid rgba(245,158,11,0.4);
+      padding: 0.35rem 0.75rem;
+      border-radius: 4px;
+      transition: background 0.2s;
+    }
+    .back-btn:hover { background: var(--amber-dim); }
+    .page-title {
+      font-size: 1rem;
+      letter-spacing: 0.2em;
+      color: var(--amber);
+      font-weight: 400;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, var(--amber) 0%, transparent 70%);
+      margin-bottom: 2rem;
+      opacity: 0.5;
+    }
+
+    /* ── Sponsor strip ── */
+    .sponsors {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      align-items: center;
+    }
+    .sponsor-label { font-size: 0.6rem; color: var(--muted); letter-spacing: 0.1em; margin-right: 0.25rem; }
+    .sponsor-tag {
+      font-size: 0.62rem;
+      padding: 0.2rem 0.6rem;
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--muted);
+    }
+
+    /* ── Section ── */
+    .section { margin-bottom: 2.5rem; max-width: 860px; }
+    .section-title {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--amber);
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── Stat cards ── */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+      max-width: 860px;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+    }
+    .stat-val {
+      font-size: 1.4rem;
+      color: var(--amber);
+      line-height: 1.2;
+    }
+    .stat-label {
+      font-size: 0.58rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Pipeline steps ── */
+    .pipeline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      max-width: 860px;
+      margin-bottom: 2rem;
+    }
+    .step {
+      font-size: 0.65rem;
+      padding: 0.3rem 0.65rem;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .step-num { color: var(--amber); font-size: 0.6rem; }
+    .arrow { color: var(--border); font-size: 0.7rem; align-self: center; }
+
+    /* ── Plot grid ── */
+    .plots {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1rem;
+      max-width: 860px;
+    }
+    .plot-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+    .plot-card img {
+      width: 100%;
+      display: block;
+      background: #fff;
+    }
+    .plot-caption {
+      padding: 0.5rem 0.75rem;
+      font-size: 0.62rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    /* ── Predictions table ── */
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      max-width: 860px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.68rem;
+    }
+    thead { background: var(--surface2); }
+    th {
+      padding: 0.55rem 1rem;
+      text-align: left;
+      color: var(--amber);
+      letter-spacing: 0.08em;
+      font-size: 0.6rem;
+      font-weight: normal;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    td {
+      padding: 0.45rem 1rem;
+      border-bottom: 1px solid rgba(51,65,85,0.5);
+      color: var(--text);
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--cyan-dim); }
+    .td-num { color: var(--green); font-size: 0.67rem; }
+    .td-muted { color: var(--muted); }
+
+    /* ── Tech tags ── */
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.75rem; }
+    .tag {
+      font-size: 0.62rem;
+      padding: 0.2rem 0.55rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--cyan);
+    }
+
+    p.prose {
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 720px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a class="back-btn" href="javascript:history.back()">&#8592; back</a>
+    <span class="page-title">ENERGY A.I. HACKATHON 2026 — MISSION IMPOSSIBLE</span>
+  </div>
+  <div class="divider"></div>
+
+  <div class="sponsors">
+    <span class="sponsor-label">SPONSORED BY</span>
+    <span class="sponsor-tag">Phillips66</span>
+    <span class="sponsor-tag">Chevron</span>
+    <span class="sponsor-tag">ConocoPhillips</span>
+    <span class="sponsor-tag">ExxonMobil</span>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="section">
+    <div class="section-title">// OVERVIEW</div>
+    <p class="prose">
+      Predict 3-year cumulative oil production for 12 preproduction wells using only well-log measurements
+      and a 2D sand proportion map — no production history available for target wells.
+      The model was trained on 71 production wells with known outcomes and used
+      <strong style="color:var(--text)">GroupKFold cross-validation</strong> to prevent well-level data leakage.
+      Deliverable: 100 Monte Carlo realizations per well for uncertainty quantification.
+    </p>
+    <div class="tags">
+      <span class="tag">Python</span>
+      <span class="tag">XGBoost</span>
+      <span class="tag">Random Forest</span>
+      <span class="tag">Scikit-learn</span>
+      <span class="tag">Pandas</span>
+      <span class="tag">NumPy</span>
+      <span class="tag">Seaborn</span>
+      <span class="tag">Jupyter</span>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-val">83</div>
+      <div class="stat-label">TOTAL WELLS</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">71</div>
+      <div class="stat-label">TRAINING WELLS</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">12</div>
+      <div class="stat-label">PREDICTION TARGETS</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">100</div>
+      <div class="stat-label">MC REALIZATIONS / WELL</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">36</div>
+      <div class="stat-label">MONTHS PREDICTED</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">5-fold</div>
+      <div class="stat-label">CROSS-VALIDATION</div>
+    </div>
+  </div>
+
+  <!-- PIPELINE -->
+  <div class="section">
+    <div class="section-title">// ML PIPELINE</div>
+    <div class="pipeline">
+      <div class="step"><span class="step-num">01</span> Load Well Logs + Production CSV</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">02</span> KNN Facies Estimation</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">03</span> Missing Data Imputation (Permeability Eq.)</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">04</span> Aggregate Depth Logs → Well Features</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">05</span> Per-Facies Correlation Feature Selection</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">06</span> Random Forest + GridSearchCV</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">07</span> GroupKFold CV (well-level)</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">08</span> Bootstrap → 100 Realizations</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">09</span> Submit solution.csv</div>
+    </div>
+  </div>
+
+  <!-- PLOTS -->
+  <div class="section">
+    <div class="section-title">// VISUALIZATIONS</div>
+    <div class="plots">
+      <div class="plot-card">
+        <img src="images/plot_01.png" alt="Plot 1" loading="lazy" />
+        <div class="plot-caption">// Cumulative production history across training wells — used to extract 3-year targets</div>
+      </div>
+      <div class="plot-card">
+        <img src="images/plot_02.png" alt="Plot 2" loading="lazy" />
+        <div class="plot-caption">// Correlation matrix / feature relationships by facies — guides per-facies feature selection</div>
+      </div>
+      <div class="plot-card">
+        <img src="images/plot_03.png" alt="Plot 3" loading="lazy" />
+        <div class="plot-caption">// Model validation — predicted vs. true cumulative oil production (out-of-fold)</div>
+      </div>
+      <div class="plot-card">
+        <img src="images/plot_04.png" alt="Plot 4" loading="lazy" />
+        <div class="plot-caption">// Feature importance or error distribution across cross-validation folds</div>
+      </div>
+      <div class="plot-card">
+        <img src="images/plot_05.png" alt="Plot 5" loading="lazy" />
+        <div class="plot-caption">// Prediction uncertainty — 100 Monte Carlo realizations per preproduction well</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PREDICTIONS TABLE -->
+  <div class="section">
+    <div class="section-title">// SUBMITTED PREDICTIONS (Wells 72–83)</div>
+    <p class="prose" style="margin-bottom:0.75rem">
+      Point estimate (median of 100 realizations) of 3-year cumulative oil production in barrels (BBL).
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>WELL ID</th>
+            <th>PREDICTED 3-YR CUM. OIL (BBL)</th>
+            <th>FORMATTED</th>
+            <th>REALIZATIONS</th>
+          </tr>
+        </thead>
+        <tbody id="pred-table"></tbody>
+      </table>
+    </div>
+  </div>
+
+<script>
+  const predictions = [
+    { well: 72,  bbl: 464694692   },
+    { well: 73,  bbl: 656000592.8 },
+    { well: 74,  bbl: 868768560.5 },
+    { well: 75,  bbl: 769353898.1 },
+    { well: 76,  bbl: 756172206.5 },
+    { well: 77,  bbl: 628044448.8 },
+    { well: 78,  bbl: 517637854.7 },
+    { well: 79,  bbl: 566099763.5 },
+    { well: 80,  bbl: 718346073.5 },
+    { well: 81,  bbl: 703895263.6 },
+    { well: 82,  bbl: 635264812.3 },
+    { well: 83,  bbl: 699203154.2 },
+  ];
+
+  const tbody = document.getElementById('pred-table');
+  predictions.forEach(({ well, bbl }) => {
+    const fmt = new Intl.NumberFormat('en-US', { maximumFractionDigits: 0 }).format(bbl);
+    const millions = (bbl / 1e6).toFixed(1) + 'M BBL';
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>Well ${well}</td>
+      <td class="td-num">${bbl.toFixed(1)}</td>
+      <td class="td-muted">${millions}</td>
+      <td class="td-muted">100</td>
+    `;
+    tbody.appendChild(tr);
+  });
+</script>
+
+</body>
+</html>

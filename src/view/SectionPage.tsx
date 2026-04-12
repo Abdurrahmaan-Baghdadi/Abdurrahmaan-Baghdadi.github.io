@@ -134,12 +134,12 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
 
       {/* Page content area - renders page-specific content */}
       <motion.div
-        className="flex-1 px-10 pt-8 overflow-y-auto"
+        className="flex-1 px-10 pt-8 pb-10 overflow-y-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}
       >
-        <div className="max-w-4xl">
+        <div className="w-full">
           {children || (
             <p className="text-slate-400 font-mono text-sm leading-relaxed">
               // {section.toLowerCase()} content goes here
