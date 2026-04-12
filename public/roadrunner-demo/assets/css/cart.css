@@ -1,0 +1,90 @@
+/* CSS Document */
+.cartContent{
+	width:  1000px;
+	height: 740px;
+	border: 2px solid;
+	margin:auto;
+}
+.cartColumn{
+	float:left;
+	width: 50%;
+}
+.itemImgColumn{
+	float:left;
+	width:20%;
+	height: 148px;
+	border: 2px solid;
+}
+.itemDetailsColumn{
+	float:left;
+	width:60%;
+	height: 148px;
+	border: 2px solid;
+}
+.itemAmountColumn{
+	float:left;
+	width:20%;
+	height: 148px;
+	border: 2px solid;
+	display:flex;
+	flex-direction: column;
+}
+.priceButtonColumn{
+	float:left;
+	width:100%;
+	height: 47%;
+	border: 2px solid;
+}
+.discountButtonColumn{
+	float:left;
+	width:100%;
+	height: 52%;
+	border: 2px solid;
+}
+.cartRow:after{
+	display: table;
+  	clear: both;
+}
+.cartItemBorder{
+	margin-left: 10px;
+	width: 500px;
+	height: 600px;
+	border: 2px solid;
+	overflow: scroll;
+}
+.itemDetails{
+	width: 450px;
+	height: 150px;
+	margin:auto;
+	border: 2px solid;
+	margin-top: 10px;
+}
+.priceDetails{
+	margin-left: auto;
+	width: 400px;
+	height: 300px;
+	border: 2px solid;
+}
+.discountSection{
+	margin-left: auto;
+	width: 400px;
+	height: 300px;
+	border: 2px solid;
+}
+.bottomFill{
+	width: 100%;
+}
+.checkoutBtn{
+	position: relative;
+	top: 40%;
+	left: 40%;
+}
+.discountBtn{
+	position: relative;
+	top: 39%;
+	left: 42%;
+}
+.centerImage{
+	position: relative;
+	top: 20%;
+}

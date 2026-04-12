@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/banner.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
+      "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee1.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
+      "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee2.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
+      "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee3.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')",
+      "Bash(cp '/c/Users/abdur/OneDrive/Documents/EX-Desktop Folders/AR College/Spring 2023/Software Engineering/RoadRunnerRoasts/assets/images/coffee4.jpg' '/c/Users/abdur/OneDrive/Desktop/AR College/Personal Github Site/Abdurrahmaan-Baghdadi.github.io/public/roadrunner-demo/assets/images/')"
+    ]
+  }
+}

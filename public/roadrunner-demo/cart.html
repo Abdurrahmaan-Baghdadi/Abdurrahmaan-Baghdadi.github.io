@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadrunner Roasts — Cart</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="assets/css/theme.css" rel="stylesheet" />
+  <link href="assets/css/nav-menu.css" rel="stylesheet" />
+  <link href="assets/css/cart.css" rel="stylesheet" />
+  <style>
+    .demo-banner { margin:0; border-radius:0; border-left:none; border-right:none; }
+    .cart-wrapper { padding: 20px 30px; }
+    /* Cart item row using real project classes */
+    .cartContent { width: 100%; min-height: 200px; border: 2px solid #ccc; margin-bottom: 20px; overflow: auto; }
+    .cart-section { float: left; width: 60%; min-height: 400px; border-right: 2px solid #ccc; padding: 10px; }
+    .price-section { float: left; width: 40%; min-height: 400px; padding: 10px; }
+    .cartRow:after { display: table; clear: both; }
+    .item-row { display: flex; align-items: stretch; border: 2px solid #ccc; margin-bottom: 8px; }
+    .item-img { width: 80px; min-height: 80px; overflow: hidden; flex-shrink: 0; }
+    .item-img img { width: 100%; height: 80px; object-fit: cover; }
+    .item-info { flex: 1; padding: 8px 10px; }
+    .item-info .name { font-weight: bold; color: #12213e; }
+    .item-info .price { color: #df6335; }
+    .item-qty { display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 8px; gap: 4px; }
+    .qty-btn { width: 28px; height: 28px; border: 1px solid #ccc; background: #f0f0f0; cursor: pointer; font-size: 16px; line-height: 1; }
+    .qty-btn:hover { background: #df6335; color: #fff; border-color: #df6335; }
+    .qty-val { font-weight: bold; font-size: 14px; }
+    .remove-btn { background: #c0392b; color: #fff; border: none; padding: 4px 8px; cursor: pointer; font-size: 11px; margin-top: 4px; border-radius: 2px; }
+    .priceDetails { border: 2px solid #ccc; padding: 15px; margin-bottom: 10px; }
+    .priceDetails h3 { color: #12213e; border-bottom: 1px solid #ccc; padding-bottom: 8px; }
+    .price-line { display: flex; justify-content: space-between; padding: 4px 0; }
+    .price-line.total { border-top: 2px solid #12213e; margin-top: 8px; padding-top: 8px; font-weight: bold; font-size: 16px; }
+    .checkoutBtn {
+      width: 100%; padding: 10px; background-color: #12213e; color: #fff;
+      border: none; cursor: pointer; font-size: 15px; margin-top: 8px;
+    }
+    .checkoutBtn:hover { background-color: #0a1628; }
+    .discountSection { border: 2px solid #ccc; padding: 15px; }
+    .discountSection h3 { color: #12213e; }
+    .discountBtn { background: #df6335; color: #fff; border: none; padding: 8px 16px; cursor: pointer; border-radius: 3px; }
+    /* Checkout form */
+    .checkoutContent { clear: both; border: 2px solid #ccc; margin-top: 10px; padding: 20px; }
+    .checkoutContent h2 { color: #12213e; border-bottom: 2px solid #df6335; padding-bottom: 8px; }
+    .form-box { background: #f9f9f9; padding: 15px; border: 1px solid #ddd; }
+    .form-box h3 { color: #12213e; }
+    .empty-cart { text-align: center; padding: 40px; }
+    .empty-cart a { color: #df6335; }
+    .footer-contact { padding: 20px 30px; color: #555; font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>&nbsp;</h1>
+  <div class="rightShift">
+    <img src="assets/images/banner.jpg" alt="close-up of coffee beans" title="Site Banner" width="100%" />
+    <h1 class="center">&nbsp;Roadrunner Roasts</h1>
+  </div>
+</div>
+
+<div class="alert alert-info demo-banner">
+  <strong>Demo Mode:</strong> Static demo of a PHP/MySQL application. Ordering is disabled; cart uses browser session data.
+</div>
+
+<div class="sidenav">
+  <button role="presentation" class="active box dropdown-btn">&#9776;</button>
+  <div class="dropdown-container">
+    <a href="index.html"><button class="button navBox">Home</button></a>
+    <a href="shop.html"><button class="button navBox">Shop</button></a>
+    <a href="cart.html"><button class="button navBox">Cart <span class="cart-badge"></span></button></a>
+    <a href="login.html"><button class="button navBox">Sign In</button></a>
+  </div>
+</div>
+
+<div class="rightShift">
+  <div class="cart-wrapper">
+    <h2 style="color:#12213e;">Cart</h2>
+    <div id="cart-container"></div>
+
+    <div class="checkoutContent">
+      <h2>Checkout</h2>
+      <div class="alert alert-warning" style="font-size:13px;">
+        <strong>Checkout Disabled in Demo:</strong> In the live application, this form POSTed to
+        <code>order_submit.php</code>, inserting rows into the <code>orders</code> and <code>order_items</code>
+        MySQL tables via a PHP transaction. Submissions are not available in this static demo.
+      </div>
+      <form id="checkout-form">
+        <div class="form-box">
+          <h3>Shipping Information</h3>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="name">Name:</label>
+              <input type="text" class="form-control" id="name" name="name" disabled>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="address">Address:</label>
+              <input type="text" class="form-control" id="address" name="address" disabled>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="city">City:</label>
+              <input type="text" class="form-control" id="city" name="city" disabled>
+            </div>
+            <div class="form-group col-md-4">
+              <label for="state">State:</label>
+              <input type="text" class="form-control" id="state" name="state" disabled>
+            </div>
+            <div class="form-group col-md-2">
+              <label for="zip">Zip Code:</label>
+              <input type="text" class="form-control" id="zip" name="zip" disabled>
+            </div>
+          </div>
+          <h3 style="padding-top:10px;">Payment Information</h3>
+          <div class="form-group">
+            <label for="card">Card Number:</label>
+            <input type="text" class="form-control" id="card" name="card" disabled>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="exp">Expiration Date:</label>
+              <input type="text" class="form-control" id="exp" name="exp" disabled>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="cvv">CVV:</label>
+              <input type="text" class="form-control" id="cvv" name="cvv" disabled>
+            </div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-primary" style="margin-top:12px;" disabled
+          onclick="alert('Ordering is disabled in this static demo.')">Submit Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="footer-contact">
+    Contact us: &nbsp; Email: RoadrunnerRoast@utsa.edu &nbsp; | &nbsp; Phone: 210-111-1111
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="assets/js/demo-data.js"></script>
+<script src="assets/js/cart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() { renderCartPage(); });
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  for (var i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dc = this.nextElementSibling;
+      dc.style.display = (dc.style.display === "block") ? "none" : "block";
+    });
+  }
+</script>
+</body>
+</html>

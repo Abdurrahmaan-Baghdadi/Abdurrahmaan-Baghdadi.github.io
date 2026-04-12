@@ -1,0 +1,68 @@
+/* CSS Document */
+.shopBorder{
+	width:  1000px;
+	height: 740px;
+	border: 2px solid;
+	margin:auto;
+}
+.shopColumn{
+	float:left;
+	width: 50%;
+	
+}
+.shopRow:after{
+	display: table;
+  	clear: both;
+}
+.filterBtn{
+	margin-left: 2%;
+}
+.searchBar{
+	margin-left:55px;
+	margin-right:0px;
+	
+}
+.searchBtn{
+	margin-left:auto;
+	margin-right:auto;
+}
+.shopContent{
+	width:950px;
+	height: 600px;
+	border: 2px solid;
+	display:flex;
+	flex-wrap: wrap;
+	overflow: scroll;
+	margin: auto;
+}
+.shopItems{
+	width:300px;
+	height:300px;
+	border: 2px solid;
+	margin-left:7.5px;
+	margin-bottom: 7.5;
+}
+.imageSection{
+	height: 250px;
+	margin-top: 5px;
+	border: none;
+}
+.detailSection{
+	width: 300px;
+	height: 50px;
+	border: none;
+}
+a.noColor{
+	background-color: transparent;
+}
+.itemImages{
+	width: 100%;
+	height: 100%;
+}
+.itemButton{
+	background-color: #12213e;
+	border: none;
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+}

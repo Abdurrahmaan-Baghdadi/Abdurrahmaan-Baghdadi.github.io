@@ -1,0 +1,111 @@
+/* CSS Document */
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav{
+	border:2px solid;
+	top:0px !important;
+	left: 0px !important;
+	height: 100% !important;
+	position: fixed !important;
+	width:100px !important;
+	background-color: #df6335;
+}
+
+.rightShift{
+	margin-left:100px;
+}
+
+.center{
+	display: flex;
+	justify-content: center;
+	text-align: center;
+}
+.centerText{
+	display: flex !important;
+	text-align: center !important;
+	flex-direction: column;
+}
+
+ .centerBox{
+	display: flex;
+	justify-content: center;
+}
+
+.box{
+	height:100px;
+	width:100px;
+	border:solid;
+	display:flex;
+	justify-content: center;
+}
+
+.navBox{
+	height:100px;
+	width:100px;
+	border:none;
+	background-color: #df6335 !important; 
+}
+
+
+.boxRow{
+	display:flex;
+	flex-direction: row;
+}
+
+.button{
+	border: none;
+	cursor: pointer;
+	text-align: center;
+  	text-decoration: none;
+	height: 95px !important;
+	width: 97px !important;
+	color: black;
+}
+
+.dropdown-btn{
+	border: none;
+	cursor: pointer;
+	text-align: center;
+  	text-decoration: none;
+	display:block;
+	height: 100px;
+	width: 97px;
+	background-color: #df6335;
+	color: white;
+}
+
+.dropdown-container{
+	display: none;
+  	background-color: #df6335;
+}
+
+/*
+div{
+	color:white;
+}
+
+h2{
+	color:white;
+}
+
+h6{
+	color:white;
+}*/
+/*a{
+	color: white;
+	height:100px;
+	width:100px;
+	border:none;
+	background-color: #df6335 !important; 
+}*/
+
+/*ul.nav > li {
+	display: column;
+}
+*/

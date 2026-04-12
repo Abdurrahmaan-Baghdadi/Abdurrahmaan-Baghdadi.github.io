@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RoadRunnerRoasts — Checkout</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  body { background-color: #f5f5f5; }
+  .navbar { background-color: #222; border-color: #080808; }
+  .navbar .navbar-brand { color: #e8c87a !important; font-weight: bold; }
+  #page-inner { padding: 20px; max-width: 600px; margin: 0 auto; }
+  fieldset { margin-bottom: 16px; }
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">RoadRunnerRoasts</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-nav">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html" style="color:#ccc;"><i class="fa fa-coffee"></i> Menu</a></li>
+        <li><a href="cart.html" style="color:#ccc;"><i class="fa fa-shopping-cart"></i> Cart<span class="cart-badge"></span></a></li>
+        <li class="active"><a href="checkout.html" style="color:#ccc;"><i class="fa fa-credit-card"></i> Checkout</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="alert alert-info" style="margin:0;border-radius:0;border-left:none;border-right:none;">
+  <i class="fa fa-info-circle"></i> <strong>Demo Mode:</strong> Static demo of a PHP/MySQL application. Ordering is disabled; cart uses browser session data.
+</div>
+
+<div id="page-inner">
+  <h1 class="page-header" style="margin-top:20px;">Checkout</h1>
+
+  <div class="alert alert-warning">
+    <i class="fa fa-exclamation-triangle"></i> <strong>Checkout Disabled in Demo:</strong>
+    In the live application, this form POSTed to <code>order_submit.php</code>, which inserted a row into the
+    <code>orders</code> table (customer name, email, address, payment method, timestamp) and one row per item
+    into the <code>order_items</code> table (item ID, quantity, unit price) via a MySQL transaction.
+    Submitting orders is not available in this static demo.
+  </div>
+
+  <form>
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" class="form-control" id="name" placeholder="Jane Smith" disabled>
+    </div>
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" class="form-control" id="email" placeholder="jane@example.com" disabled>
+    </div>
+    <div class="form-group">
+      <label for="address">Delivery Address</label>
+      <input type="text" class="form-control" id="address" placeholder="123 Main St, Austin TX" disabled>
+    </div>
+    <div class="form-group">
+      <label for="payment">Payment Method</label>
+      <select class="form-control" id="payment" disabled>
+        <option>Credit Card</option>
+        <option>Debit Card</option>
+        <option>Cash on Delivery</option>
+      </select>
+    </div>
+    <hr>
+    <div class="text-right">
+      <a href="cart.html" class="btn btn-default" style="margin-right:8px;">Back to Cart</a>
+      <button type="button" class="btn btn-primary" disabled
+        onclick="alert('Ordering is disabled in this static demo.')">
+        Place Order
+      </button>
+    </div>
+  </form>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="assets/js/demo-data.js"></script>
+<script src="assets/js/cart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    renderCartBadge();
+  });
+</script>
+</body>
+</html>

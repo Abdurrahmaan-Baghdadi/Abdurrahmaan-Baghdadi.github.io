@@ -53,8 +53,8 @@ const projects: Project[] = [
     description:
       "Team-built restaurant ordering application featuring a dynamic menu, shopping cart, and MySQL backend. Developed collaboratively via Git with multiple contributor branches across a full semester.",
     stack: ["PHP", "MySQL", "Bootstrap", "jQuery"],
-    imageUrl: "/images/projects/roadrunner-banner.jpg",
-    imageFit: "cover",
+    demoUrl: "/roadrunner-demo/index.html",
+    accentColor: "#d97706",
   },
   {
     title: "Cache Simulation",

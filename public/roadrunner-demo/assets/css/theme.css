@@ -1,0 +1,29 @@
+/* CSS Document */
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+
+.header {
+	background-color: #12213e;
+}
+.header > h1 {
+	color: #df6335;
+}
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul.nav > li {
+	display: inline;
+}
+
+h1 {
+	color: #12213e;
+	background-color: #df6335;
+}
