@@ -128,7 +128,7 @@ export default function About() {
         <ul className="space-y-3">
           <li className="border-l-2 border-cyan-400/50 pl-4 font-mono">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4">
-              <span className="text-slate-100 text-sm font-semibold">M.S. Computer Science</span>
+              <span className="text-slate-100 text-sm font-semibold">M.S. Artificial Intelligence</span>
               <span className="text-slate-500 text-xs tracking-widest">IN PROGRESS</span>
             </div>
             <div className="text-slate-400 text-xs mt-0.5">University of Texas at Austin</div>
