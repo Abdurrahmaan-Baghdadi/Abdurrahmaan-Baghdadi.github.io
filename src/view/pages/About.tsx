@@ -1,4 +1,68 @@
+import { useState, useEffect } from "react";
+
+interface InterestPhoto {
+  src: string;
+  label: string;
+  description: string;
+  fit: string;
+  aspect: string;
+  colSpan?: string; // tailwind col-span class
+}
+
+const photos: InterestPhoto[] = [
+  {
+    src: "/images/interests/photography.jpg",
+    label: "PHOTOGRAPHY",
+    description: "Limpkin in flight — wildlife photography with a telephoto lens at a local wetland.",
+    fit: "object-cover object-center",
+    aspect: "16/9",
+    colSpan: "col-span-2 sm:col-span-2",
+  },
+  {
+    src: "/images/interests/drawing.jpg",
+    label: "DRAWING",
+    description: "Pencil sketch of Monkey D. Luffy (One Piece) — graphite on sketchbook paper.",
+    fit: "object-cover object-top",
+    aspect: "3/4",
+    colSpan: "col-span-1",
+  },
+  {
+    src: "/images/interests/guitar.jpg",
+    label: "GUITAR",
+    description: "Playing a resonator / dobro guitar — the metal cone gives it a distinctly warm, bluesy tone.",
+    fit: "object-cover object-center",
+    aspect: "4/3",
+    colSpan: "col-span-1",
+  },
+  {
+    src: "/images/interests/longboard.jpg",
+    label: "LONGBOARD",
+    description: "Sector Nine drop-through longboard — POV top-down shot on asphalt.",
+    fit: "object-cover object-top",
+    aspect: "1/1",
+    colSpan: "col-span-1",
+  },
+  {
+    src: "/images/interests/setup.jpg",
+    label: "DEV SETUP",
+    description: "Dual-monitor coding setup — VSCode + terminal on the left, docs on the right. Late-night session.",
+    fit: "object-cover object-center",
+    aspect: "4/3",
+    colSpan: "col-span-1",
+  },
+];
+
 export default function About() {
+  const [selected, setSelected] = useState<number | null>(null);
+
+  // Close modal on ESC
+  useEffect(() => {
+    if (selected === null) return;
+    const handler = (e: KeyboardEvent) => { if (e.key === "Escape") setSelected(null); };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [selected]);
+
   return (
     <div className="space-y-10">
 
@@ -6,15 +70,15 @@ export default function About() {
       <div className="flex flex-col sm:flex-row-reverse sm:items-start gap-6">
 
         {/* Photo — seamless dark-bleed portrait */}
-        <div className="shrink-0 mx-auto sm:mx-0 relative w-36 sm:w-44 rounded overflow-hidden"
-          style={{ aspectRatio: "3 / 4" }}>
-
+        <div
+          className="shrink-0 mx-auto sm:mx-0 relative w-36 sm:w-44 rounded overflow-hidden bg-slate-900"
+          style={{ aspectRatio: "3 / 4" }}
+        >
           <img
             src="/images/headshot.jpg"
             alt="Abdurrahmaan Baghdadi"
             className="w-full h-full object-cover object-center"
           />
-
           {/* Gradient overlays — fade edges into site background */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-gray-950 pointer-events-none" />
           <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-gray-950/50 pointer-events-none" />
@@ -72,8 +136,6 @@ export default function About() {
           <li className="border-l-2 border-slate-600 pl-4 font-mono">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4">
               <span className="text-slate-100 text-sm font-semibold">B.S. Computer Science</span>
-              {/* TODO: replace with your graduation year, e.g.:
-                  <span className="text-slate-500 text-xs tracking-widest">2024</span> */}
             </div>
             <div className="text-slate-400 text-xs mt-0.5">University of Texas at San Antonio</div>
           </li>
@@ -83,33 +145,92 @@ export default function About() {
       {/* ── Interests ───────────────────────────────────────────── */}
       <div className="space-y-3">
         <p className="text-slate-300 font-mono text-sm">// interests</p>
+        <p className="text-slate-600 font-mono text-[10px] tracking-widest">click to expand</p>
+
+        {/* Editorial grid — photography spans 2 cols, rest fills naturally */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-          {[
-            { src: "/images/interests/photography.jpg", label: "PHOTOGRAPHY", fit: "object-cover object-center" },
-            { src: "/images/interests/drawing.jpg",     label: "DRAWING",     fit: "object-cover object-top" },
-            { src: "/images/interests/guitar.jpg",      label: "GUITAR",      fit: "object-cover object-center" },
-            { src: "/images/interests/longboard.jpg",   label: "LONGBOARD",   fit: "object-cover object-top" },
-            { src: "/images/interests/setup.jpg",       label: "VIDEO GAMES", fit: "object-cover object-center" },
-          ].map(({ src, label, fit }) => (
-            <div
-              key={label}
-              className="group relative rounded overflow-hidden border border-slate-700 hover:border-cyan-400/40 transition-colors duration-200"
-              style={{ aspectRatio: "4 / 3" }}
+          {photos.map((photo, idx) => (
+            <button
+              key={photo.label}
+              onClick={() => setSelected(idx)}
+              className={`group relative rounded overflow-hidden border border-slate-700 hover:border-cyan-400/40 transition-colors duration-200 text-left ${photo.colSpan ?? ""}`}
+              style={{ aspectRatio: photo.aspect }}
             >
               <img
-                src={src}
-                alt={label}
-                className={`w-full h-full ${fit} transition-transform duration-300 group-hover:scale-105`}
+                src={photo.src}
+                alt={photo.label}
+                className={`w-full h-full ${photo.fit} transition-transform duration-300 group-hover:scale-105`}
               />
-              {/* Dark overlay + label */}
+              {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent pointer-events-none" />
               <span className="absolute bottom-1.5 left-2 font-mono text-[8px] tracking-widest text-slate-400 group-hover:text-cyan-400 transition-colors">
-                {label}
+                {photo.label}
               </span>
-            </div>
+              {/* Expand hint on hover */}
+              <span className="absolute top-1.5 right-2 font-mono text-[8px] text-slate-600 group-hover:text-cyan-400/60 transition-colors">
+                ⤢
+              </span>
+            </button>
           ))}
         </div>
       </div>
+
+      {/* ── Lightbox modal ──────────────────────────────────────── */}
+      {selected !== null && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className="relative mx-4 w-full max-w-3xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close row */}
+            <div className="flex items-center justify-between mb-3">
+              <span className="font-mono text-[9px] tracking-widest text-cyan-400">
+                {photos[selected].label}
+              </span>
+              <button
+                onClick={() => setSelected(null)}
+                className="font-mono text-[9px] tracking-widest text-slate-500 hover:text-cyan-400 transition-colors"
+              >
+                [ESC] close
+              </button>
+            </div>
+
+            {/* Image */}
+            <img
+              src={photos[selected].src}
+              alt={photos[selected].label}
+              className="w-full max-h-[72vh] object-contain rounded border border-slate-700"
+            />
+
+            {/* Description */}
+            <p className="mt-3 font-mono text-xs text-slate-400 leading-relaxed">
+              {photos[selected].description}
+            </p>
+
+            {/* Prev / Next */}
+            <div className="flex justify-between mt-3">
+              <button
+                onClick={() => setSelected((selected - 1 + photos.length) % photos.length)}
+                className="font-mono text-[10px] text-slate-500 hover:text-cyan-400 transition-colors"
+              >
+                ← prev
+              </button>
+              <span className="font-mono text-[10px] text-slate-600">
+                {selected + 1} / {photos.length}
+              </span>
+              <button
+                onClick={() => setSelected((selected + 1) % photos.length)}
+                className="font-mono text-[10px] text-slate-500 hover:text-cyan-400 transition-colors"
+              >
+                next →
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
     </div>
   );

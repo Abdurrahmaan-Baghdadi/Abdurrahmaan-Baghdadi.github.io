@@ -27,7 +27,9 @@
       color: var(--text);
       font-family: var(--mono);
       min-height: 100vh;
-      padding: 2rem 1rem 5rem;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 5rem;
     }
 
     /* ── Header ── */
@@ -40,16 +42,23 @@
     .back-btn {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       text-decoration: none;
       color: var(--amber);
-      font-size: 0.75rem;
-      border: 1px solid rgba(245,158,11,0.4);
-      padding: 0.35rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(245,158,11,0.55);
+      padding: 0.4rem 0.9rem;
       border-radius: 4px;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .back-btn:hover { background: var(--amber-dim); }
+    .back-btn:hover {
+      background: var(--amber-dim);
+      color: #fcd34d;
+      border-color: rgba(245,158,11,0.8);
+    }
+    .back-btn .arrow { font-size: 0.85rem; line-height: 1; }
     .page-title {
       font-size: 1rem;
       letter-spacing: 0.2em;
@@ -81,7 +90,7 @@
     }
 
     /* ── Section ── */
-    .section { margin-bottom: 2.5rem; max-width: 860px; }
+    .section { margin-bottom: 2.5rem; }
     .section-title {
       font-size: 0.65rem;
       letter-spacing: 0.2em;
@@ -104,7 +113,6 @@
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
       gap: 0.75rem;
       margin-bottom: 2rem;
-      max-width: 860px;
     }
     .stat-card {
       background: var(--surface);
@@ -129,7 +137,6 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.4rem;
-      max-width: 860px;
       margin-bottom: 2rem;
     }
     .step {
@@ -149,9 +156,12 @@
     /* ── Plot grid ── */
     .plots {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
-      max-width: 860px;
+    }
+    /* Last card spans full row when it would be alone */
+    .plot-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
     }
     .plot-card {
       background: var(--surface);
@@ -226,7 +236,7 @@
 <body>
 
   <div class="header">
-    <a class="back-btn" href="/">&#8592; back</a>
+    <a class="back-btn" href="/"><span class="arrow">&#8592;</span> portfolio</a>
     <span class="page-title">ENERGY A.I. HACKATHON 2026 — MISSION IMPOSSIBLE</span>
   </div>
   <div class="divider"></div>
@@ -239,7 +249,6 @@
     <span class="sponsor-tag">ExxonMobil</span>
   </div>
 
-  <!-- OVERVIEW -->
   <div class="section">
     <div class="section-title">// OVERVIEW</div>
     <p class="prose">
@@ -247,12 +256,16 @@
       and a 2D sand proportion map — no production history available for target wells.
       The model was trained on 71 production wells with known outcomes and used
       <strong style="color:var(--text)">GroupKFold cross-validation</strong> to prevent well-level data leakage.
+      Post-event exploration pushed accuracy further with petroleum domain features (RQI, FZI),
+      ensemble stacking (HGB, GradientBoosting, ExtraTrees, Ridge), and outlier-aware retraining —
+      achieving <strong style="color:var(--green)">R² = 0.9849</strong> out-of-fold on training wells.
       Deliverable: 100 Monte Carlo realizations per well for uncertainty quantification.
     </p>
     <div class="tags">
       <span class="tag">Python</span>
-      <span class="tag">XGBoost</span>
       <span class="tag">Random Forest</span>
+      <span class="tag">XGBoost</span>
+      <span class="tag">Ensemble Stacking</span>
       <span class="tag">Scikit-learn</span>
       <span class="tag">Pandas</span>
       <span class="tag">NumPy</span>
@@ -261,11 +274,14 @@
     </div>
   </div>
 
-  <!-- STATS -->
   <div class="stats">
     <div class="stat-card">
-      <div class="stat-val">83</div>
-      <div class="stat-label">TOTAL WELLS</div>
+      <div class="stat-val">0.9849</div>
+      <div class="stat-label">VALIDATION R² (OOF)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val" style="font-size:1.1rem">1.69M</div>
+      <div class="stat-label">RMSE (BBL)</div>
     </div>
     <div class="stat-card">
       <div class="stat-val">71</div>
@@ -280,16 +296,11 @@
       <div class="stat-label">MC REALIZATIONS / WELL</div>
     </div>
     <div class="stat-card">
-      <div class="stat-val">36</div>
-      <div class="stat-label">MONTHS PREDICTED</div>
-    </div>
-    <div class="stat-card">
       <div class="stat-val">5-fold</div>
-      <div class="stat-label">CROSS-VALIDATION</div>
+      <div class="stat-label">GROUP K-FOLD CV</div>
     </div>
   </div>
 
-  <!-- PIPELINE -->
   <div class="section">
     <div class="section-title">// ML PIPELINE</div>
     <div class="pipeline">
@@ -297,50 +308,54 @@
       <div class="arrow">→</div>
       <div class="step"><span class="step-num">02</span> KNN Facies Estimation</div>
       <div class="arrow">→</div>
-      <div class="step"><span class="step-num">03</span> Missing Data Imputation (Permeability Eq.)</div>
+      <div class="step"><span class="step-num">03</span> Physics-Based Imputation (Perm Eq. + IterativeImputer)</div>
       <div class="arrow">→</div>
       <div class="step"><span class="step-num">04</span> Aggregate Depth Logs → Well Features</div>
       <div class="arrow">→</div>
-      <div class="step"><span class="step-num">05</span> Per-Facies Correlation Feature Selection</div>
+      <div class="step"><span class="step-num">05</span> Domain Features: RQI, FZI, Productivity Index</div>
       <div class="arrow">→</div>
-      <div class="step"><span class="step-num">06</span> Random Forest + GridSearchCV</div>
+      <div class="step"><span class="step-num">06</span> Per-Facies Correlation Feature Selection</div>
       <div class="arrow">→</div>
-      <div class="step"><span class="step-num">07</span> GroupKFold CV (well-level)</div>
+      <div class="step"><span class="step-num">07</span> Random Forest + GridSearchCV (base model)</div>
       <div class="arrow">→</div>
-      <div class="step"><span class="step-num">08</span> Bootstrap → 100 Realizations</div>
+      <div class="step"><span class="step-num">08</span> Ensemble Stacking (HGB · GBR · ExtraTrees · Ridge)</div>
       <div class="arrow">→</div>
-      <div class="step"><span class="step-num">09</span> Submit solution.csv</div>
+      <div class="step"><span class="step-num">09</span> Outlier Detection + Retraining (±2.5σ)</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">10</span> GroupKFold CV — well-level leakage prevention</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">11</span> Bootstrap → 100 Realizations / well</div>
+      <div class="arrow">→</div>
+      <div class="step"><span class="step-num">12</span> Submit solution.csv</div>
     </div>
   </div>
 
-  <!-- PLOTS -->
   <div class="section">
     <div class="section-title">// VISUALIZATIONS</div>
     <div class="plots">
       <div class="plot-card">
-        <img src="images/plot_01.png" alt="Plot 1" loading="lazy" />
-        <div class="plot-caption">// Cumulative production history across training wells — used to extract 3-year targets</div>
+        <img src="images/plot_01.png" alt="Sand map with well locations" loading="lazy" />
+        <div class="plot-caption">// Sand proportion map — well locations colored by 36-month cumulative oil production</div>
       </div>
       <div class="plot-card">
-        <img src="images/plot_02.png" alt="Plot 2" loading="lazy" />
-        <div class="plot-caption">// Correlation matrix / feature relationships by facies — guides per-facies feature selection</div>
+        <img src="images/plot_02.png" alt="Model comparison" loading="lazy" />
+        <div class="plot-caption">// Actual vs. out-of-fold predicted oil — four-model comparison; diagonal = perfect prediction</div>
       </div>
       <div class="plot-card">
-        <img src="images/plot_03.png" alt="Plot 3" loading="lazy" />
-        <div class="plot-caption">// Model validation — predicted vs. true cumulative oil production (out-of-fold)</div>
+        <img src="images/plot_03.png" alt="Preproduction predictions" loading="lazy" />
+        <div class="plot-caption">// Preproduction well forecasts — 12 unseen wells with 95% confidence intervals (100 bootstraps)</div>
       </div>
       <div class="plot-card">
-        <img src="images/plot_04.png" alt="Plot 4" loading="lazy" />
-        <div class="plot-caption">// Feature importance or error distribution across cross-validation folds</div>
+        <img src="images/plot_04.png" alt="KNN analog map" loading="lazy" />
+        <div class="plot-caption">// KNN analog map — lines connect each preproduction well to its 5 nearest production analogs</div>
       </div>
       <div class="plot-card">
-        <img src="images/plot_05.png" alt="Plot 5" loading="lazy" />
-        <div class="plot-caption">// Prediction uncertainty — 100 Monte Carlo realizations per preproduction well</div>
+        <img src="images/plot_05.png" alt="Feature importance" loading="lazy" />
+        <div class="plot-caption">// Feature importance — permutation scores for top features driving the HGB model</div>
       </div>
     </div>
   </div>
 
-  <!-- PREDICTIONS TABLE -->
   <div class="section">
     <div class="section-title">// SUBMITTED PREDICTIONS (Wells 72–83)</div>
     <p class="prose" style="margin-bottom:0.75rem">

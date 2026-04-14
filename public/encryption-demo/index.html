@@ -40,16 +40,23 @@
     .back-btn {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
       text-decoration: none;
       color: var(--cyan);
-      font-size: 0.75rem;
-      border: 1px solid rgba(34,211,238,0.4);
-      padding: 0.35rem 0.75rem;
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(34,211,238,0.55);
+      padding: 0.4rem 0.9rem;
       border-radius: 4px;
-      transition: background 0.2s;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .back-btn:hover { background: var(--cyan-dim); }
+    .back-btn:hover {
+      background: var(--cyan-dim);
+      color: #a5f3fc;
+      border-color: rgba(34,211,238,0.8);
+    }
+    .back-btn .arrow { font-size: 0.85rem; line-height: 1; }
     .page-title {
       font-size: 1.1rem;
       letter-spacing: 0.25em;
@@ -190,7 +197,7 @@
 <body>
 
   <div class="header">
-    <a class="back-btn" href="/">&#8592; back</a>
+    <a class="back-btn" href="/"><span class="arrow">&#8592;</span> portfolio</a>
     <span class="page-title">EASY-ENCRYPTION</span>
   </div>
   <div class="divider"></div>
@@ -204,7 +211,6 @@
 
   <div class="grid">
 
-    <!-- ENCRYPT -->
     <div class="panel">
       <div class="panel-header"><span class="dot"></span> ENCRYPT</div>
       <div class="panel-body">
@@ -228,7 +234,6 @@
       </div>
     </div>
 
-    <!-- DECRYPT -->
     <div class="panel">
       <div class="panel-header"><span class="dot"></span> DECRYPT</div>
       <div class="panel-body">

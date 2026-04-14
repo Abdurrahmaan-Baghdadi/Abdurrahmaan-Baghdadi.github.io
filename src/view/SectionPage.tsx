@@ -35,6 +35,9 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
             <div className="absolute left-1/2 -translate-x-1/2 -bottom-1 w-0.5 h-1.5 bg-cyan-400/60" />
             <span className="text-cyan-400 text-xs font-mono font-bold group-hover:text-cyan-200 transition-colors">A</span>
           </div>
+          <span className="font-mono text-[10px] tracking-widest text-slate-600 group-hover:text-cyan-400 transition-colors duration-200">
+            ← home
+          </span>
         </motion.button>
 
         {/* Section title */}

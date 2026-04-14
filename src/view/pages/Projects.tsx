@@ -272,8 +272,7 @@ function ProjectCard({ project }: { project: Project }) {
         {project.demoUrl && (
           <a
             href={project.demoUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            target="_self"
             className="shrink-0 px-3 py-1.5 border border-cyan-400/50 text-cyan-400 font-mono text-xs rounded hover:bg-cyan-400/10 transition-colors"
           >
             UI Preview

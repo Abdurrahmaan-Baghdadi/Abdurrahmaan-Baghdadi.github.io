@@ -321,9 +321,9 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
         </AnimatePresence>
       </svg>
 
-      {/* === SVG NAVIGATION LABELS (inside their own viewBox-matched SVG so they scale with the circuit) === */}
+      {/* === SVG NAVIGATION LABELS — desktop only; mobile uses the HTML overlay below === */}
       <svg
-        className="absolute inset-0 w-full h-full pointer-events-none"
+        className="hidden sm:block absolute inset-0 w-full h-full pointer-events-none"
         style={{ zIndex: 15 }}
         viewBox={`0 0 ${VW} ${VH}`}
         preserveAspectRatio="xMidYMid meet"
@@ -377,6 +377,34 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
             className="w-36 h-36 rounded cursor-pointer opacity-0"
             aria-label="Activate circuit board"
           />
+        </div>
+      )}
+
+      {/* ── Mobile nav overlay — shown instead of SVG labels on small screens ── */}
+      {isExpanded && (
+        <div
+          className="sm:hidden absolute inset-0 flex flex-col items-center justify-center gap-2 pointer-events-none"
+          style={{ zIndex: 20 }}
+        >
+          <div className="flex flex-col items-center gap-1 pointer-events-auto w-48">
+            {routes.map((route) => {
+              const isNav = navigatingTo === route.name;
+              return (
+                <button
+                  key={route.name}
+                  onClick={() => handleSectionClick(route.name)}
+                  disabled={!!navigatingTo}
+                  className={`w-full py-2.5 font-mono text-sm tracking-widest border rounded transition-all duration-200 ${
+                    isNav
+                      ? "text-cyan-200 border-cyan-400/60 bg-cyan-400/10 opacity-60"
+                      : "text-cyan-400 border-slate-700 bg-slate-900/70 hover:border-cyan-400/50 hover:bg-cyan-400/5"
+                  }`}
+                >
+                  {route.name}
+                </button>
+              );
+            })}
+          </div>
         </div>
       )}
 
