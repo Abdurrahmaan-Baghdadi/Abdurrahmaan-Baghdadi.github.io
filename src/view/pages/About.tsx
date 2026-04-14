@@ -15,7 +15,7 @@ const photos: InterestPhoto[] = [
     label: "PHOTOGRAPHY",
     description: "Limpkin in flight — wildlife photography with a telephoto lens at a local wetland.",
     fit: "object-cover object-center",
-    aspect: "16/9",
+    aspect: "2/1",
     colSpan: "col-span-2 sm:col-span-2",
   },
   {
@@ -23,7 +23,7 @@ const photos: InterestPhoto[] = [
     label: "DRAWING",
     description: "Pencil sketch of Monkey D. Luffy (One Piece) — graphite on sketchbook paper.",
     fit: "object-cover object-top",
-    aspect: "3/4",
+    aspect: "1/1",
     colSpan: "col-span-1",
   },
   {
@@ -39,7 +39,7 @@ const photos: InterestPhoto[] = [
     label: "LONGBOARD",
     description: "Sector Nine drop-through longboard — POV top-down shot on asphalt.",
     fit: "object-cover object-top",
-    aspect: "1/1",
+    aspect: "4/3",
     colSpan: "col-span-1",
   },
   {
@@ -148,7 +148,7 @@ export default function About() {
         <p className="text-slate-600 font-mono text-[10px] tracking-widest">click to expand</p>
 
         {/* Editorial grid — photography spans 2 cols, rest fills naturally */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-w-lg">
           {photos.map((photo, idx) => (
             <button
               key={photo.label}
