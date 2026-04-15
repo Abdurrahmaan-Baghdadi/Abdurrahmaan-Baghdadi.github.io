@@ -1,10 +1,14 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
 
-const SERVICE_ID          = "service_6y00yee";
-const TEMPLATE_AUTOREPLY  = "template_55lnh9a"; // → sends dark themed reply to sender
-const TEMPLATE_NOTIFY     = "template_tjagjva"; // → sends notification to Abdurrahmaan
-const PUBLIC_KEY          = "81iK22zXrbZpQa4zf";
+const SERVICE_ID          = import.meta.env.VITE_EMAILJS_SERVICE_ID          as string;
+const TEMPLATE_AUTOREPLY  = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY  as string; // → sends dark themed reply to sender
+const TEMPLATE_NOTIFY     = import.meta.env.VITE_EMAILJS_TEMPLATE_NOTIFY     as string; // → sends notification to Abdurrahmaan
+const PUBLIC_KEY          = import.meta.env.VITE_EMAILJS_PUBLIC_KEY           as string;
+
+const RATE_LIMIT_MS = 5 * 60 * 1000; // 5 minutes between submissions
+const RATE_LIMIT_KEY = "contact_last_sent";
+const DRAFT_KEY      = "contact_draft";
 
 const contactLinks = [
   {
@@ -27,14 +31,47 @@ const contactLinks = [
   },
 ];
 
-type SendState = "idle" | "sending" | "success" | "error";
+type SendState = "idle" | "sending" | "success" | "error" | "ratelimited";
+
+function getRemainingCooldown(): number {
+  const last = localStorage.getItem(RATE_LIMIT_KEY);
+  if (!last) return 0;
+  const elapsed = Date.now() - parseInt(last, 10);
+  return Math.max(0, RATE_LIMIT_MS - elapsed);
+}
 
 export default function Contact() {
-  const [name,    setName]    = useState("");
-  const [email,   setEmail]   = useState("");
-  const [message, setMessage] = useState("");
+  // Restore draft from sessionStorage on mount
+  const saved = (() => {
+    try { return JSON.parse(sessionStorage.getItem(DRAFT_KEY) ?? "{}"); }
+    catch { return {}; }
+  })();
+
+  const [name,    setName]    = useState<string>(saved.name    ?? "");
+  const [email,   setEmail]   = useState<string>(saved.email   ?? "");
+  const [message, setMessage] = useState<string>(saved.message ?? "");
   const [sendState, setSendState] = useState<SendState>("idle");
+  const [cooldownSec, setCooldownSec] = useState(0);
   const honeypotRef = useRef<HTMLInputElement>(null);
+
+  // Persist draft to sessionStorage as user types
+  useEffect(() => {
+    sessionStorage.setItem(DRAFT_KEY, JSON.stringify({ name, email, message }));
+  }, [name, email, message]);
+
+  // Countdown ticker when rate limited
+  useEffect(() => {
+    if (sendState !== "ratelimited") return;
+    const remaining = getRemainingCooldown();
+    if (remaining === 0) { setSendState("idle"); return; }
+    setCooldownSec(Math.ceil(remaining / 1000));
+    const interval = setInterval(() => {
+      const r = getRemainingCooldown();
+      if (r === 0) { setSendState("idle"); clearInterval(interval); }
+      else setCooldownSec(Math.ceil(r / 1000));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, [sendState]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -43,6 +80,14 @@ export default function Contact() {
     if (honeypotRef.current?.value) return;
 
     if (!name.trim() || !email.trim() || !message.trim()) return;
+
+    // Rate limit check
+    const remaining = getRemainingCooldown();
+    if (remaining > 0) {
+      setCooldownSec(Math.ceil(remaining / 1000));
+      setSendState("ratelimited");
+      return;
+    }
 
     setSendState("sending");
 
@@ -54,6 +99,10 @@ export default function Contact() {
         emailjs.send(SERVICE_ID, TEMPLATE_AUTOREPLY, params, PUBLIC_KEY),
         emailjs.send(SERVICE_ID, TEMPLATE_NOTIFY,    params, PUBLIC_KEY),
       ]);
+
+      // Record send time for rate limiting, clear draft
+      localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString());
+      sessionStorage.removeItem(DRAFT_KEY);
 
       setSendState("success");
       setName("");
@@ -157,14 +206,15 @@ export default function Contact() {
           </div>
 
           {/* Submit row */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-4 flex-wrap">
             <button
               type="submit"
-              disabled={sendState === "sending" || sendState === "success"}
+              disabled={sendState === "sending" || sendState === "success" || sendState === "ratelimited"}
               className="px-5 py-2.5 font-mono text-xs rounded border border-cyan-400/50 text-cyan-400 hover:bg-cyan-400/10 hover:border-cyan-400 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
             >
-              {sendState === "sending" ? "transmitting..." :
-               sendState === "success" ? "sent ✓"         :
+              {sendState === "sending"     ? "transmitting..."           :
+               sendState === "success"     ? "sent ✓"                   :
+               sendState === "ratelimited" ? `wait ${cooldownSec}s →`   :
                "send →"}
             </button>
 
@@ -176,6 +226,11 @@ export default function Contact() {
             {sendState === "error" && (
               <span className="font-mono text-xs text-rose-400">
                 Transmission failed — try emailing directly.
+              </span>
+            )}
+            {sendState === "ratelimited" && (
+              <span className="font-mono text-xs text-amber-400">
+                One message at a time — try again in {Math.ceil(cooldownSec / 60)}m.
               </span>
             )}
           </div>

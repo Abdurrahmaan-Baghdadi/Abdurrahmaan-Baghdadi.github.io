@@ -207,6 +207,7 @@ export default function About() {
               title="Abdurrahmaan Baghdadi Resume"
               className="hidden sm:block w-full rounded"
               style={{ height: "clamp(400px, 75vh, 720px)" }}
+              sandbox="allow-scripts allow-same-origin"
             />
             {/* Mobile fallback */}
             <div className="sm:hidden flex flex-col items-center gap-3 py-6">
