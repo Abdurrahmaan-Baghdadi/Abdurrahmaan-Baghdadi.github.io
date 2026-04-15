@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>View File</title>
+<link href="assets/css/bootstrap.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="assets/css/portfolio.css">
+<link href="assets/css/basic.css" rel="stylesheet" />
+<link href="assets/css/custom.css" rel="stylesheet" />
+<link href="assets/css/bootstrap-fileupload.min.css" rel="stylesheet" />
+<link href="assets/css/prettyPhoto.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="assets/css/print.css" media="print" />
+</head>
+<body>
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-nav">
+        <span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html" style="color:#fff;">Loan Doc Management</a>
+    </div>
+    <div class="collapse navbar-collapse" id="main-nav">
+      <ul class="nav navbar-nav">
+        <li><a href="index.html" style="color:#ccc;"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="search.html" style="color:#ccc;"><i class="fa fa-search"></i> Search</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color:#ccc;"><i class="fa fa-bar-chart"></i> Reports <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="reports/loanCompletion.html">Loan Completion</a></li>
+            <li><a href="reports/loanInfo.html">Loan Info</a></li>
+            <li><a href="reports/docCount.html">Document Count</a></li>
+            <li><a href="reports/totalDocByType.html">Docs by Type</a></li>
+            <li><a href="reports/uniqueLoans.html">Unique Loans</a></li>
+            <li><a href="reports/apiFileSizes.html">API File Sizes</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="alert alert-info" style="margin:0;border-radius:0;border-left:none;border-right:none;">
+  <i class="fa fa-info-circle"></i> <strong>Demo Mode:</strong> Static demo of a PHP/MySQL application originally deployed on AWS EC2. Uploads are disabled; search uses sample data.
+</div>
+
+<div id="page-inner">
+  <h1 class="page-head-line">View File</h1>
+  <div id="file-meta" class="panel-body"></div>
+  <div class="alert alert-warning" style="margin-top:20px;">
+    <i class="fa fa-file-pdf-o"></i> <strong>PDF Viewer Disabled in Demo:</strong>
+    In the live application, this page streamed the PDF binary directly from a MySQL BLOB field using <code>Content-Type: application/pdf</code> headers. Binary file serving is not available in this static demo.
+  </div>
+  <div style="background:#f5f5f5; border:1px solid #ddd; height:500px; display:flex; align-items:center; justify-content:center; border-radius:4px; margin-top:10px;">
+    <div class="text-center text-muted">
+      <i class="fa fa-file-pdf-o" style="font-size:64px; color:#cc0000;"></i>
+      <p style="margin-top:15px; font-size:18px;">PDF content not available in static demo</p>
+    </div>
+  </div>
+</div>
+<a href="javascript:history.back()" class="btn btn-default" style="margin:10px;">Back</a>
+
+<script src="assets/js/jquery-1.10.2.js"></script>
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/demo-data.js"></script>
+<script src="assets/js/search-client.js"></script>
+<script>
+  (function() {
+    var params = new URLSearchParams(window.location.search);
+    var docID = params.get('docID');
+    var container = document.getElementById('file-meta');
+    if (!docID) {
+      container.innerHTML = '<div class="alert-danger">Error: No document ID specified.</div>';
+      return;
+    }
+    var doc = getDocById(docID);
+    if (!doc) {
+      container.innerHTML = '<div class="alert-danger">Error: Document not found.</div>';
+      return;
+    }
+    container.innerHTML =
+      '<table class="table table-bordered" style="max-width:600px;">' +
+        '<tr><th>File Name</th><td>' + doc.file_name + '</td></tr>' +
+        '<tr><th>File Type</th><td>' + doc.file_type + '</td></tr>' +
+        '<tr><th>Loan Number</th><td>' + doc.loan_num + '</td></tr>' +
+        '<tr><th>Date Created</th><td>' + doc.date_created + '</td></tr>' +
+        '<tr><th>Document ID</th><td>' + doc.doc_id + '</td></tr>' +
+      '</table>';
+  })();
+</script>
+</body>
+</html>

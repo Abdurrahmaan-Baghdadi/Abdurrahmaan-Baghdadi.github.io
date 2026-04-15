@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadrunner Roasts</title>
+  <link href="assets/css/bootstrap.cdn.css" rel="stylesheet" />
+  <link href="assets/css/theme.css" rel="stylesheet" />
+  <link href="assets/css/nav-menu.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <style>
+    .demo-banner { margin:0; border-radius:0; border-left:none; border-right:none; }
+    .welcome-content { padding: 30px 40px; }
+    .welcome-content h2 { color: #12213e; }
+    .browse-btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 28px;
+      background-color: #df6335;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .browse-btn:hover { background-color: #c0522a; color: #fff; text-decoration: none; }
+    .footer-contact { padding: 20px 40px; color: #555; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>&nbsp;</h1>
+  <div class="rightShift">
+    <img src="assets/images/banner.jpg" alt="close-up of coffee beans" title="Site Banner" width="100%" />
+    <h1 class="center">&nbsp;Roadrunner Roasts</h1>
+  </div>
+</div>
+
+<div class="alert alert-info demo-banner">
+  <strong>Demo Mode:</strong> Static demo of a PHP/MySQL application originally hosted on a UTSA server. Ordering and login are disabled; cart uses browser session data.
+</div>
+
+<div class="sidenav">
+  <button role="presentation" class="active box dropdown-btn">&#9776;</button>
+  <div class="dropdown-container">
+    <a href="index.html"><button class="button navBox">Home</button></a>
+    <a href="shop.html"><button class="button navBox">Shop</button></a>
+    <a href="cart.html"><button class="button navBox">Cart <span class="cart-badge" id="nav-cart-badge"></span></button></a>
+    <a href="login.html"><button class="button navBox">Sign In</button></a>
+  </div>
+</div>
+
+<div class="rightShift">
+  <div class="welcome-content">
+    <h2>Welcome to Roadrunner Roasts!</h2>
+    <p>Your campus coffee destination. Browse our menu of handcrafted espresso drinks, cold brews, and fresh pastries — all made to order.</p>
+    <p>Built by a team of UTSA students as a full-semester Software Engineering course project using PHP, MySQL, and Bootstrap.</p>
+    <a href="shop.html" class="browse-btn">Browse Menu</a>
+  </div>
+  <div class="footer-contact center">
+    <p>Contact us: &nbsp; Email: RoadrunnerRoast@utsa.edu &nbsp; | &nbsp; Phone: 210-111-1111</p>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="assets/js/demo-data.js"></script>
+<script src="assets/js/cart.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() { renderCartBadge(); });
+  var dropdown = document.getElementsByClassName("dropdown-btn");
+  for (var i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var dc = this.nextElementSibling;
+      dc.style.display = (dc.style.display === "block") ? "none" : "block";
+    });
+  }
+</script>
+</body>
+</html>

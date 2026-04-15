@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Easy-Encryption Demo</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #030712;
+      --surface: #0f172a;
+      --surface2: #1e293b;
+      --border: #334155;
+      --border-active: #22d3ee;
+      --cyan: #22d3ee;
+      --cyan-dim: rgba(34,211,238,0.15);
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --green: #34d399;
+      --red: #f87171;
+      --mono: 'Courier New', Courier, monospace;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── Header ── */
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .back-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      color: var(--cyan);
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      border: 1px solid rgba(34,211,238,0.55);
+      padding: 0.4rem 0.9rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .back-btn:hover {
+      background: var(--cyan-dim);
+      color: #a5f3fc;
+      border-color: rgba(34,211,238,0.8);
+    }
+    .back-btn .arrow { font-size: 0.85rem; line-height: 1; }
+    .page-title {
+      font-size: 1.1rem;
+      letter-spacing: 0.25em;
+      color: var(--cyan);
+      font-weight: 400;
+    }
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, var(--cyan) 0%, transparent 100%);
+      margin-bottom: 2rem;
+      opacity: 0.4;
+    }
+
+    /* ── Intro ── */
+    .intro {
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+      max-width: 680px;
+    }
+    .intro span { color: var(--cyan); }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      max-width: 900px;
+    }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+
+    /* ── Panel ── */
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .panel-header {
+      padding: 0.75rem 1rem;
+      background: var(--surface2);
+      border-bottom: 1px solid var(--border);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      color: var(--cyan);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); display: inline-block; }
+    .panel-body { padding: 1rem; flex: 1; display: flex; flex-direction: column; gap: 0.75rem; }
+
+    label { font-size: 0.65rem; color: var(--muted); letter-spacing: 0.1em; display: block; margin-bottom: 0.3rem; }
+
+    input[type="password"],
+    input[type="text"],
+    textarea {
+      width: 100%;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      padding: 0.5rem 0.65rem;
+      border-radius: 4px;
+      outline: none;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+    input[type="password"]:focus,
+    input[type="text"]:focus,
+    textarea:focus { border-color: var(--cyan); }
+    textarea { min-height: 80px; }
+
+    /* ── Buttons ── */
+    .btn {
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-active);
+      background: transparent;
+      color: var(--cyan);
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .btn:hover { background: var(--cyan-dim); }
+    .btn:active { background: rgba(34,211,238,0.25); }
+    .btn-copy {
+      padding: 0.3rem 0.6rem;
+      font-size: 0.65rem;
+      width: auto;
+      margin-left: auto;
+      display: block;
+    }
+
+    /* ── Output area ── */
+    .output-wrap { position: relative; }
+    .output {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 0.5rem 0.65rem;
+      font-size: 0.65rem;
+      color: var(--green);
+      word-break: break-all;
+      min-height: 60px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+    }
+    .output.error { color: var(--red); }
+    .output.empty { color: var(--muted); font-style: italic; }
+
+    /* ── Status tag ── */
+    .status { font-size: 0.6rem; color: var(--muted); text-align: right; margin-top: 0.25rem; min-height: 1em; }
+    .status.ok { color: var(--green); }
+    .status.err { color: var(--red); }
+
+    /* ── Algorithm note ── */
+    .algo-note {
+      font-size: 0.62rem;
+      color: var(--muted);
+      line-height: 1.6;
+      border-top: 1px solid var(--border);
+      margin-top: 2rem;
+      padding-top: 1rem;
+      max-width: 900px;
+    }
+    .algo-note span { color: var(--cyan); }
+    code { background: var(--surface2); padding: 0.1em 0.35em; border-radius: 3px; font-size: 0.9em; }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <a class="back-btn" href="/"><span class="arrow">&#8592;</span> portfolio</a>
+    <span class="page-title">EASY-ENCRYPTION</span>
+  </div>
+  <div class="divider"></div>
+
+  <p class="intro">
+    Live demo of AES-256-GCM encryption running entirely in your browser via the
+    <span>Web Crypto API</span> — no data is sent to any server.<br>
+    Uses the same algorithm as the original Java desktop app:
+    <span>PBKDF2-HMAC-SHA256</span> key derivation → <span>AES-256-GCM</span> authenticated encryption.
+  </p>
+
+  <div class="grid">
+
+    <div class="panel">
+      <div class="panel-header"><span class="dot"></span> ENCRYPT</div>
+      <div class="panel-body">
+        <div>
+          <label>PASSWORD</label>
+          <input type="password" id="enc-pass" placeholder="enter a password..." autocomplete="off" />
+        </div>
+        <div>
+          <label>PLAINTEXT</label>
+          <textarea id="enc-input" placeholder="type your message here..."></textarea>
+        </div>
+        <button class="btn" onclick="doEncrypt()">// encrypt →</button>
+        <div>
+          <label>CIPHERTEXT (Base64)</label>
+          <div class="output-wrap">
+            <div class="output empty" id="enc-output">// result will appear here</div>
+          </div>
+          <button class="btn btn-copy" id="enc-copy" onclick="copyText('enc-output','enc-copy')" style="display:none">copy</button>
+        </div>
+        <div class="status" id="enc-status"></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header"><span class="dot"></span> DECRYPT</div>
+      <div class="panel-body">
+        <div>
+          <label>PASSWORD</label>
+          <input type="password" id="dec-pass" placeholder="enter the password..." autocomplete="off" />
+        </div>
+        <div>
+          <label>CIPHERTEXT (Base64)</label>
+          <textarea id="dec-input" placeholder="paste Base64 ciphertext here..."></textarea>
+        </div>
+        <button class="btn" onclick="doDecrypt()">// decrypt →</button>
+        <div>
+          <label>PLAINTEXT</label>
+          <div class="output-wrap">
+            <div class="output empty" id="dec-output">// result will appear here</div>
+          </div>
+          <button class="btn btn-copy" id="dec-copy" onclick="copyText('dec-output','dec-copy')" style="display:none">copy</button>
+        </div>
+        <div class="status" id="dec-status"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="algo-note">
+    <span>// algorithm details</span><br>
+    Key derivation: <code>PBKDF2</code> with <code>HMAC-SHA-256</code>, 100,000 iterations, 256-bit key.<br>
+    Encryption: <code>AES-256-GCM</code> with a random 12-byte IV prepended to the ciphertext.<br>
+    Output format: <code>Base64( IV[12 bytes] + ciphertext + GCM auth tag[16 bytes] )</code><br>
+    Salt is fixed (matching original Java implementation) — not recommended for production use.
+  </div>
+
+<script>
+  // Fixed salt matching the original Java source ("THIS IS MY SALT")
+  const SALT = new TextEncoder().encode("THIS IS MY SALT");
+  const ITERATIONS = 65536;
+
+  async function deriveKey(password) {
+    const keyMaterial = await crypto.subtle.importKey(
+      "raw",
+      new TextEncoder().encode(password),
+      "PBKDF2",
+      false,
+      ["deriveKey"]
+    );
+    return crypto.subtle.deriveKey(
+      { name: "PBKDF2", salt: SALT, iterations: ITERATIONS, hash: "SHA-256" },
+      keyMaterial,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["encrypt", "decrypt"]
+    );
+  }
+
+  function toBase64(buf) {
+    return btoa(String.fromCharCode(...new Uint8Array(buf)));
+  }
+
+  function fromBase64(b64) {
+    return Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  }
+
+  async function doEncrypt() {
+    const pass = document.getElementById("enc-pass").value;
+    const plain = document.getElementById("enc-input").value;
+    const outEl = document.getElementById("enc-output");
+    const statusEl = document.getElementById("enc-status");
+    const copyBtn = document.getElementById("enc-copy");
+
+    outEl.className = "output empty";
+    outEl.textContent = "// encrypting...";
+    statusEl.className = "status";
+    statusEl.textContent = "";
+    copyBtn.style.display = "none";
+
+    if (!pass) { statusEl.className = "status err"; statusEl.textContent = "error: password is required"; outEl.textContent = "// result will appear here"; return; }
+    if (!plain) { statusEl.className = "status err"; statusEl.textContent = "error: plaintext is empty"; outEl.textContent = "// result will appear here"; return; }
+
+    try {
+      const key = await deriveKey(pass);
+      const iv = crypto.getRandomValues(new Uint8Array(12));
+      const cipherBuf = await crypto.subtle.encrypt(
+        { name: "AES-GCM", iv },
+        key,
+        new TextEncoder().encode(plain)
+      );
+      // Format: Base64(IV + ciphertext+tag)
+      const combined = new Uint8Array(iv.byteLength + cipherBuf.byteLength);
+      combined.set(iv, 0);
+      combined.set(new Uint8Array(cipherBuf), iv.byteLength);
+      const result = toBase64(combined.buffer);
+
+      outEl.className = "output";
+      outEl.textContent = result;
+      copyBtn.style.display = "block";
+      statusEl.className = "status ok";
+      statusEl.textContent = `✓ encrypted ${plain.length} chars → ${result.length} chars Base64`;
+    } catch (e) {
+      outEl.className = "output error";
+      outEl.textContent = String(e);
+      statusEl.className = "status err";
+      statusEl.textContent = "error: encryption failed";
+    }
+  }
+
+  async function doDecrypt() {
+    const pass = document.getElementById("dec-pass").value;
+    const b64 = document.getElementById("dec-input").value.trim();
+    const outEl = document.getElementById("dec-output");
+    const statusEl = document.getElementById("dec-status");
+    const copyBtn = document.getElementById("dec-copy");
+
+    outEl.className = "output empty";
+    outEl.textContent = "// decrypting...";
+    statusEl.className = "status";
+    statusEl.textContent = "";
+    copyBtn.style.display = "none";
+
+    if (!pass) { statusEl.className = "status err"; statusEl.textContent = "error: password is required"; outEl.textContent = "// result will appear here"; return; }
+    if (!b64) { statusEl.className = "status err"; statusEl.textContent = "error: ciphertext is empty"; outEl.textContent = "// result will appear here"; return; }
+
+    try {
+      const combined = fromBase64(b64);
+      const iv = combined.slice(0, 12);
+      const cipherData = combined.slice(12);
+      const key = await deriveKey(pass);
+      const plainBuf = await crypto.subtle.decrypt(
+        { name: "AES-GCM", iv },
+        key,
+        cipherData
+      );
+      const result = new TextDecoder().decode(plainBuf);
+
+      outEl.className = "output";
+      outEl.textContent = result;
+      copyBtn.style.display = "block";
+      statusEl.className = "status ok";
+      statusEl.textContent = `✓ decrypted → ${result.length} chars`;
+    } catch (e) {
+      outEl.className = "output error";
+      outEl.textContent = "decryption failed — wrong password or corrupted ciphertext";
+      statusEl.className = "status err";
+      statusEl.textContent = "error: authentication tag mismatch or bad input";
+    }
+  }
+
+  async function copyText(outputId, btnId) {
+    const text = document.getElementById(outputId).textContent;
+    await navigator.clipboard.writeText(text);
+    const btn = document.getElementById(btnId);
+    const prev = btn.textContent;
+    btn.textContent = "copied!";
+    setTimeout(() => { btn.textContent = prev; }, 1500);
+  }
+</script>
+</body>
+</html>
