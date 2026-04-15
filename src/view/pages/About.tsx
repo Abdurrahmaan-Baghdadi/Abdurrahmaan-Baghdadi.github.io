@@ -56,7 +56,7 @@ const photos: InterestPhoto[] = [
 export default function About() {
   const [selected, setSelected] = useState<number | null>(null);
   const [numPages, setNumPages] = useState<number>(0);
-  const [error, setError] = useState<string | null>(null);
+  const [error, _setError] = useState<string | null>(null);
 
   // Close modal on ESC
   useEffect(() => {
