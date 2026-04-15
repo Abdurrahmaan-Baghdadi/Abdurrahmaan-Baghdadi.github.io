@@ -142,37 +142,74 @@ export default function About() {
         </ul>
       </div>
 
-      {/* ── Interests ───────────────────────────────────────────── */}
-      <div className="space-y-3">
-        <p className="text-slate-300 font-mono text-sm">// interests</p>
-        <p className="text-slate-600 font-mono text-[10px] tracking-widest">click to expand</p>
+      {/* ── Interests + Resume ──────────────────────────────────── */}
+      <div className="flex flex-col gap-6">
 
-        {/* Editorial grid — photography spans 2 cols, rest fills naturally */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5 max-w-lg">
-          {photos.map((photo, idx) => (
-            <button
-              key={photo.label}
-              onClick={() => setSelected(idx)}
-              className={`group relative rounded overflow-hidden border border-slate-700 hover:border-cyan-400/40 transition-colors duration-200 text-left ${photo.colSpan ?? ""}`}
-              style={{ aspectRatio: photo.aspect }}
-            >
-              <img
-                src={photo.src}
-                alt={photo.label}
-                className={`w-full h-full ${photo.fit} transition-transform duration-300 group-hover:scale-105`}
-              />
-              {/* Gradient overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent pointer-events-none" />
-              <span className="absolute bottom-1.5 left-2 font-mono text-[8px] tracking-widest text-slate-400 group-hover:text-cyan-400 transition-colors">
-                {photo.label}
-              </span>
-              {/* Expand hint on hover */}
-              <span className="absolute top-1.5 right-2 font-mono text-[8px] text-slate-600 group-hover:text-cyan-400/60 transition-colors">
-                ⤢
-              </span>
-            </button>
-          ))}
+        {/* Interests */}
+        <div className="space-y-3 min-w-0">
+          <p className="text-slate-300 font-mono text-sm">// interests</p>
+          <p className="text-slate-600 font-mono text-[10px] tracking-widest">click to expand</p>
+
+          {/* Editorial grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+            {photos.map((photo, idx) => (
+              <button
+                key={photo.label}
+                onClick={() => setSelected(idx)}
+                className={`group relative rounded overflow-hidden border border-slate-700 hover:border-cyan-400/40 transition-colors duration-200 text-left ${photo.colSpan ?? ""}`}
+                style={{ aspectRatio: photo.aspect }}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.label}
+                  className={`w-full h-full ${photo.fit} transition-transform duration-300 group-hover:scale-105`}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent pointer-events-none" />
+                <span className="absolute bottom-1.5 left-2 font-mono text-[8px] tracking-widest text-slate-400 group-hover:text-cyan-400 transition-colors">
+                  {photo.label}
+                </span>
+                <span className="absolute top-1.5 right-2 font-mono text-[8px] text-slate-600 group-hover:text-cyan-400/60 transition-colors">
+                  ⤢
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
+
+        {/* Resume panel */}
+        <div className="space-y-3 w-full">
+          <div className="flex items-baseline justify-between">
+            <p className="text-slate-300 font-mono text-sm">// resume</p>
+            <div className="flex items-center gap-3">
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-[10px] tracking-widest text-cyan-400 hover:text-cyan-300 transition-colors"
+              >
+                open ↗
+              </a>
+              <a
+                href="/resume.pdf"
+                download="AbdurrahmaanBaghdadi_Resume.pdf"
+                className="font-mono text-[10px] tracking-widest text-slate-500 hover:text-cyan-400 transition-colors"
+              >
+                download ↓
+              </a>
+            </div>
+          </div>
+
+          {/* Embedded PDF viewer */}
+          <div className="rounded border border-slate-700 overflow-hidden bg-slate-900">
+            <iframe
+              src="/resume.pdf"
+              title="Abdurrahmaan Baghdadi Resume"
+              className="w-full"
+              style={{ height: "480px" }}
+            />
+          </div>
+        </div>
+
       </div>
 
       {/* ── Lightbox modal ──────────────────────────────────────── */}
