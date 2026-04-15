@@ -1,9 +1,10 @@
 import { useState, useRef } from "react";
 import emailjs from "@emailjs/browser";
 
-const SERVICE_ID  = "service_6y00yee";
-const TEMPLATE_ID = "template_55lnh9a";
-const PUBLIC_KEY  = "81iK22zXrbZpQa4zf";
+const SERVICE_ID          = "service_6y00yee";
+const TEMPLATE_AUTOREPLY  = "template_55lnh9a"; // → sends dark themed reply to sender
+const TEMPLATE_NOTIFY     = "template_tjagjva"; // → sends notification to Abdurrahmaan
+const PUBLIC_KEY          = "81iK22zXrbZpQa4zf";
 
 const contactLinks = [
   {
@@ -46,12 +47,14 @@ export default function Contact() {
     setSendState("sending");
 
     try {
-      await emailjs.send(
-        SERVICE_ID,
-        TEMPLATE_ID,
-        { from_name: name, reply_email: email, message },
-        PUBLIC_KEY
-      );
+      const params = { from_name: name, reply_email: email, message };
+
+      // Send both emails in parallel — auto-reply to sender + notification to Abdurrahmaan
+      await Promise.all([
+        emailjs.send(SERVICE_ID, TEMPLATE_AUTOREPLY, params, PUBLIC_KEY),
+        emailjs.send(SERVICE_ID, TEMPLATE_NOTIFY,    params, PUBLIC_KEY),
+      ]);
+
       setSendState("success");
       setName("");
       setEmail("");
@@ -70,6 +73,21 @@ export default function Contact() {
       {/* ── Header ──────────────────────────────────────────────── */}
       <div className="space-y-4">
         <p className="text-slate-300 font-mono text-sm">// get in touch</p>
+
+        {/* Identity block */}
+        <div className="flex items-center gap-4 px-4 py-4 rounded-lg border border-slate-700 bg-slate-800/30">
+          <div className="shrink-0 w-10 h-10 rounded border border-cyan-500/40 bg-slate-900 flex items-center justify-center">
+            <span className="font-mono text-sm font-bold text-cyan-400">A</span>
+          </div>
+          <div className="min-w-0">
+            <p className="font-mono text-sm font-semibold text-slate-100 leading-tight">
+              Abdurrahmaan Baghdadi
+            </p>
+            <p className="font-mono text-[10px] text-slate-500 tracking-widest mt-0.5">
+              GRADUATE SWE &nbsp;·&nbsp; UT AUSTIN &nbsp;·&nbsp; AUSTIN, TX
+            </p>
+          </div>
+        </div>
 
         {/* Status banner */}
         <div className="flex items-center gap-3 px-4 py-3 rounded-lg border border-emerald-400/20 bg-emerald-400/5">
