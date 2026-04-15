@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="
       default-src 'self';
-      script-src 'self' 'unsafe-inline' https://cdn.emailjs.com;
+      script-src 'self' 'unsafe-inline';
       style-src 'self' 'unsafe-inline';
       connect-src 'self' https://api.emailjs.com;
       img-src 'self' data: https:;
@@ -14,7 +14,11 @@
       font-src 'self' data:;
       object-src 'none';
       base-uri 'self';
+      form-action 'self';
+      upgrade-insecure-requests;
     " />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
     <title>Abdurrahmaan Baghdadi - Portfolio</title>
     <script>
       // Restore path encoded by 404.html redirect (GitHub Pages SPA fix)

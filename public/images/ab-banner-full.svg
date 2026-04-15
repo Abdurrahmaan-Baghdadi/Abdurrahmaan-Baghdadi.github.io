@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  AB Full Banner — Terminal Circuit Aesthetic
+  Inspired by Destiny 2 emblems: Terminal Circuit, Terminal Overload, SIVA, Warmind
+  2560 × 1440 px · 16:9 · Export at native resolution for Calendly / LinkedIn / wallpaper
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="2560" height="1440" viewBox="0 0 2560 1440">
+  <defs>
+
+    <!-- ═══ FILTERS ═══════════════════════════════════════════ -->
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="strongGlow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="14" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="chipGlow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="22" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="textGlow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="3" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- ═══ GRADIENTS ═════════════════════════════════════════ -->
+    <radialGradient id="chipBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+    <radialGradient id="viaPad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="centerBloom" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#0c4a6e" stop-opacity="0.15"/>
+      <stop offset="40%" stop-color="#082f49" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#030712" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- ═══ PATTERNS ══════════════════════════════════════════ -->
+    <pattern id="gridSmall" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.5" opacity="0.4"/>
+    </pattern>
+    <pattern id="gridLarge" width="200" height="200" patternUnits="userSpaceOnUse">
+      <rect width="200" height="200" fill="url(#gridSmall)"/>
+      <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#334155" stroke-width="0.8" opacity="0.25"/>
+    </pattern>
+
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 0 — BACKGROUND
+       ═══════════════════════════════════════════════════════════ -->
+  <rect width="2560" height="1440" fill="#030712"/>
+  <rect width="2560" height="1440" fill="url(#gridLarge)"/>
+
+  <!-- Radial bloom behind chip (atmospheric depth, inspired by 3dd6337e nebula) -->
+  <ellipse cx="1280" cy="720" rx="800" ry="700" fill="url(#centerBloom)"/>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 1 — CONCENTRIC RADAR RINGS (inspired by cee5a319)
+       ═══════════════════════════════════════════════════════════ -->
+  <g fill="none" stroke="#0ea5e9">
+    <circle cx="1280" cy="720" r="250" stroke-width="0.6" opacity="0.08"/>
+    <circle cx="1280" cy="720" r="420" stroke-width="0.5" opacity="0.06"/>
+    <circle cx="1280" cy="720" r="620" stroke-width="0.4" opacity="0.05"/>
+    <circle cx="1280" cy="720" r="850" stroke-width="0.3" opacity="0.04"/>
+    <!-- Tick marks at cardinal points on ring 2 -->
+    <g stroke-width="1" opacity="0.1">
+      <line x1="1280" y1="295" x2="1280" y2="310"/>
+      <line x1="1280" y1="1130" x2="1280" y2="1145"/>
+      <line x1="855" y1="720" x2="870" y2="720"/>
+      <line x1="1690" y1="720" x2="1705" y2="720"/>
+    </g>
+    <!-- Tick marks on ring 3 at 45° positions -->
+    <g stroke-width="0.8" opacity="0.07">
+      <line x1="841" y1="281" x2="851" y2="291"/>
+      <line x1="1709" y1="281" x2="1719" y2="291"/>
+      <line x1="841" y1="1149" x2="851" y2="1159"/>
+      <line x1="1709" y1="1149" x2="1719" y2="1159"/>
+    </g>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 2 — BACKGROUND GEOMETRY (Traveler triangles, inspired by b3f2e994)
+       ═══════════════════════════════════════════════════════════ -->
+  <g fill="none" stroke="#0ea5e9" transform="translate(1280,720)">
+    <!-- Large equilateral triangle -->
+    <polygon points="0,-380 -329,190 329,190" stroke-width="0.6" opacity="0.04"/>
+    <!-- Medium triangle, rotated 180° (inverted) -->
+    <polygon points="0,280 -243,-140 243,-140" stroke-width="0.5" opacity="0.035"/>
+    <!-- Small triangle, rotated 30° -->
+    <polygon points="0,-180 -156,90 156,90" stroke-width="0.4" opacity="0.03" transform="rotate(30)"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 3 — DATA STREAM SCAN-LINES
+       ═══════════════════════════════════════════════════════════ -->
+  <g stroke="#0ea5e9" stroke-width="0.5">
+    <line x1="0" y1="320" x2="2560" y2="320" opacity="0.04"/>
+    <line x1="0" y1="520" x2="2560" y2="520" opacity="0.03"/>
+    <line x1="0" y1="920" x2="2560" y2="920" opacity="0.03"/>
+    <line x1="0" y1="1120" x2="2560" y2="1120" opacity="0.04"/>
+    <line x1="0" y1="680" x2="2560" y2="680" opacity="0.02"/>
+    <line x1="0" y1="760" x2="2560" y2="760" opacity="0.02"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 4 — CIRCUIT TRACES (DARK BASE)
+       8 main traces radiating from chip + 6 secondary branches
+       ═══════════════════════════════════════════════════════════ -->
+  <g stroke="#1e3a5f" stroke-width="5" stroke-linecap="round" fill="none">
+    <!-- Main traces -->
+    <line x1="1200" y1="720" x2="260" y2="720"/>          <!-- T1: left -->
+    <line x1="1360" y1="720" x2="2300" y2="720"/>         <!-- T2: right -->
+    <line x1="1280" y1="640" x2="1280" y2="100"/>         <!-- T3: up -->
+    <line x1="1280" y1="800" x2="1280" y2="1340"/>        <!-- T4: down -->
+    <line x1="1200" y1="640" x2="760" y2="200"/>          <!-- T5: up-left 45° -->
+    <line x1="1360" y1="640" x2="1800" y2="200"/>         <!-- T6: up-right 45° -->
+    <line x1="1200" y1="800" x2="760" y2="1240"/>         <!-- T7: down-left 45° -->
+    <line x1="1360" y1="800" x2="1800" y2="1240"/>        <!-- T8: down-right 45° -->
+  </g>
+  <g stroke="#1e3a5f" stroke-width="3" stroke-linecap="round" fill="none">
+    <!-- Secondary branches -->
+    <line x1="850" y1="720" x2="850" y2="520"/>           <!-- B1: off T1, up -->
+    <line x1="550" y1="720" x2="550" y2="920"/>           <!-- B2: off T1, down -->
+    <line x1="1750" y1="720" x2="1750" y2="520"/>         <!-- B3: off T2, up -->
+    <line x1="2050" y1="720" x2="2050" y2="920"/>         <!-- B4: off T2, down -->
+    <line x1="1280" y1="350" x2="1100" y2="350"/>         <!-- B5: off T3, left -->
+    <line x1="1280" y1="350" x2="1460" y2="350"/>         <!-- B6: off T3, right -->
+    <line x1="1280" y1="1090" x2="1100" y2="1090"/>       <!-- B7: off T4, left -->
+    <line x1="1280" y1="1090" x2="1460" y2="1090"/>       <!-- B8: off T4, right -->
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 5 — CIRCUIT TRACES (BRIGHT CENTER)
+       ═══════════════════════════════════════════════════════════ -->
+  <g stroke="#0ea5e9" stroke-width="1.5" stroke-linecap="round" fill="none" filter="url(#softGlow)">
+    <line x1="1200" y1="720" x2="260" y2="720"/>
+    <line x1="1360" y1="720" x2="2300" y2="720"/>
+    <line x1="1280" y1="640" x2="1280" y2="100"/>
+    <line x1="1280" y1="800" x2="1280" y2="1340"/>
+    <line x1="1200" y1="640" x2="760" y2="200"/>
+    <line x1="1360" y1="640" x2="1800" y2="200"/>
+    <line x1="1200" y1="800" x2="760" y2="1240"/>
+    <line x1="1360" y1="800" x2="1800" y2="1240"/>
+  </g>
+  <g stroke="#0ea5e9" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.7" filter="url(#softGlow)">
+    <line x1="850" y1="720" x2="850" y2="520"/>
+    <line x1="550" y1="720" x2="550" y2="920"/>
+    <line x1="1750" y1="720" x2="1750" y2="520"/>
+    <line x1="2050" y1="720" x2="2050" y2="920"/>
+    <line x1="1280" y1="350" x2="1100" y2="350"/>
+    <line x1="1280" y1="350" x2="1460" y2="350"/>
+    <line x1="1280" y1="1090" x2="1100" y2="1090"/>
+    <line x1="1280" y1="1090" x2="1460" y2="1090"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 6 — VIA PADS (3-layer construction: glow → ring → dot)
+       ═══════════════════════════════════════════════════════════ -->
+  <g>
+    <!-- Main trace endpoints -->
+    <!-- VP: T1 end (260,720) -->
+    <circle cx="260" cy="720" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="260" cy="720" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="260" cy="720" r="2" fill="#0ea5e9" opacity="0.8"/>
+    <!-- VP: T2 end (2300,720) -->
+    <circle cx="2300" cy="720" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="2300" cy="720" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="2300" cy="720" r="2" fill="#0ea5e9" opacity="0.8"/>
+    <!-- VP: T3 end (1280,100) -->
+    <circle cx="1280" cy="100" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="1280" cy="100" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="1280" cy="100" r="2" fill="#0ea5e9" opacity="0.8"/>
+    <!-- VP: T4 end (1280,1340) -->
+    <circle cx="1280" cy="1340" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="1280" cy="1340" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="1280" cy="1340" r="2" fill="#0ea5e9" opacity="0.8"/>
+    <!-- VP: T5 end (760,200) -->
+    <circle cx="760" cy="200" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="760" cy="200" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="760" cy="200" r="2" fill="#0ea5e9" opacity="0.8"/>
+    <!-- VP: T6 end (1800,200) -->
+    <circle cx="1800" cy="200" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="1800" cy="200" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="1800" cy="200" r="2" fill="#0ea5e9" opacity="0.8"/>
+    <!-- VP: T7 end (760,1240) -->
+    <circle cx="760" cy="1240" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="760" cy="1240" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="760" cy="1240" r="2" fill="#0ea5e9" opacity="0.8"/>
+    <!-- VP: T8 end (1800,1240) -->
+    <circle cx="1800" cy="1240" r="12" fill="url(#viaPad)" filter="url(#glow)"/>
+    <circle cx="1800" cy="1240" r="5" fill="none" stroke="#0ea5e9" stroke-width="1" opacity="0.6"/>
+    <circle cx="1800" cy="1240" r="2" fill="#0ea5e9" opacity="0.8"/>
+
+    <!-- Branch endpoints (smaller) -->
+    <g opacity="0.7">
+      <!-- B1: (850,520) -->
+      <circle cx="850" cy="520" r="8" fill="url(#viaPad)"/>
+      <circle cx="850" cy="520" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="850" cy="520" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+      <!-- B2: (550,920) -->
+      <circle cx="550" cy="920" r="8" fill="url(#viaPad)"/>
+      <circle cx="550" cy="920" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="550" cy="920" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+      <!-- B3: (1750,520) -->
+      <circle cx="1750" cy="520" r="8" fill="url(#viaPad)"/>
+      <circle cx="1750" cy="520" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="1750" cy="520" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+      <!-- B4: (2050,920) -->
+      <circle cx="2050" cy="920" r="8" fill="url(#viaPad)"/>
+      <circle cx="2050" cy="920" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="2050" cy="920" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+      <!-- B5: (1100,350) -->
+      <circle cx="1100" cy="350" r="8" fill="url(#viaPad)"/>
+      <circle cx="1100" cy="350" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="1100" cy="350" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+      <!-- B6: (1460,350) -->
+      <circle cx="1460" cy="350" r="8" fill="url(#viaPad)"/>
+      <circle cx="1460" cy="350" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="1460" cy="350" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+      <!-- B7: (1100,1090) -->
+      <circle cx="1100" cy="1090" r="8" fill="url(#viaPad)"/>
+      <circle cx="1100" cy="1090" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="1100" cy="1090" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+      <!-- B8: (1460,1090) -->
+      <circle cx="1460" cy="1090" r="8" fill="url(#viaPad)"/>
+      <circle cx="1460" cy="1090" r="3.5" fill="none" stroke="#0ea5e9" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="1460" cy="1090" r="1.5" fill="#0ea5e9" opacity="0.7"/>
+    </g>
+
+    <!-- Junction dots where branches meet main traces -->
+    <g fill="#0ea5e9" opacity="0.6">
+      <circle cx="850" cy="720" r="3"/>
+      <circle cx="550" cy="720" r="3"/>
+      <circle cx="1750" cy="720" r="3"/>
+      <circle cx="2050" cy="720" r="3"/>
+      <circle cx="1280" cy="350" r="3"/>
+      <circle cx="1280" cy="1090" r="3"/>
+    </g>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 7 — THE CHIP (center focal element)
+       Scaled from personalSiteLogo.svg · 160×160 body · 6 pins/side
+       ═══════════════════════════════════════════════════════════ -->
+  <g transform="translate(1280,720)">
+
+    <!-- Outer glow pulse -->
+    <rect x="-95" y="-95" width="190" height="190" rx="8"
+          fill="none" stroke="#0ea5e9" stroke-width="1.5" opacity="0.25" filter="url(#chipGlow)"/>
+
+    <!-- Chip body -->
+    <rect x="-80" y="-80" width="160" height="160" rx="6"
+          fill="url(#chipBg)" stroke="#0ea5e9" stroke-width="2.5"/>
+
+    <!-- ── Pins: left side ── -->
+    <g fill="#0ea5e9">
+      <rect x="-104" y="-56" width="24" height="5" rx="1"/>
+      <rect x="-104" y="-36" width="24" height="5" rx="1"/>
+      <rect x="-104" y="-16" width="24" height="5" rx="1"/>
+      <rect x="-104" y="4"   width="24" height="5" rx="1"/>
+      <rect x="-104" y="24"  width="24" height="5" rx="1"/>
+      <rect x="-104" y="44"  width="24" height="5" rx="1"/>
+    </g>
+    <!-- ── Pins: right side ── -->
+    <g fill="#0ea5e9">
+      <rect x="80"  y="-56" width="24" height="5" rx="1"/>
+      <rect x="80"  y="-36" width="24" height="5" rx="1"/>
+      <rect x="80"  y="-16" width="24" height="5" rx="1"/>
+      <rect x="80"  y="4"   width="24" height="5" rx="1"/>
+      <rect x="80"  y="24"  width="24" height="5" rx="1"/>
+      <rect x="80"  y="44"  width="24" height="5" rx="1"/>
+    </g>
+    <!-- ── Pins: top side ── -->
+    <g fill="#0ea5e9">
+      <rect x="-56" y="-104" width="5" height="24" rx="1"/>
+      <rect x="-36" y="-104" width="5" height="24" rx="1"/>
+      <rect x="-16" y="-104" width="5" height="24" rx="1"/>
+      <rect x="4"   y="-104" width="5" height="24" rx="1"/>
+      <rect x="24"  y="-104" width="5" height="24" rx="1"/>
+      <rect x="44"  y="-104" width="5" height="24" rx="1"/>
+    </g>
+    <!-- ── Pins: bottom side ── -->
+    <g fill="#0ea5e9">
+      <rect x="-56" y="80" width="5" height="24" rx="1"/>
+      <rect x="-36" y="80" width="5" height="24" rx="1"/>
+      <rect x="-16" y="80" width="5" height="24" rx="1"/>
+      <rect x="4"   y="80" width="5" height="24" rx="1"/>
+      <rect x="24"  y="80" width="5" height="24" rx="1"/>
+      <rect x="44"  y="80" width="5" height="24" rx="1"/>
+    </g>
+
+    <!-- Internal circuit traces on chip face -->
+    <g stroke="#0ea5e9" stroke-width="1.5" opacity="0.35">
+      <line x1="-65" y1="-55" x2="-40" y2="-55"/>
+      <line x1="40"  y1="-55" x2="65"  y2="-55"/>
+      <line x1="-65" y1="55"  x2="-40" y2="55"/>
+      <line x1="40"  y1="55"  x2="65"  y2="55"/>
+      <!-- Corner accents -->
+      <polyline points="-65,-40 -65,-65 -40,-65" fill="none"/>
+      <polyline points="65,-40 65,-65 40,-65" fill="none"/>
+      <polyline points="-65,40 -65,65 -40,65" fill="none"/>
+      <polyline points="65,40 65,65 40,65" fill="none"/>
+    </g>
+
+    <!-- Letter A -->
+    <text x="0" y="22"
+          font-family="'Courier New', Courier, monospace"
+          font-size="80" font-weight="bold" fill="#22d3ee"
+          text-anchor="middle" filter="url(#textGlow)">A</text>
+
+    <!-- Component designation (PCB silk-screen style) -->
+    <text x="0" y="52"
+          font-family="'Courier New', Courier, monospace"
+          font-size="11" fill="#0ea5e9" opacity="0.5"
+          text-anchor="middle" letter-spacing="4">ACTIVE</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 8 — TEXT LABELS (PCB silk-screen style)
+       ═══════════════════════════════════════════════════════════ -->
+  <g font-family="'Courier New', Courier, monospace" fill="#22d3ee">
+    <!-- Name — bottom-left, like PCB marking -->
+    <text x="80" y="1370" font-size="22" letter-spacing="5" opacity="0.55"
+          filter="url(#textGlow)">ABDURRAHMAAN  BAGHDADI</text>
+    <text x="80" y="1400" font-size="13" letter-spacing="3" opacity="0.35">GRADUATE SWE  &#xB7;  UT AUSTIN  &#xB7;  AUSTIN, TX</text>
+
+    <!-- Status tag — bottom-right -->
+    <text x="2480" y="1370" font-size="14" letter-spacing="3" opacity="0.45"
+          text-anchor="end" filter="url(#textGlow)" fill="#38bdf8">[ SIGNAL : OPEN ]</text>
+    <text x="2480" y="1400" font-size="11" letter-spacing="2" opacity="0.3"
+          text-anchor="end">REV 1.0  &#xB7;  2026</text>
+
+    <!-- Component ID near chip -->
+    <text x="1280" y="870" font-size="12" letter-spacing="3" opacity="0.3"
+          text-anchor="middle">AB-IC-001</text>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 9 — EDGE CONNECTORS (PCB gold fingers)
+       ═══════════════════════════════════════════════════════════ -->
+  <!-- Top edge -->
+  <g fill="#0ea5e9" opacity="0.12">
+    <rect x="120" y="0" width="4" height="10" rx="1"/>
+    <rect x="180" y="0" width="4" height="10" rx="1"/>
+    <rect x="240" y="0" width="4" height="10" rx="1"/>
+    <rect x="300" y="0" width="4" height="10" rx="1"/>
+    <rect x="360" y="0" width="4" height="10" rx="1"/>
+    <rect x="2200" y="0" width="4" height="10" rx="1"/>
+    <rect x="2260" y="0" width="4" height="10" rx="1"/>
+    <rect x="2320" y="0" width="4" height="10" rx="1"/>
+    <rect x="2380" y="0" width="4" height="10" rx="1"/>
+    <rect x="2440" y="0" width="4" height="10" rx="1"/>
+  </g>
+  <!-- Bottom edge -->
+  <g fill="#0ea5e9" opacity="0.12">
+    <rect x="120" y="1430" width="4" height="10" rx="1"/>
+    <rect x="180" y="1430" width="4" height="10" rx="1"/>
+    <rect x="240" y="1430" width="4" height="10" rx="1"/>
+    <rect x="300" y="1430" width="4" height="10" rx="1"/>
+    <rect x="360" y="1430" width="4" height="10" rx="1"/>
+    <rect x="2200" y="1430" width="4" height="10" rx="1"/>
+    <rect x="2260" y="1430" width="4" height="10" rx="1"/>
+    <rect x="2320" y="1430" width="4" height="10" rx="1"/>
+    <rect x="2380" y="1430" width="4" height="10" rx="1"/>
+    <rect x="2440" y="1430" width="4" height="10" rx="1"/>
+  </g>
+  <!-- Left edge -->
+  <g fill="#0ea5e9" opacity="0.1">
+    <rect x="0" y="200" width="10" height="4" rx="1"/>
+    <rect x="0" y="260" width="10" height="4" rx="1"/>
+    <rect x="0" y="320" width="10" height="4" rx="1"/>
+    <rect x="0" y="1120" width="10" height="4" rx="1"/>
+    <rect x="0" y="1180" width="10" height="4" rx="1"/>
+    <rect x="0" y="1240" width="10" height="4" rx="1"/>
+  </g>
+  <!-- Right edge -->
+  <g fill="#0ea5e9" opacity="0.1">
+    <rect x="2550" y="200" width="10" height="4" rx="1"/>
+    <rect x="2550" y="260" width="10" height="4" rx="1"/>
+    <rect x="2550" y="320" width="10" height="4" rx="1"/>
+    <rect x="2550" y="1120" width="10" height="4" rx="1"/>
+    <rect x="2550" y="1180" width="10" height="4" rx="1"/>
+    <rect x="2550" y="1240" width="10" height="4" rx="1"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 10 — PARTICLE SCATTER (inspired by 0ef1f430 cosmic dust)
+       ═══════════════════════════════════════════════════════════ -->
+  <g fill="#0ea5e9">
+    <!-- Quadrant 1: top-left -->
+    <circle cx="150"  cy="180"  r="1.5" opacity="0.25"/>
+    <circle cx="320"  cy="350"  r="1"   opacity="0.15"/>
+    <circle cx="480"  cy="120"  r="1.2" opacity="0.2"/>
+    <circle cx="200"  cy="500"  r="1"   opacity="0.12"/>
+    <circle cx="620"  cy="380"  r="1.5" opacity="0.18"/>
+    <circle cx="400"  cy="600"  r="1"   opacity="0.1"/>
+    <circle cx="100"  cy="680"  r="1.3" opacity="0.15"/>
+    <circle cx="530"  cy="480"  r="0.8" opacity="0.2"/>
+    <circle cx="350"  cy="160"  r="1"   opacity="0.22"/>
+    <circle cx="680"  cy="550"  r="1.2" opacity="0.14"/>
+    <!-- Quadrant 2: top-right -->
+    <circle cx="1950" cy="150"  r="1.5" opacity="0.2"/>
+    <circle cx="2100" cy="380"  r="1"   opacity="0.15"/>
+    <circle cx="2350" cy="250"  r="1.2" opacity="0.18"/>
+    <circle cx="2000" cy="500"  r="1"   opacity="0.12"/>
+    <circle cx="2400" cy="420"  r="1.5" opacity="0.16"/>
+    <circle cx="2200" cy="600"  r="0.8" opacity="0.2"/>
+    <circle cx="1900" cy="300"  r="1"   opacity="0.14"/>
+    <circle cx="2480" cy="180"  r="1.3" opacity="0.22"/>
+    <circle cx="2150" cy="550"  r="1"   opacity="0.1"/>
+    <circle cx="1880" cy="480"  r="1.2" opacity="0.15"/>
+    <!-- Quadrant 3: bottom-left -->
+    <circle cx="180"  cy="1100" r="1.5" opacity="0.2"/>
+    <circle cx="350"  cy="1250" r="1"   opacity="0.15"/>
+    <circle cx="500"  cy="1050" r="1.2" opacity="0.18"/>
+    <circle cx="250"  cy="960"  r="1"   opacity="0.12"/>
+    <circle cx="620"  cy="1150" r="1.5" opacity="0.16"/>
+    <circle cx="400"  cy="1300" r="0.8" opacity="0.2"/>
+    <circle cx="130"  cy="1200" r="1"   opacity="0.14"/>
+    <circle cx="550"  cy="1320" r="1.3" opacity="0.22"/>
+    <circle cx="680"  cy="980"  r="1"   opacity="0.1"/>
+    <circle cx="300"  cy="1080" r="1.2" opacity="0.15"/>
+    <!-- Quadrant 4: bottom-right -->
+    <circle cx="1920" cy="1050" r="1.5" opacity="0.2"/>
+    <circle cx="2150" cy="1200" r="1"   opacity="0.15"/>
+    <circle cx="2380" cy="1100" r="1.2" opacity="0.18"/>
+    <circle cx="2050" cy="960"  r="1"   opacity="0.12"/>
+    <circle cx="2450" cy="1250" r="1.5" opacity="0.16"/>
+    <circle cx="2200" cy="1320" r="0.8" opacity="0.2"/>
+    <circle cx="1880" cy="1150" r="1"   opacity="0.14"/>
+    <circle cx="2300" cy="980"  r="1.3" opacity="0.22"/>
+    <circle cx="2100" cy="1300" r="1"   opacity="0.1"/>
+    <circle cx="1960" cy="1280" r="1.2" opacity="0.15"/>
+  </g>
+
+  <!-- ═══════════════════════════════════════════════════════════
+       LAYER 11 — CORNER CIRCUIT ACCENT MODULES
+       Small decorative "IC components" in corners (inspired by ef0b9b23)
+       ═══════════════════════════════════════════════════════════ -->
+  <!-- Top-left module -->
+  <g transform="translate(100,100)" stroke="#0ea5e9" fill="none" opacity="0.12">
+    <rect x="0" y="0" width="60" height="40" rx="3" stroke-width="1"/>
+    <line x1="-10" y1="12" x2="0" y2="12" stroke-width="1.5"/>
+    <line x1="-10" y1="28" x2="0" y2="28" stroke-width="1.5"/>
+    <line x1="60" y1="12" x2="70" y2="12" stroke-width="1.5"/>
+    <line x1="60" y1="28" x2="70" y2="28" stroke-width="1.5"/>
+  </g>
+  <!-- Top-right module -->
+  <g transform="translate(2400,80)" stroke="#0ea5e9" fill="none" opacity="0.1">
+    <rect x="0" y="0" width="50" height="35" rx="3" stroke-width="1"/>
+    <line x1="-8" y1="10" x2="0" y2="10" stroke-width="1.5"/>
+    <line x1="-8" y1="25" x2="0" y2="25" stroke-width="1.5"/>
+    <line x1="50" y1="10" x2="58" y2="10" stroke-width="1.5"/>
+    <line x1="50" y1="25" x2="58" y2="25" stroke-width="1.5"/>
+  </g>
+  <!-- Bottom-left module -->
+  <g transform="translate(120,1280)" stroke="#0ea5e9" fill="none" opacity="0.1">
+    <rect x="0" y="0" width="45" height="30" rx="2" stroke-width="1"/>
+    <line x1="-8" y1="10" x2="0" y2="10" stroke-width="1"/>
+    <line x1="-8" y1="20" x2="0" y2="20" stroke-width="1"/>
+    <line x1="45" y1="10" x2="53" y2="10" stroke-width="1"/>
+    <line x1="45" y1="20" x2="53" y2="20" stroke-width="1"/>
+  </g>
+  <!-- Bottom-right module -->
+  <g transform="translate(2380,1300)" stroke="#0ea5e9" fill="none" opacity="0.08">
+    <rect x="0" y="0" width="55" height="35" rx="3" stroke-width="1"/>
+    <line x1="-8" y1="10" x2="0" y2="10" stroke-width="1"/>
+    <line x1="-8" y1="25" x2="0" y2="25" stroke-width="1"/>
+    <line x1="55" y1="10" x2="63" y2="10" stroke-width="1"/>
+    <line x1="55" y1="25" x2="63" y2="25" stroke-width="1"/>
+  </g>
+
+</svg>

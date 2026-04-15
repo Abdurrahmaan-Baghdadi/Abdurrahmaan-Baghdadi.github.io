@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist -f"
+    "deploy": "gh-pages -d dist -f",
+    "export:banner": "node scripts/export-banner.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
@@ -33,6 +34,7 @@
     "globals": "^15.9.0",
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.7.0",
+    "sharp": "^0.33.5",
     "vite": "^5.4.8"
   }
 }

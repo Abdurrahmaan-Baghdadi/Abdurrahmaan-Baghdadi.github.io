@@ -73,6 +73,11 @@ export default function Contact() {
     return () => clearInterval(interval);
   }, [sendState]);
 
+  // Escape HTML-meaningful characters before sending to email body
+  const sanitize = (str: string) =>
+    str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+       .replace(/"/g, "&quot;").replace(/'/g, "&#x27;");
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -92,7 +97,7 @@ export default function Contact() {
     setSendState("sending");
 
     try {
-      const params = { from_name: name, reply_email: email, message };
+      const params = { from_name: sanitize(name), reply_email: email, message: sanitize(message) };
 
       // Send both emails in parallel — auto-reply to sender + notification to Abdurrahmaan
       await Promise.all([
