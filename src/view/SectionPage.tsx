@@ -17,7 +17,7 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
       transition={{ duration: 0.4 }}
     >
       {/* Header area */}
-      <header className="relative flex items-center px-10 pt-8 pb-4 gap-6">
+      <header className="relative flex items-center px-4 sm:px-10 pt-8 pb-4 gap-6">
         {/* Back button - small chip icon */}
         <motion.button
           onClick={onBack}
@@ -52,7 +52,7 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
       </header>
 
       {/* Circuit trace divider line */}
-      <div className="relative px-10">
+      <div className="relative px-4 sm:px-10">
         <svg className="w-full h-4 overflow-visible" preserveAspectRatio="none">
           <defs>
             <filter id="headerGlow" x="-10%" y="-200%" width="120%" height="500%">
@@ -137,7 +137,7 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
 
       {/* Page content area - renders page-specific content */}
       <motion.div
-        className="flex-1 px-10 pt-8 pb-10 overflow-y-auto"
+        className="flex-1 px-4 sm:px-10 pt-8 pb-10 overflow-y-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}

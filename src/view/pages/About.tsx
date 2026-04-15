@@ -200,13 +200,28 @@ export default function About() {
           </div>
 
           {/* Embedded PDF viewer */}
-          <div className="rounded border border-slate-700 overflow-hidden bg-slate-900">
+          <div className="max-w-2xl mx-auto w-full rounded border border-blue-500/40 bg-blue-950/60 p-4">
+            {/* Hidden on very small screens — use the open/download links instead */}
             <iframe
               src="/resume.pdf"
               title="Abdurrahmaan Baghdadi Resume"
-              className="w-full"
-              style={{ height: "480px" }}
+              className="hidden sm:block w-full rounded"
+              style={{ height: "clamp(400px, 75vh, 720px)" }}
             />
+            {/* Mobile fallback */}
+            <div className="sm:hidden flex flex-col items-center gap-3 py-6">
+              <p className="font-mono text-xs text-slate-400 text-center">
+                PDF preview not available on small screens.
+              </p>
+              <a
+                href="/resume.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-mono text-xs tracking-widest text-cyan-400 hover:text-cyan-300 border border-cyan-400/40 px-4 py-2 rounded transition-colors"
+              >
+                open resume ↗
+              </a>
+            </div>
           </div>
         </div>
 
