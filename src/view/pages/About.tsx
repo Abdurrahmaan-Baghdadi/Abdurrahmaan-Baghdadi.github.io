@@ -51,6 +51,14 @@ const photos: InterestPhoto[] = [
     aspect: "4/3",
     colSpan: "col-span-1",
   },
+  {
+    src: "/images/interests/zeena.jpg",
+    label: "ZEENA: my cat & first code reviewer",
+    description: "she stole my seat while I was coding one day, and I never had the heart to move her. from 2009-2022, she was my loyal companion and toughest critic.",
+    fit: "object-cover object-center",
+    aspect: "4/3",
+    colSpan: "col-span-1",
+  },
 ];
 
 export default function About() {
@@ -115,14 +123,74 @@ export default function About() {
           </div>
 
           {/* Bio */}
-          <div className="space-y-1.5">
-            <p className="text-slate-300 font-mono text-sm">// about me</p>
-            <p className="text-slate-400 font-mono text-sm leading-relaxed">
-              Computer Science graduate student at UT Austin with a background spanning full-stack
-              web development, machine learning, and applied data science. I've worked in academic
-              research labs, competed in industry-sponsored AI competitions, and shipped team
-              projects from backend to browser. Looking for software engineering roles where I can
-              contribute across the stack.
+          <div className="space-y-4">
+            <p className="text-slate-300 font-mono text-sm">// professional_identity</p>
+            <h2 className="text-2xl font-bold text-slate-100 tracking-tight">
+              Building <span className="text-cyan-400">intelligent systems</span> to foster human connection.
+            </h2>
+            <div className="max-w-3xl space-y-12 pb-16">
+            {/* Header Section */}
+            <div className="space-y-4">
+              <p className="text-cyan-400 font-mono text-sm tracking-[0.2em] uppercase">// THE_JOURNEY.log</p>
+              <h2 className="text-3xl font-bold text-slate-100 tracking-tight leading-tight">
+                From <span className="text-cyan-400">Java Scripting</span> to <span className="text-white">Multimodal AI.</span>
+              </h2>
+              <p className="text-slate-400 font-mono text-sm leading-relaxed max-w-2xl border-l-2 border-slate-800 pl-4">
+                "I bridge the gap between high-stakes research and production-ready engineering. My mission is to build 'Good Systems'—technology that is ethically grounded, secure, and designed to give time back to people."
+              </p>
+            </div>
+
+            {/* Chronological Timeline */}
+            <div className="relative border-l border-slate-800 ml-4 pl-8 space-y-12">
+              
+              {/* Milestone 1: The Spark */}
+              <div className="relative group">
+                <div className="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-950 border-2 border-slate-700 group-hover:border-cyan-500 transition-colors" />
+                <p className="text-slate-500 font-mono text-[10px] mb-1 uppercase tracking-widest">2016 — Genesis</p>
+                <h3 className="text-slate-100 font-bold text-lg group-hover:text-cyan-400 transition-colors">The 9th Grade Java Deep-Dive</h3>
+                <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
+                  A week-long project turned into a lifelong obsession. I built my first full text-based game in <span className="text-slate-200 uppercase text-[11px]">Java</span>, featuring custom GUI pop-ups and window logic. This spark led me to **CyberPatriots**, where I first touched Linux and began exploring the "why" behind secure systems.
+                </p>
+              </div>
+
+              {/* Milestone 2: Systems & Hardware */}
+              <div className="relative group">
+                <div className="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-950 border-2 border-slate-700 group-hover:border-cyan-500 transition-colors" />
+                <p className="text-slate-500 font-mono text-[10px] mb-1 uppercase tracking-widest">2019 - 2024 — UTSA | B.S. CS (Summa Cum Laude)</p>
+                <h3 className="text-slate-100 font-bold text-lg group-hover:text-cyan-400 transition-colors">IoT Forensics & Voice-Controlled Robotics</h3>
+                <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
+                  At UTSA, I focused on making hardware smarter. I developed a <span className="text-cyan-500/80 underline decoration-cyan-500/30">voice-controlled RC car</span> and conducted forensic research on IoT ecosystems—recovering artifacts using **Autopsy** and **ELK Stack**. In parallel, I mastered full-stack development, shipping everything from lab inventory apps to production REST APIs.
+                </p>
+              </div>
+
+              {/* Milestone 3: The Frontier */}
+              <div className="relative group">
+                <div className="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-950 border-2 border-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.4)] animate-pulse" />
+                <p className="text-cyan-500/80 font-mono text-[10px] mb-1 uppercase tracking-widest italic font-bold">Current Frontier — UT Austin | M.S. AI</p>
+                <h3 className="text-white font-bold text-lg">Deep Learning & Multimodal Diagnostics</h3>
+                <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
+                  Currently a Graduate Researcher in the **Pediatric Brain Tumor AI Lab**. I am benchmarking Vision-Language Models to assist in multimodal tumor diagnosis. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium text-[13px]">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
+                </p>
+              </div>
+            </div>
+
+            {/* Footer Comment */}
+            <div className="pt-8 flex items-center gap-4 opacity-60 hover:opacity-100 transition-opacity">
+              <div className="h-[1px] flex-grow bg-slate-800" />
+              <p className="text-slate-500 font-mono text-[10px] italic whitespace-nowrap">
+                // fun_fact: my first code reviewer was my cat (2009-2022) 
+              </p>
+              <div className="h-[1px] flex-grow bg-slate-800" />
+            </div>
+          </div>
+          </div>
+          {/* Philosophy */}
+          <div className="my-8 bg-slate-900/40 border border-slate-800 p-5 rounded-md border-l-4 border-l-cyan-500">
+            <p className="text-slate-300 font-mono text-xs mb-2 uppercase tracking-widest">// core_philosophy</p>
+            <p className="text-slate-400 italic font-mono text-sm leading-snug">
+              "I believe AI should liberate us from 'working to live' so we can focus on 
+              community, faith, and creativity. I strive to build software that encourages 
+              us to be more considerate and less judgmental."
             </p>
           </div>
         </div>
@@ -152,35 +220,55 @@ export default function About() {
       <div className="flex flex-col gap-6">
 
         {/* Interests */}
-        <div className="space-y-3 min-w-0">
-          <p className="text-slate-300 font-mono text-sm">// interests</p>
-          <p className="text-slate-600 font-mono text-[10px] tracking-widest">click to expand</p>
+        <div className="space-y-8 min-w-0"> {/* Increased spacing to 8 */}
+            <div className="space-y-3">
+              <p className="text-slate-300 font-mono text-sm">// personal_stack.json</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-mono text-[11px]">
+                {[
+                  { label: "Creative", val: "Photography, Poetry, Guitar, Sketching" },
+                  { label: "Motion", val: "Skateboarding, Basketball, Hiking ATX" },
+                  { label: "Community", val: "Islamic Events, AI Symposiums, Good Systems" },
+                  { label: "Values", val: "Ethical AI, Time Management, Compassion" }
+                ].map((item, i) => (
+                  <div key={i} className="border border-slate-800 p-2.5 rounded-sm bg-slate-900/20">
+                    <span className="text-cyan-500 uppercase">{item.label}: </span>
+                    <span className="text-slate-400">{item.val}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
 
-          {/* Editorial grid */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
-            {photos.map((photo, idx) => (
-              <button
-                key={photo.label}
-                onClick={() => setSelected(idx)}
-                className={`group relative rounded overflow-hidden border border-slate-700 hover:border-cyan-400/40 transition-colors duration-200 text-left ${photo.colSpan ?? ""}`}
-                style={{ aspectRatio: photo.aspect }}
-              >
-                <img
-                  src={photo.src}
-                  alt={photo.label}
-                  className={`w-full h-full ${photo.fit} transition-transform duration-300 group-hover:scale-105`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent pointer-events-none" />
-                <span className="absolute bottom-1.5 left-2 font-mono text-[8px] tracking-widest text-slate-400 group-hover:text-cyan-400 transition-colors">
-                  {photo.label}
-                </span>
-                <span className="absolute top-1.5 right-2 font-mono text-[8px] text-slate-600 group-hover:text-cyan-400/60 transition-colors">
-                  ⤢
-                </span>
-              </button>
-            ))}
+            {/* Visual interests gallery */}
+            <div className="space-y-3">
+              <p className="text-slate-300 font-mono text-sm">// interest_visuals</p>
+              <p className="text-slate-600 font-mono text-[10px] tracking-widest uppercase">click to expand gallery</p>
+
+              {/* Photo grid */}
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-1.5">
+                {photos.map((photo, idx) => (
+                  <button
+                    key={photo.label}
+                    onClick={() => setSelected(idx)}
+                    className={`group relative rounded overflow-hidden border border-slate-700 hover:border-cyan-400/40 transition-colors duration-200 text-left ${photo.colSpan ?? ""}`}
+                    style={{ aspectRatio: photo.aspect }}
+                  >
+                    <img
+                      src={photo.src}
+                      alt={photo.label}
+                      className={`w-full h-full ${photo.fit} transition-transform duration-300 group-hover:scale-105`}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent pointer-events-none" />
+                    <span className="absolute bottom-1.5 left-2 font-mono text-[8px] tracking-widest text-slate-400 group-hover:text-cyan-400 transition-colors">
+                      {photo.label}
+                    </span>
+                    <span className="absolute top-1.5 right-2 font-mono text-[8px] text-slate-600 group-hover:text-cyan-400/60 transition-colors">
+                      ⤢
+                    </span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
-        </div>
 
         {/* Resume panel */}
         <div className="space-y-3 w-full">
