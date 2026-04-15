@@ -215,7 +215,72 @@ export default function About() {
           </li>
         </ul>
       </div>
+      {/* ── Personal Ethos & Community ──────────────────────────────────── */}
+      <div className="space-y-10">
 
+        {/* Section 1: The "Why" - Mission & Labor Ethics */}
+        <div className="space-y-4">
+          <p className="text-slate-300 font-mono text-sm">// systemic_outlook.md</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-3 p-5 rounded-md border border-slate-800 bg-slate-900/30">
+              <h3 className="text-cyan-400 font-mono text-xs uppercase tracking-widest">Labor & Automation</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                I believe AI's true success is measured in <span className="text-white">"breathable hours."</span> I build systems to automate the repetitive grunt work that drains human creativity. 
+              </p>
+              <p className="text-slate-400 text-xs italic border-l border-slate-700 pl-3">
+                Goal: Advocating for a future where AI-driven efficiency leads to shorter work weeks—not cut pay—upholding the value of the individual.
+              </p>
+            </div>
+
+            <div className="space-y-3 p-5 rounded-md border border-slate-800 bg-slate-900/30">
+              <h3 className="text-cyan-400 font-mono text-xs uppercase tracking-widest">Health & Wellness</h3>
+              <p className="text-slate-300 text-sm leading-relaxed">
+                My work in the <span className="text-white">Pediatric Brain Tumor AI Lab</span> isn't just about data; it’s about creating breathing room for families. 
+              </p>
+              <p className="text-slate-400 text-xs italic border-l border-slate-700 pl-3">
+                Goal: Developing diagnostic tools that reduce administrative lag, allowing clinicians to focus on the human side of healing and connection.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Section 2: Values & Community */}
+        <div className="space-y-4">
+          <p className="text-slate-300 font-mono text-sm">// community_identity.json</p>
+          <div className="bg-slate-900/40 border border-slate-800 p-6 rounded-md relative overflow-hidden">
+            
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 relative z-10">
+              
+              {/* Mentorship & Code Ninjas */}
+              <div className="space-y-2">
+                <span className="text-emerald-500 font-mono text-[10px] uppercase tracking-[0.2em]">Mentorship</span>
+                <p className="text-slate-300 text-sm font-medium">Sensei & Camp Director</p>
+                <p className="text-slate-500 text-[11px] leading-snug">
+                  At Code Ninjas, I led camps and mentored young students, focusing on technical literacy as a tool for personal growth and confidence. I believe in tech as an equalizer.
+                </p>
+              </div>
+
+              {/* Faith & Framework */}
+              <div className="space-y-2">
+                <span className="text-emerald-500 font-mono text-[10px] uppercase tracking-[0.2em]">Faith & Framework</span>
+                <p className="text-slate-300 text-sm font-medium">Islamic Ethics</p>
+                <p className="text-slate-500 text-[11px] leading-snug">
+                  Guided by my faith, I view technology as a trust (*Amana*). I am committed to building software that is honest, equitable, and serves the collective good.
+                </p>
+              </div>
+
+              {/* Community Engagement */}
+              <div className="space-y-2">
+                <span className="text-emerald-500 font-mono text-[10px] uppercase tracking-[0.2em]">Active Pursuit</span>
+                <p className="text-slate-300 text-sm font-medium">Community Building</p>
+                <p className="text-slate-500 text-[11px] leading-snug">
+                  Whether organizing local events or contributing to AI ethics discussions, I thrive where technology and human tradition meet to solve real-world problems.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       {/* ── Interests + Resume ──────────────────────────────────── */}
       <div className="flex flex-col gap-6">
 
