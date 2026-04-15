@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-
+import { Document, Page } from "react-pdf";
+import "../../lib/pdf/pdfWorker"; // sets up PDF.js worker
 interface InterestPhoto {
   src: string;
   label: string;
@@ -54,6 +55,8 @@ const photos: InterestPhoto[] = [
 
 export default function About() {
   const [selected, setSelected] = useState<number | null>(null);
+  const [numPages, setNumPages] = useState<number>(0);
+  const [error, setError] = useState<string | null>(null);
 
   // Close modal on ESC
   useEffect(() => {
@@ -62,6 +65,9 @@ export default function About() {
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
   }, [selected]);
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
+    setNumPages(numPages);
+  }
 
   return (
     <div className="space-y-10">
@@ -200,34 +206,77 @@ export default function About() {
           </div>
 
           {/* Embedded PDF viewer */}
-          <div className="max-w-2xl mx-auto w-full rounded border border-blue-500/40 bg-blue-950/60 p-4">
-            {/* Hidden on very small screens — use the open/download links instead */}
-            <iframe
-              src="/resume.pdf"
-              title="Abdurrahmaan Baghdadi Resume"
-              className="hidden sm:block w-full rounded"
-              style={{ height: "clamp(400px, 75vh, 720px)" }}
-              sandbox="allow-scripts allow-same-origin"
-            />
-            {/* Mobile fallback */}
-            <div className="sm:hidden flex flex-col items-center gap-3 py-6">
-              <p className="font-mono text-xs text-slate-400 text-center">
-                PDF preview not available on small screens.
-              </p>
-              <a
-                href="/resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-mono text-xs tracking-widest text-cyan-400 hover:text-cyan-300 border border-cyan-400/40 px-4 py-2 rounded transition-colors"
-              >
-                open resume ↗
-              </a>
-            </div>
+      <div className="max-w-2xl mx-auto w-full rounded border border-slate-700 bg-slate-900/40 p-4">
+
+        {/* PDF VIEWER */}
+        <div className="hidden sm:flex flex-col items-center gap-4 py-6">
+
+          <div className="w-full flex justify-center">
+            <Document
+              file={{
+                url: window.location.origin + "/resume.pdf",
+              }}
+              onLoadSuccess={onDocumentLoadSuccess}
+              onLoadError={(err) => {
+                console.error("PDF load error:", err);
+              }}
+              loading={<p className="text-slate-400 text-xs">Loading PDF...</p>}
+            >
+              <Page
+                pageNumber={1}
+                width={600}
+                renderTextLayer={false}
+                renderAnnotationLayer={false}
+              />
+            </Document>
+          </div>
+
+          <p className="font-mono text-xs text-slate-500">
+            {numPages > 0 ? `Page 1 of ${numPages}` : "Loading pages..."}
+          </p>
+          {error && (
+            <p className="text-red-400 text-xs font-mono mt-2">
+              {error}
+            </p>
+          )}
+          <div className="flex gap-3">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-mono text-xs tracking-widest text-cyan-400 hover:text-cyan-300 border border-cyan-400/40 px-4 py-2 rounded transition-colors"
+            >
+              open ↗
+            </a>
+
+            <a
+              href="/resume.pdf"
+              download="AbdurrahmaanBaghdadi_Resume.pdf"
+              className="font-mono text-xs tracking-widest text-slate-400 hover:text-cyan-400 border border-slate-600 px-4 py-2 rounded transition-colors"
+            >
+              download ↓
+            </a>
           </div>
         </div>
 
-      </div>
+        {/* Mobile fallback */}
+        <div className="sm:hidden flex flex-col items-center gap-3 py-6">
+          <p className="font-mono text-xs text-slate-400 text-center">
+            PDF preview not available on small screens.
+          </p>
 
+          <a
+            href="/resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-xs tracking-widest text-cyan-400 hover:text-cyan-300 border border-cyan-400/40 px-4 py-2 rounded transition-colors"
+          >
+            open resume ↗
+          </a>
+        </div>
+          </div>
+        </div>
+      </div>
       {/* ── Lightbox modal ──────────────────────────────────────── */}
       {selected !== null && (
         <div
