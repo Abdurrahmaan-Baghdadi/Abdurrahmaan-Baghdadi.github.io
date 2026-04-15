@@ -308,6 +308,22 @@ export default function Projects() {
 
   const anyFilterActive = activeCategory !== "All" || activeContext !== "All";
 
+  // Count projects each category filter would show given the current context filter
+  const categoryCount = (cat: CategoryFilter) =>
+    projects.filter(
+      (p) =>
+        (cat === "All" || p.categories.includes(cat)) &&
+        (activeContext === "All" || p.context === activeContext)
+    ).length;
+
+  // Count projects each context filter would show given the current category filter
+  const contextCount = (ctx: string) =>
+    projects.filter(
+      (p) =>
+        (activeCategory === "All" || p.categories.includes(activeCategory)) &&
+        (ctx === "All" || p.context === ctx)
+    ).length;
+
   return (
     <div className="space-y-5">
       {/* Header */}
@@ -322,19 +338,22 @@ export default function Projects() {
       <div className="space-y-1.5">
         <p className="text-slate-600 font-mono text-[10px] tracking-widest">DISCIPLINE</p>
         <div className="flex flex-wrap gap-2">
-          {FILTERS.map((filter) => (
-            <button
-              key={filter}
-              onClick={() => setActiveCategory(filter)}
-              className={`px-3 py-1 font-mono text-xs rounded border transition-colors ${
-                activeCategory === filter
-                  ? "bg-cyan-400/15 border-cyan-400/60 text-cyan-300"
-                  : "border-slate-600 text-slate-400 hover:border-slate-400 hover:text-slate-300"
-              }`}
-            >
-              {filter}
-            </button>
-          ))}
+          {FILTERS.filter((filter) => categoryCount(filter) > 0 || activeCategory === filter).map((filter) => {
+            const isActive = activeCategory === filter;
+            return (
+              <button
+                key={filter}
+                onClick={() => setActiveCategory(filter)}
+                className={`px-3 py-1 font-mono text-xs rounded border transition-colors ${
+                  isActive
+                    ? "bg-cyan-400/15 border-cyan-400/60 text-cyan-300"
+                    : "border-slate-600 text-slate-400 hover:border-slate-400 hover:text-slate-300"
+                }`}
+              >
+                {filter}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -342,7 +361,7 @@ export default function Projects() {
       <div className="space-y-1.5">
         <p className="text-slate-600 font-mono text-[10px] tracking-widest">CONTEXT</p>
         <div className="flex flex-wrap gap-2">
-          {CONTEXT_FILTERS.map(({ label, color }) => {
+          {CONTEXT_FILTERS.filter(({ label }) => contextCount(label) > 0 || activeContext === label).map(({ label, color }) => {
             const isActive = activeContext === label;
             return color ? (
               <button
