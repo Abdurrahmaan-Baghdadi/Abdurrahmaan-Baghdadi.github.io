@@ -16,7 +16,9 @@
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@tailwindcss/vite": "^4.2.1",
+    "framer-motion": "^12.38.0",
     "motion": "^12.36.0",
+    "next": "^16.2.4",
     "pdfjs-dist": "^5.4.296",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
