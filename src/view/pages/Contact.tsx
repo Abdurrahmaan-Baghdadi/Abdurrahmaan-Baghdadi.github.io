@@ -248,7 +248,7 @@ export default function Contact() {
         <p className="text-slate-300 font-mono text-sm">// schedule a call</p>
 
         <a
-          href="https://calendly.com/abdurrahmaanbaghdadi0/30min"
+          href="https://calendly.com/abdurrahmaanbaghdadi/30min"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-4 px-4 py-4 rounded-lg border border-slate-700 bg-slate-800/30 hover:border-emerald-400/40 hover:bg-emerald-400/5 transition-all duration-200"
