@@ -38,13 +38,13 @@ then push.
 | Skills (languages, frameworks, tools) | `src/view/pages/Skills.tsx` | `skillCategories` array |
 | Certifications | `src/view/pages/Skills.tsx` | `certs` array |
 | Bio, journey timeline, philosophy | `src/view/pages/About.tsx` | "Hero" section (inline JSX) |
-| Current roles (lab, LAITS, JIAGIA) | `src/view/pages/About.tsx` | list in the "Experience" section |
+| Experience (roles and dates) | `src/view/pages/About.tsx` | list in the "Experience" section (keep in sync with the resume) |
 | Education, coursework | `src/view/pages/About.tsx` | "Education" section (inline JSX) |
 | Values / community blurbs | `src/view/pages/About.tsx` | "Personal Ethos & Community" section |
 | Interests list | `src/view/pages/About.tsx` | `personal_stack.json` list in "Interests + Resume" |
 | Interest photo gallery | `src/view/pages/About.tsx` | `photos` array at the top |
 | Headshot | `public/images/headshot.jpg` | replace the file (keep the name) |
-| Resume | `public/resume.pdf` | replace the file (keep the name) |
+| Resume | `resume/resume.html` | edit, then `npm run build:resume` |
 | Email / GitHub / LinkedIn links | `src/view/pages/Contact.tsx` | `contactLinks` array |
 | Calendly link, "seeking roles" banner, title line | `src/view/pages/Contact.tsx` | inline JSX |
 | Footer | `src/view/Footer.tsx` | |
@@ -102,7 +102,8 @@ under that filter. To add a new context such as `RESEARCH` or `INTERNSHIP`, add
 `{ label: "RESEARCH", color: "#…" }` to `CONTEXT_FILTERS` and use the same label and
 color on the project. Filter buttons with zero matching projects hide themselves.
 
-Project header images go in `public/images/projects/`.
+Project header images: put the original in `image-originals/projects/` and run
+`npm run optimize:images`; the web copy lands in `public/images/projects/`.
 
 ### Add a project demo ("UI Preview")
 
@@ -141,14 +142,25 @@ In `src/view/pages/Skills.tsx`:
   marks the current milestone, so move those classes to the newest one.
 - **Education:** each degree is an `<li>`. Change `IN PROGRESS` to a graduation date when
   it applies.
-- **Photo gallery:** add the image to `public/images/interests/`, then add an entry to
-  `photos`. `colSpan: "col-span-2 sm:col-span-2"` makes a wide tile, and `"col-span-1"`
+- **Photo gallery:** put the full-size photo in `image-originals/interests/`, run
+  `npm run optimize:images` (writes a ~1600 px web copy to `public/images/interests/`),
+  then add an entry to `photos`. Don't put camera originals straight into `public/`,
+  because a 10 MB photo makes the gallery slow to load. `colSpan: "col-span-2 sm:col-span-2"` makes a wide tile, and `"col-span-1"`
   makes a normal one.
 
-### Replace the resume
+### Update the resume
 
-Overwrite `public/resume.pdf` with the new PDF and keep the same filename. The in-page
-viewer and download buttons all point to `/resume.pdf`.
+The resume source is `resume/resume.html`. Edit it, then run:
+
+```bash
+npm run build:resume
+```
+
+This prints it to `public/resume.pdf` with a headless Chromium browser (Chrome, Brave or
+Edge; set `CHROME_PATH` for another one). The script **fails if the resume runs onto a
+second page**, so trim wording until it passes. The in-page viewer and download buttons
+all point to `/resume.pdf`. When you change roles or dates, update the About page's
+Experience list too.
 
 ---
 
@@ -242,7 +254,12 @@ src/
     pages/                 About, Projects, Skills, Contact (content lives here)
   lib/pdf/pdfWorker.ts     PDF.js worker setup for the resume viewer
   styles/index.css         Tailwind import and global styles
-scripts/export-banner.mjs  `npm run export:banner`: SVG banner/logo → PNG (for Calendly etc.)
+resume/resume.html         Resume source, printed to public/resume.pdf
+image-originals/           Full-size photos (not deployed); web copies are generated from these
+scripts/
+  build-resume.mjs         `npm run build:resume`: resume HTML → one-page PDF
+  optimize-images.mjs      `npm run optimize:images`: originals → ~1600 px web copies
+  export-banner.mjs        `npm run export:banner`: SVG banner/logo → PNG (for Calendly etc.)
 .github/workflows/deploy.yml
 ```
 

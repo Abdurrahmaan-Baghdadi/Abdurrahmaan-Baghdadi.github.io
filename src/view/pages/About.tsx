@@ -201,30 +201,52 @@ export default function About() {
 
       {/* ── Experience ──────────────────────────────────────────── */}
       <div className="space-y-3">
-        <p className="text-slate-300 font-mono text-sm">// current_work</p>
+        <p className="text-slate-300 font-mono text-sm">// experience</p>
         <ul className="space-y-3">
+          {/* Keep in sync with resume/resume.html. Current roles get the cyan border. */}
           {[
             {
-              org: "Pediatric Brain Tumor AI Lab",
-              role: "Graduate Researcher",
+              org: "Pediatric Brain Tumor AI Lab · UT Austin",
+              role: "Research Assistant",
+              dates: "03/2026 – Present",
+              current: true,
               focus: "Pathology foundation models, VLM benchmarking, and sparse-autoencoder interpretability on TACC HPC",
             },
             {
               org: "LAITS · UT Austin College of Liberal Arts",
               role: "Student Technology Assistant",
+              dates: "09/2026 – Present",
+              current: true,
               focus: "COLA helpdesk chatbot routing, WordPress security modernization on Rancher, research-lab site redesigns, and the STA knowledge-base redesign",
             },
             {
               org: "JIAGIA",
               role: "Backend Developer",
+              dates: "09/2026 – Present",
+              current: true,
               focus: "Fastify + PostgreSQL content API on Railway",
             },
-          ].map(({ org, role, focus }) => (
-            <li key={org} className="border-l-2 border-cyan-400/50 pl-4 font-mono">
+            {
+              org: "Code Ninjas · Round Rock, TX",
+              role: "Code Sensei & Camp Director",
+              dates: "01/2025 – 08/2025",
+              current: false,
+              focus: "Grew program sales 13% by overhauling operations and outreach; taught up to 15 students ages 5–14 (ML, robotics, JavaScript, C#)",
+            },
+            {
+              org: "UTSA · IoT Lab & SCADA Lab",
+              role: "Research Assistant, IoT Security",
+              dates: "06/2019 – 01/2025",
+              current: false,
+              focus: "Built a full-stack inventory system that cut equipment loss 25%; IoT forensics, firmware NIST compliance checks, honeypot telemetry, and SCADA lab infrastructure",
+            },
+          ].map(({ org, role, dates, current, focus }) => (
+            <li key={org} className={`border-l-2 pl-4 font-mono ${current ? "border-cyan-400/50" : "border-slate-600"}`}>
               <div className="flex flex-wrap items-baseline justify-between gap-x-4">
                 <span className="text-slate-100 text-sm font-semibold">{org}</span>
-                <span className="text-slate-500 text-xs tracking-widest uppercase">{role}</span>
+                <span className="text-slate-500 text-xs tracking-widest">{dates}</span>
               </div>
+              <div className="text-slate-500 text-[10px] tracking-widest uppercase mt-0.5">{role}</div>
               <div className="text-slate-400 text-xs mt-0.5">{focus}</div>
             </li>
           ))}
@@ -359,6 +381,8 @@ export default function About() {
                     <img
                       src={photo.src}
                       alt={photo.label}
+                      loading="lazy"
+                      decoding="async"
                       className={`w-full h-full ${photo.fit} transition-transform duration-300 group-hover:scale-105`}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-transparent pointer-events-none" />

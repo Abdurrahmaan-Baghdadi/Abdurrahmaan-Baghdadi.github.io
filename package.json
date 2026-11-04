@@ -11,7 +11,9 @@
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist -f",
-    "export:banner": "node scripts/export-banner.mjs"
+    "export:banner": "node scripts/export-banner.mjs",
+    "optimize:images": "node scripts/optimize-images.mjs",
+    "build:resume": "node scripts/build-resume.mjs"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

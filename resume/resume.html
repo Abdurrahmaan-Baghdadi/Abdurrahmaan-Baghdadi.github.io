@@ -1,0 +1,166 @@
+<!doctype html>
+<!--
+  Resume source. Edit this file, then run `npm run build:resume` to print it to
+  public/resume.pdf (the file the site links to). The script fails if it spills
+  onto a second page.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Abdurrahmaan Baghdadi — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;0,700;1,400&display=block" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1f3f73;
+    --ink: #111;
+    --muted: #333;
+  }
+
+  @page { size: Letter; margin: 0.42in 0.55in; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Fira Sans", "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+    font-size: 9.4pt;
+    line-height: 1.27;
+    color: var(--ink);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: var(--navy); text-decoration: none; }
+
+  header h1 {
+    font-size: 21pt;
+    font-weight: 700;
+    color: var(--navy);
+    line-height: 1.1;
+  }
+  header p { font-size: 9pt; margin-top: 2pt; }
+
+  h2 {
+    font-size: 10.5pt;
+    font-weight: 600;
+    color: var(--navy);
+    border-bottom: 1.6px solid var(--navy);
+    padding-bottom: 1pt;
+    margin: 6pt 0 3pt;
+  }
+
+  /* A row with text on the left and a date pinned right */
+  .row { display: flex; justify-content: space-between; gap: 12pt; }
+  .row .date { white-space: nowrap; }
+
+  .entry { margin-top: 3pt; }
+  .entry:first-of-type { margin-top: 0; }
+
+  ul { padding-left: 13pt; margin-top: 1pt; }
+  li { margin-top: 0.5pt; }
+
+  .line { margin-top: 1pt; }
+  em { font-style: italic; }
+  strong, b { font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Abdurrahmaan Baghdadi</h1>
+  <p>Pflugerville, TX &nbsp;·&nbsp; (210) 800-3846 &nbsp;·&nbsp; <a href="mailto:abdurrahmaanbaghdadi0@gmail.com">abdurrahmaanbaghdadi0@gmail.com</a></p>
+  <p>
+    <a href="https://github.com/Abdurrahmaan-Baghdadi">github.com/Abdurrahmaan-Baghdadi</a> &nbsp;·&nbsp;
+    <a href="https://www.linkedin.com/in/abdurrahmaan-baghdadi/">linkedin.com/in/abdurrahmaan-baghdadi</a> &nbsp;·&nbsp;
+    <a href="https://abdurrahmaan-baghdadi.github.io">abdurrahmaan-baghdadi.github.io</a>
+  </p>
+</header>
+
+<h2>Summary</h2>
+<p>
+  M.S. AI student at UT Austin researching interpretable pathology AI for pediatric brain tumors, while building
+  production LLM and web systems for UT's College of Liberal Arts. 5+ years of research across IoT security,
+  full-stack development, and applied ML; CompTIA Security+ certified.
+</p>
+
+<h2>Education &amp; Certifications</h2>
+<div class="row">
+  <span><b>Master of Science (MS):</b> <em>Artificial Intelligence</em> &nbsp;|&nbsp; <b>University of Texas at Austin</b></span>
+  <span class="date">Expected May 2027</span>
+</div>
+<div class="row line">
+  <span><b>Bachelor of Science (BS):</b> <em>Computer Science</em> &nbsp;|&nbsp; <em>Minor in Cybersecurity — summa cum laude</em> &nbsp;|&nbsp; <b>UTSA</b></span>
+  <span class="date">May 2024</span>
+</div>
+<p class="line">3.93 GPA &nbsp;·&nbsp; Dean's List &nbsp;·&nbsp; Honors Program &nbsp;·&nbsp; Distinguished Presidential Scholarship</p>
+<p class="line"><b>Certifications:</b> CompTIA Security+ (Jul 2024) &nbsp;|&nbsp; 4 DeepLearning.AI ML specialization courses (2025)</p>
+<p class="line"><b>Relevant Coursework:</b> Advances in Deep Learning, Deep Learning, Machine Learning, AI in Healthcare, Algorithms, Operating Systems, Databases</p>
+
+<h2>Research Experience</h2>
+<div class="entry">
+  <div class="row">
+    <span><b>Research Assistant — Pediatric Brain Tumor AI Lab</b> &nbsp;|&nbsp; <em>University of Texas at Austin (Prof. Ying Ding)</em></span>
+    <span class="date">03/2026 – Present</span>
+  </div>
+  <ul>
+    <li>Benchmarking pathology foundation models and vision-language models (<b>UNI</b>, <b>CONCH</b>, <b>MedSigLIP</b>, <b>MedGemma</b>, <b style="white-space:nowrap">WSI-LLaVA</b>, <b>Quilt-LLaVA</b>) on pediatric brain tumor whole-slide images: zero-/few-shot classification, latent-space and cosine-similarity analysis</li>
+    <li>Reproducing PICASSO's TopK <b>sparse autoencoder</b> and extending it to compare <b>UNI2</b> vs <b>Virchow2</b> on ~1,700 TCGA GBM/LGG slides, with patient-level splits, ablations, and <b>SLURM</b> pipelines on <b>TACC</b> H200 GPU nodes</li>
+  </ul>
+</div>
+
+<h2>Professional Experience</h2>
+<div class="entry">
+  <div class="row">
+    <span><b>Student Technology Assistant</b> &nbsp;|&nbsp; <em>LAITS, UT Austin College of Liberal Arts</em></span>
+    <span class="date">09/2026 – Present</span>
+  </div>
+  <ul>
+    <li>Built a helpdesk chatbot router that sends questions to the right one of 64 help pages or to a ticket, using embedding-ensemble retrieval plus a self-hosted LLM reader (<b>Qwen</b>, <b>Ollama</b>/<b>vLLM</b>); cut wrong-page answers from <b>34%</b> to <b>13%</b> in judged simulations; shipped as a tested <b>FastAPI</b> endpoint on <b>Kubernetes</b></li>
+    <li>Modernizing college WordPress sites into secure containerized Bedrock builds (<b>Docker</b>, <b>Composer</b>, <b>Woodpecker CI</b>, <b>Rancher</b>) and rebuilding faculty research-lab sites on the Labs multisite</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="row">
+    <span><b>Backend Developer</b> &nbsp;|&nbsp; <em>JIAGIA</em></span>
+    <span class="date">09/2026 – Present</span>
+  </div>
+  <ul>
+    <li>Developing a <b>Fastify</b> + <b>PostgreSQL</b> REST API (<b>TypeScript</b>, <b>Zod</b>) for a research and art content platform, with a private <b>Railway</b> database</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="row">
+    <span><b>Code Sensei &amp; Camp Director</b> &nbsp;|&nbsp; <em>Code Ninjas – Round Rock, TX</em></span>
+    <span class="date">01/2025 – 08/2025</span>
+  </div>
+  <ul>
+    <li>Grew program sales by <b>13%</b> by overhauling operations workflows and targeted outreach; taught up to <b>15 students</b> ages <span style="white-space:nowrap">5–14</span> through structured lessons (<b>Machine Learning</b>, <b>Robotics</b>, <b>JavaScript</b>, <b>C#</b>)</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="row">
+    <span><b>Research Assistant — IoT Security</b> &nbsp;|&nbsp; <em>UTSA – IoT Lab, SCADA Lab</em></span>
+    <span class="date">06/2019 – 01/2025</span>
+  </div>
+  <ul>
+    <li>Reduced equipment loss by <b>25%</b> by building a full-stack inventory system tracking 50–100 IoT devices (<b>Python/Flask</b>, <b>React/TypeScript</b>, <b>SQL</b>)</li>
+    <li>Recovered forensic artifacts from IoT devices and automated firmware <b>NIST</b> compliance checks (<b>Autopsy</b>, <b>Emba</b>); captured IoT threat telemetry with honeypots (<b>ELK</b>, <b>ROCK NSM</b>); secured <b>9 Linux</b> VMs and SCADA lab infrastructure</li>
+  </ul>
+</div>
+
+<h2>Selected Projects</h2>
+<ul>
+  <li><b>Energy AI Hackathon — Mission Impossible (Jan 2026):</b> Sole programmer on an interdisciplinary team; ensemble stacking (<b>HGB/GBR/ExtraTrees/Ridge</b>) with <b>GroupKFold CV</b> and physics-based features; achieved <b>R² = 0.9849</b> OOF among 40 teams (Phillips66 / Chevron / ExxonMobil sponsored)</li>
+  <li><b>Sleep Staging from Apple Watch Data:</b> <b>LightGBM</b> + forward–backward <b>HMM</b> smoothing on 247 nights of heart-rate and motion data; raised Cohen's κ in every CV fold (<b>0.42 → 0.45</b>), with subject-level bootstrap CIs</li>
+  <li><b>Advances in Deep Learning — UT Austin:</b> Implemented half precision, <b>LoRA</b>, 4-bit quantization, and <b>QLoRA</b> from scratch; built a <b>BSQ</b> tokenizer and autoregressive transformer for image generation and compression (<b>PyTorch</b>)</li>
+</ul>
+
+<h2>Technical Skills</h2>
+<p class="line"><b>Languages:</b> Python, TypeScript, JavaScript, SQL, Swift, Java, PHP, C, C#, Bash, R, HTML/CSS</p>
+<p class="line"><b>ML &amp; AI:</b> PyTorch, Hugging Face, LoRA/QLoRA, RAG, vLLM, Ollama, LightGBM, XGBoost, Scikit-learn, Pandas</p>
+<p class="line"><b>Web, Mobile &amp; Data:</b> FastAPI, Fastify, Flask, React, Node.js, WordPress, SwiftUI, PostgreSQL, MySQL, MongoDB</p>
+<p class="line"><b>Infra &amp; Security:</b> Docker, Kubernetes/Rancher, SLURM/TACC HPC, GitHub Actions, AWS EC2, Linux, Wireshark, ELK, Autopsy</p>
+
+</body>
+</html>

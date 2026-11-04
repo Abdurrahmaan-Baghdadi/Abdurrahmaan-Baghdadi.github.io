@@ -311,6 +311,8 @@ function ProjectCard({ project }: { project: Project }) {
           <img
             src={project.imageUrl}
             alt={project.title}
+            loading="lazy"
+            decoding="async"
             className={`w-full h-full transition-transform duration-300 group-hover:scale-105 ${
               project.imageFit === "contain"
                 ? "object-contain bg-black"
