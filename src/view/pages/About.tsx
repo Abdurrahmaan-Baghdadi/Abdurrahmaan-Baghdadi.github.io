@@ -149,7 +149,7 @@ export default function About() {
                 <p className="text-slate-500 font-mono text-[10px] mb-1 uppercase tracking-widest">2016 — Genesis</p>
                 <h3 className="text-slate-100 font-bold text-lg group-hover:text-cyan-400 transition-colors">The 9th Grade Java Deep-Dive</h3>
                 <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
-                  A week-long project turned into a lifelong obsession. I built my first full text-based game in <span className="text-slate-200 uppercase text-[11px]">Java</span>, featuring custom GUI pop-ups and window logic. This spark led me to **CyberPatriots**, where I first touched Linux and began exploring the "why" behind secure systems.
+                  A week-long project turned into a lifelong obsession. I built my first full text-based game in <span className="text-slate-200 uppercase text-[11px]">Java</span>, featuring custom GUI pop-ups and window logic. This spark led me to <span className="text-slate-200 font-semibold">CyberPatriots</span>, where I first touched Linux and began exploring the "why" behind secure systems.
                 </p>
               </div>
 
@@ -159,7 +159,7 @@ export default function About() {
                 <p className="text-slate-500 font-mono text-[10px] mb-1 uppercase tracking-widest">2019 - 2024 — UTSA | B.S. CS (Summa Cum Laude)</p>
                 <h3 className="text-slate-100 font-bold text-lg group-hover:text-cyan-400 transition-colors">IoT Forensics & Voice-Controlled Robotics</h3>
                 <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
-                  At UTSA, I focused on making hardware smarter. I developed a <span className="text-cyan-500/80 underline decoration-cyan-500/30">voice-controlled RC car</span> and conducted forensic research on IoT ecosystems—recovering artifacts using **Autopsy** and **ELK Stack**. In parallel, I mastered full-stack development, shipping everything from lab inventory apps to production REST APIs.
+                  At UTSA, I focused on making hardware smarter. I developed a <span className="text-cyan-500/80 underline decoration-cyan-500/30">voice-controlled RC car</span> and conducted forensic research on IoT ecosystems—recovering artifacts using <span className="text-slate-200 font-semibold">Autopsy</span> and <span className="text-slate-200 font-semibold">ELK Stack</span>. In parallel, I mastered full-stack development, shipping everything from lab inventory apps to production REST APIs.
                 </p>
               </div>
 
@@ -169,7 +169,7 @@ export default function About() {
                 <p className="text-cyan-500/80 font-mono text-[10px] mb-1 uppercase tracking-widest italic font-bold">Current Frontier — UT Austin | M.S. AI</p>
                 <h3 className="text-white font-bold text-lg">Deep Learning & Multimodal Diagnostics</h3>
                 <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
-                  Currently a Graduate Researcher in the **Pediatric Brain Tumor AI Lab**. I am benchmarking Vision-Language Models to assist in multimodal tumor diagnosis. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium text-[13px]">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
+                  Currently a Graduate Researcher in the <span className="text-slate-200 font-semibold">Pediatric Brain Tumor AI Lab</span>. I am benchmarking Vision-Language Models to assist in multimodal tumor diagnosis. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium text-[13px]">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
                 </p>
               </div>
             </div>
@@ -265,7 +265,7 @@ export default function About() {
                 <span className="text-emerald-500 font-mono text-[10px] uppercase tracking-[0.2em]">Faith & Framework</span>
                 <p className="text-slate-300 text-sm font-medium">Islamic Ethics</p>
                 <p className="text-slate-500 text-[11px] leading-snug">
-                  Guided by my faith, I view technology as a trust (*Amana*). I am committed to building software that is honest, equitable, and serves the collective good.
+                  Guided by my faith, I view technology as a trust (<em className="text-slate-400">Amana</em>). I am committed to building software that is honest, equitable, and serves the collective good.
                 </p>
               </div>
 
