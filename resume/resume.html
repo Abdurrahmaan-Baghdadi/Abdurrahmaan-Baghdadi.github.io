@@ -1,13 +1,14 @@
 <!doctype html>
 <!--
   Resume source. Edit this file, then run `npm run build:resume` to print it to
-  public/resume.pdf (the file the site links to). The script fails if it spills
-  onto a second page.
+  public/resume.pdf (the file the site links to) and check it the way an
+  applicant tracking system reads it. The build fails if it spills onto a
+  second page or uses characters parsers often garble (→ ² κ ~).
 -->
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Abdurrahmaan Baghdadi — Resume</title>
+<title>Abdurrahmaan Baghdadi Resume</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,600;0,700;1,400&display=block" rel="stylesheet">
@@ -18,7 +19,7 @@
     --muted: #333;
   }
 
-  @page { size: Letter; margin: 0.42in 0.55in; }
+  @page { size: Letter; margin: 0.38in 0.5in; }
 
   * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -27,6 +28,8 @@
     font-size: 9.4pt;
     line-height: 1.27;
     color: var(--ink);
+    /* ligatures print "fi"/"fl" as single glyphs that some parsers misread */
+    font-variant-ligatures: none;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
@@ -61,6 +64,7 @@
   li { margin-top: 0.5pt; }
 
   .line { margin-top: 1pt; }
+  .nw { white-space: nowrap; }
   em { font-style: italic; }
   strong, b { font-weight: 600; }
 </style>
@@ -69,19 +73,18 @@
 
 <header>
   <h1>Abdurrahmaan Baghdadi</h1>
-  <p>Pflugerville, TX &nbsp;·&nbsp; (210) 800-3846 &nbsp;·&nbsp; <a href="mailto:abdurrahmaanbaghdadi0@gmail.com">abdurrahmaanbaghdadi0@gmail.com</a></p>
+  <p>Pflugerville, TX &nbsp;|&nbsp; (210) 800-3846 &nbsp;|&nbsp; <a href="mailto:abdurrahmaanbaghdadi0@gmail.com">abdurrahmaanbaghdadi0@gmail.com</a></p>
   <p>
-    <a href="https://github.com/Abdurrahmaan-Baghdadi">github.com/Abdurrahmaan-Baghdadi</a> &nbsp;·&nbsp;
-    <a href="https://www.linkedin.com/in/abdurrahmaan-baghdadi/">linkedin.com/in/abdurrahmaan-baghdadi</a> &nbsp;·&nbsp;
+    <a href="https://github.com/Abdurrahmaan-Baghdadi">github.com/Abdurrahmaan-Baghdadi</a> &nbsp;|&nbsp;
+    <a href="https://www.linkedin.com/in/abdurrahmaan-baghdadi/">linkedin.com/in/abdurrahmaan-baghdadi</a> &nbsp;|&nbsp;
     <a href="https://abdurrahmaan-baghdadi.github.io">abdurrahmaan-baghdadi.github.io</a>
   </p>
 </header>
 
 <h2>Summary</h2>
 <p>
-  M.S. AI student at UT Austin researching interpretable pathology AI for pediatric brain tumors, while building
-  production LLM and web systems for UT's College of Liberal Arts. 5+ years of research across IoT security,
-  full-stack development, and applied ML; CompTIA Security+ certified.
+  M.S. Artificial Intelligence student at UT Austin researching interpretable pathology AI and building large language
+  model (LLM) systems; 5+ years of research experience in machine learning, IoT security, and full-stack development.
 </p>
 
 <h2>Education &amp; Certifications</h2>
@@ -90,77 +93,79 @@
   <span class="date">Expected May 2027</span>
 </div>
 <div class="row line">
-  <span><b>Bachelor of Science (BS):</b> <em>Computer Science</em> &nbsp;|&nbsp; <em>Minor in Cybersecurity — summa cum laude</em> &nbsp;|&nbsp; <b>UTSA</b></span>
+  <span><b>Bachelor of Science (BS):</b> <em>Computer Science, Minor in Cybersecurity</em> &nbsp;|&nbsp; <b>University of Texas at San Antonio</b></span>
   <span class="date">May 2024</span>
 </div>
-<p class="line">3.93 GPA &nbsp;·&nbsp; Dean's List &nbsp;·&nbsp; Honors Program &nbsp;·&nbsp; Distinguished Presidential Scholarship</p>
-<p class="line"><b>Certifications:</b> CompTIA Security+ (Jul 2024) &nbsp;|&nbsp; 4 DeepLearning.AI ML specialization courses (2025)</p>
-<p class="line"><b>Relevant Coursework:</b> Advances in Deep Learning, Deep Learning, Machine Learning, AI in Healthcare, Algorithms, Operating Systems, Databases</p>
+<p class="line">Summa cum laude &nbsp;|&nbsp; GPA 3.93 &nbsp;|&nbsp; Dean's List &nbsp;|&nbsp; Honors Program &nbsp;|&nbsp; Distinguished Presidential Scholarship</p>
+<p class="line"><b>Certifications:</b> CompTIA Security+ (Jul 2024) &nbsp;|&nbsp; DeepLearning.AI: Supervised ML, Advanced Learning Algorithms, Math for ML</p>
+<p class="line"><b>Relevant Coursework:</b> Advances in Deep Learning, Deep Learning, Machine Learning, AI in Healthcare (MIMIC clinical data)</p>
 
 <h2>Research Experience</h2>
 <div class="entry">
   <div class="row">
-    <span><b>Research Assistant — Pediatric Brain Tumor AI Lab</b> &nbsp;|&nbsp; <em>University of Texas at Austin (Prof. Ying Ding)</em></span>
+    <span><b>Research Assistant</b> &nbsp;|&nbsp; <em>Pediatric Brain Tumor AI Lab, University of Texas at Austin (Prof. Ying Ding)</em></span>
     <span class="date">03/2026 – Present</span>
   </div>
   <ul>
-    <li>Benchmarking pathology foundation models and vision-language models (<b>UNI</b>, <b>CONCH</b>, <b>MedSigLIP</b>, <b>MedGemma</b>, <b style="white-space:nowrap">WSI-LLaVA</b>, <b>Quilt-LLaVA</b>) on pediatric brain tumor whole-slide images: zero-/few-shot classification, latent-space and cosine-similarity analysis</li>
-    <li>Reproducing PICASSO's TopK <b>sparse autoencoder</b> and extending it to compare <b>UNI2</b> vs <b>Virchow2</b> on ~1,700 TCGA GBM/LGG slides, with patient-level splits, ablations, and <b>SLURM</b> pipelines on <b>TACC</b> H200 GPU nodes</li>
+    <li>Benchmark vision-language models (<b class="nw">WSI-LLaVA</b>, <b>Quilt-LLaVA</b>, <b>Concept Bottleneck Models</b>, <b>WSI-VQA</b>) for multimodal pathology to support pediatric brain tumor diagnosis from whole-slide images (WSIs)</li>
+    <li>Run PICASSO's TopK <b>sparse autoencoder</b> on <b>TACC</b> supercomputers to compare <b>UNI2</b> and <b>Virchow2</b> foundation-model embeddings across 1,700 TCGA GBM/LGG slides, with patient-level splits, ablations, and <b>SLURM</b> jobs</li>
+    <li>Preprocessed whole-slide images, co-authored a TACC allocation request to run <b>I2MoE</b> (multimodal mixture-of-experts), and designed publication figures for lab papers</li>
+  </ul>
+</div>
+<div class="entry">
+  <div class="row">
+    <span><b>Research Assistant, IoT Security</b> &nbsp;|&nbsp; <em>IoT Lab and SCADA Lab, University of Texas at San Antonio</em></span>
+    <span class="date">06/2019 – 01/2025</span>
+  </div>
+  <ul>
+    <li>Cut equipment loss <b>25%</b> with a full-stack inventory system for up to 100 IoT devices (<b>Python</b>, <b>Flask</b>, <b>React</b>, <b>TypeScript</b>, <b>SQL</b>)</li>
+    <li>Recovered forensic artifacts from IoT devices and automated firmware <b>NIST</b> compliance checks (<b>Autopsy</b>, <b>Emba</b>); captured IoT threat telemetry with honeypots (<b>Elastic Stack</b>, <b>ROCK NSM</b>); secured <b>9 Linux</b> VMs and SCADA lab infrastructure</li>
   </ul>
 </div>
 
 <h2>Professional Experience</h2>
 <div class="entry">
   <div class="row">
-    <span><b>Student Technology Assistant</b> &nbsp;|&nbsp; <em>LAITS, UT Austin College of Liberal Arts</em></span>
+    <span><b>Student Technology Assistant</b> &nbsp;|&nbsp; <em>LAITS, College of Liberal Arts, University of Texas at Austin</em></span>
     <span class="date">09/2026 – Present</span>
   </div>
   <ul>
-    <li>Built a helpdesk chatbot router that sends questions to the right one of 64 help pages or to a ticket, using embedding-ensemble retrieval plus a self-hosted LLM reader (<b>Qwen</b>, <b>Ollama</b>/<b>vLLM</b>); cut wrong-page answers from <b>34%</b> to <b>13%</b> in judged simulations; shipped as a tested <b>FastAPI</b> endpoint on <b>Kubernetes</b></li>
-    <li>Modernizing college WordPress sites into secure containerized Bedrock builds (<b>Docker</b>, <b>Composer</b>, <b>Woodpecker CI</b>, <b>Rancher</b>) and rebuilding faculty research-lab sites on the Labs multisite</li>
+    <li>Designed a four-stage helpdesk router (<b>similarity filter</b>, <b>embedding search</b>, <b>LLM reader</b>, <b>decision step</b>) that routes web-help questions to the correct page among 64, asks a clarifying question, or opens a support ticket</li>
+    <li>Fine-tuned <b>arctic-embed-m-v1.5</b> with contrastive <b>MultipleNegativesRankingLoss</b> and ensembled it with <b class="nw">mxbai-embed-large-v1</b> for retrieval; added a self-hosted <b>Qwen 3.8 27B</b> reader on <b>Ollama</b>, directed with <b>Claude Code</b></li>
+    <li>Benchmarked 11 embedding models, rerankers, and LLM readers in pre-registered tests; raised users helped from <b class="nw">43% to 75%</b> and cut wrong pages from <b>40% to 6%</b> vs. the legacy system; deployed via <b>FastAPI</b> to <b>Kubernetes</b> (test)</li>
+    <li>Built a full local <b>WordPress</b> stack (<b>Bedrock</b>, <b>Docker</b>, <b>Composer</b>) for containerizing college sites; partnered with the senior developer on <b>Woodpecker CI</b> and <b>Rancher</b> deployment; rebuilt faculty research-lab sites on the Labs multisite</li>
   </ul>
 </div>
 <div class="entry">
   <div class="row">
-    <span><b>Backend Developer</b> &nbsp;|&nbsp; <em>JIAGIA</em></span>
+    <span><b>Backend Developer</b> &nbsp;|&nbsp; <em>JIAGIA Studios</em></span>
     <span class="date">09/2026 – Present</span>
   </div>
   <ul>
-    <li>Developing a <b>Fastify</b> + <b>PostgreSQL</b> REST API (<b>TypeScript</b>, <b>Zod</b>) for a research and art content platform, with a private <b>Railway</b> database</li>
+    <li>Co-develop a <b>REST API</b> (<b>Fastify</b>, <b>PostgreSQL</b>, <b>TypeScript</b>, <b>Zod</b>) with the lead developer for a research and art platform</li>
   </ul>
 </div>
 <div class="entry">
   <div class="row">
-    <span><b>Code Sensei &amp; Camp Director</b> &nbsp;|&nbsp; <em>Code Ninjas – Round Rock, TX</em></span>
+    <span><b>Code Sensei &amp; Camp Director</b> &nbsp;|&nbsp; <em>Code Ninjas, Round Rock, TX</em></span>
     <span class="date">01/2025 – 08/2025</span>
   </div>
   <ul>
-    <li>Grew program sales by <b>13%</b> by overhauling operations workflows and targeted outreach; taught up to <b>15 students</b> ages <span style="white-space:nowrap">5–14</span> through structured lessons (<b>Machine Learning</b>, <b>Robotics</b>, <b>JavaScript</b>, <b>C#</b>)</li>
-  </ul>
-</div>
-<div class="entry">
-  <div class="row">
-    <span><b>Research Assistant — IoT Security</b> &nbsp;|&nbsp; <em>UTSA – IoT Lab, SCADA Lab</em></span>
-    <span class="date">06/2019 – 01/2025</span>
-  </div>
-  <ul>
-    <li>Reduced equipment loss by <b>25%</b> by building a full-stack inventory system tracking 50–100 IoT devices (<b>Python/Flask</b>, <b>React/TypeScript</b>, <b>SQL</b>)</li>
-    <li>Recovered forensic artifacts from IoT devices and automated firmware <b>NIST</b> compliance checks (<b>Autopsy</b>, <b>Emba</b>); captured IoT threat telemetry with honeypots (<b>ELK</b>, <b>ROCK NSM</b>); secured <b>9 Linux</b> VMs and SCADA lab infrastructure</li>
+    <li>Grew program sales <b>13%</b> via operations and outreach; taught up to <b>15 students</b> ages <span class="nw">5 to 14</span> (ML, robotics, JavaScript, C#)</li>
   </ul>
 </div>
 
 <h2>Selected Projects</h2>
 <ul>
-  <li><b>Energy AI Hackathon — Mission Impossible (Jan 2026):</b> Sole programmer on an interdisciplinary team; ensemble stacking (<b>HGB/GBR/ExtraTrees/Ridge</b>) with <b>GroupKFold CV</b> and physics-based features; achieved <b>R² = 0.9849</b> OOF among 40 teams (Phillips66 / Chevron / ExxonMobil sponsored)</li>
-  <li><b>Sleep Staging from Apple Watch Data:</b> <b>LightGBM</b> + forward–backward <b>HMM</b> smoothing on 247 nights of heart-rate and motion data; raised Cohen's κ in every CV fold (<b>0.42 → 0.45</b>), with subject-level bootstrap CIs</li>
-  <li><b>Advances in Deep Learning — UT Austin:</b> Implemented half precision, <b>LoRA</b>, 4-bit quantization, and <b>QLoRA</b> from scratch; built a <b>BSQ</b> tokenizer and autoregressive transformer for image generation and compression (<b>PyTorch</b>)</li>
+  <li><b>Energy AI Hackathon, Mission Impossible (Jan 2026):</b> As sole programmer on an interdisciplinary team, built a stacked ensemble (<b>HistGradientBoosting</b>, <b>GradientBoosting</b>, <b>ExtraTrees</b>, <b>Ridge</b>) with <b>GroupKFold</b> cross-validation and physics-based features; reached an out-of-fold <b>R-squared of 0.9849</b> among 40 teams (sponsored by Phillips 66, Chevron, and ExxonMobil)</li>
+  <li><b>Sleep Staging from Apple Watch Data:</b> Built a <b>LightGBM</b> model with hidden Markov model (<b>HMM</b>) smoothing on 247 nights of heart-rate and motion data; improved Cohen's kappa in every cross-validation fold (<b>0.42 to 0.45</b>)</li>
 </ul>
 
 <h2>Technical Skills</h2>
 <p class="line"><b>Languages:</b> Python, TypeScript, JavaScript, SQL, Swift, Java, PHP, C, C#, Bash, R, HTML/CSS</p>
-<p class="line"><b>ML &amp; AI:</b> PyTorch, Hugging Face, LoRA/QLoRA, RAG, vLLM, Ollama, LightGBM, XGBoost, Scikit-learn, Pandas</p>
+<p class="line"><b>Machine Learning &amp; AI:</b> PyTorch, Hugging Face Transformers, LLMs, Retrieval-Augmented Generation (RAG), LoRA/QLoRA, Computer Vision, NLP, vLLM, Ollama, LightGBM, XGBoost, Scikit-learn, Pandas</p>
 <p class="line"><b>Web, Mobile &amp; Data:</b> FastAPI, Fastify, Flask, React, Node.js, WordPress, SwiftUI, PostgreSQL, MySQL, MongoDB</p>
-<p class="line"><b>Infra &amp; Security:</b> Docker, Kubernetes/Rancher, SLURM/TACC HPC, GitHub Actions, AWS EC2, Linux, Wireshark, ELK, Autopsy</p>
+<p class="line"><b>Infrastructure &amp; Security:</b> Docker, Kubernetes, Rancher, SLURM, HPC (TACC), Git, GitHub Actions, AWS EC2, Linux, Wireshark, Elastic Stack, Autopsy</p>
 
 </body>
 </html>

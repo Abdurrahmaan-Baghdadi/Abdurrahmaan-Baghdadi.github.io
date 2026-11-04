@@ -169,10 +169,10 @@ export default function About() {
                 <p className="text-cyan-500/80 font-mono text-[10px] mb-1 uppercase tracking-widest italic font-bold">Current Frontier — UT Austin | M.S. AI</p>
                 <h3 className="text-white font-bold text-lg">Deep Learning & Multimodal Diagnostics</h3>
                 <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
-                  Currently a Graduate Researcher in the <span className="text-slate-200 font-semibold">Pediatric Brain Tumor AI Lab</span>. I benchmark pathology foundation models and Vision-Language Models on whole-slide images, and I train sparse autoencoders that turn their embeddings into interpretable tissue concepts, running the large jobs on TACC supercomputers. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium text-[13px]">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
+                  Currently a Graduate Researcher in the <span className="text-slate-200 font-semibold">Pediatric Brain Tumor AI Lab</span>. I benchmark Vision-Language Models for pathology on whole-slide images, and I'm running sparse autoencoders on TACC supercomputers to turn foundation-model embeddings into interpretable tissue concepts. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium text-[13px]">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
                 </p>
                 <p className="text-slate-400 font-mono text-sm leading-relaxed mt-3">
-                  Outside the lab, I build production software. As a Student Technology Assistant at <span className="text-slate-200 font-semibold">LAITS</span>, I'm building an LLM-backed helpdesk router and modernizing the college's WordPress sites. For <span className="text-slate-200 font-semibold">JIAGIA</span>, I work on a Fastify + PostgreSQL API.
+                  Outside the lab, I build production software. As a Student Technology Assistant at <span className="text-slate-200 font-semibold">LAITS</span>, I'm building an LLM-backed helpdesk router and modernizing the college's WordPress sites. At <span className="text-slate-200 font-semibold">JIAGIA Studios</span>, I co-develop a Fastify + PostgreSQL API.
                 </p>
               </div>
             </div>
@@ -210,7 +210,7 @@ export default function About() {
               role: "Research Assistant",
               dates: "03/2026 – Present",
               current: true,
-              focus: "Pathology foundation models, VLM benchmarking, and sparse-autoencoder interpretability on TACC HPC",
+              focus: "Vision-language model benchmarking for pathology, PICASSO sparse-autoencoder runs on TACC, I2MoE, WSI preprocessing, and publication figures",
             },
             {
               org: "LAITS · UT Austin College of Liberal Arts",
@@ -220,7 +220,7 @@ export default function About() {
               focus: "COLA helpdesk chatbot routing, WordPress security modernization on Rancher, research-lab site redesigns, and the STA knowledge-base redesign",
             },
             {
-              org: "JIAGIA",
+              org: "JIAGIA Studios",
               role: "Backend Developer",
               dates: "09/2026 – Present",
               current: true,

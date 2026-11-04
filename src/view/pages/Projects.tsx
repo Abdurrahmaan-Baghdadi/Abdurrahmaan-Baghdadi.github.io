@@ -33,7 +33,7 @@ const projects: Project[] = [
   {
     title: "Interpretable Pathology Embeddings — PICASSO Reproduction",
     description:
-      "Reproducing PICASSO (Kim et al., 2026), a TopK sparse autoencoder that splits pathology foundation-model tile embeddings into sparse, human-readable tissue concepts. Extending it to compare the UNI2 and Virchow2 encoders on ~1,700 TCGA brain tumor (GBM/LGG) slides, with patient-level splits, ablation configs, and SLURM jobs for UT's TACC supercomputers.",
+      "Running PICASSO (Kim et al., 2026) on UT's TACC supercomputers. PICASSO is a TopK sparse autoencoder that splits pathology foundation-model tile embeddings into sparse, human-readable tissue concepts. The work extends it to compare the UNI2 and Virchow2 encoders on ~1,700 TCGA brain tumor (GBM/LGG) slides, with patient-level splits, ablation configs, and SLURM jobs.",
     stack: ["Python", "PyTorch", "Sparse Autoencoders", "TRIDENT", "SLURM", "TACC"],
     categories: ["ML & AI", "Healthcare AI"],
     context: "RESEARCH",
@@ -42,10 +42,10 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    title: "Pathology Foundation Models for Pediatric Brain Tumors",
+    title: "Multimodal Pathology AI for Pediatric Brain Tumors",
     description:
-      "Pediatric Brain Tumor AI Lab work evaluating pathology foundation models and vision-language models (UNI, CONCH, MedSigLIP, MedGemma) on pediatric brain tumor whole-slide images: zero- and few-shot classification, t-SNE/UMAP latent-space studies, cosine-similarity heatmaps, and activation atlases. Runs feature extraction as sharded job arrays on TACC Vista's H200 GPU nodes.",
-    stack: ["Python", "PyTorch", "UNI", "CONCH", "MedSigLIP", "OpenSlide", "TACC Vista"],
+      "Pediatric Brain Tumor AI Lab work: surveying and benchmarking vision-language models (WSI-LLaVA, Quilt-LLaVA, Concept Bottleneck Models, WSI-VQA) for brain tumor diagnosis from whole-slide images. Ran whole-slide image preprocessing, co-wrote the TACC allocation request to run I2MoE (a multimodal mixture-of-experts model), and designed publication figures for lab papers.",
+    stack: ["Python", "PyTorch", "Vision-Language Models", "Whole-Slide Imaging", "TACC"],
     categories: ["ML & AI", "Healthcare AI"],
     context: "RESEARCH",
     contextColor: "#2dd4bf",
@@ -55,8 +55,8 @@ const projects: Project[] = [
   {
     title: "LAITS Help-Chat Router",
     description:
-      "Chatbot routing for the College of Liberal Arts helpdesk, so staff no longer sift through tickets and emails for basic questions. It sends each question to the right page among 64 help pages, or to a ticket when unsure. Self-hosted Qwen 3.8 27B on Ollama, with Claude orchestrating the local model's coding tasks. Benchmarked embedding models, built an ensemble retriever, and added an LLM reader that cut wrong-page answers from 34% to 13% in judged simulations. Shipped as a tested FastAPI endpoint on LAITS' Kubernetes embeddings service.",
-    stack: ["Python", "FastAPI", "Embeddings", "Qwen", "Ollama", "vLLM", "Docker", "Kubernetes"],
+      "Helpdesk router for the College of Liberal Arts, so staff no longer sift through tickets and emails for basic questions. Four stages: a similarity filter declines off-topic messages or asks one clarifying question; embedding search ranks 64 help pages using a fine-tuned arctic-embed-m-v1.5 (MultipleNegativesRankingLoss) plus mxbai-embed-large-v1; a self-hosted Qwen 3.8 27B reader on Ollama picks a page or says none fits; and a decision step returns the page or opens a ticket. Built with Claude Code directing the local model. Benchmarked 11 embedding models, rerankers, and smaller and MoE readers with pre-registered tests: helped answers rose from 43% to 75% and wrong pages fell from 40% to 6% vs the legacy system. Deployed as a FastAPI endpoint to LAITS' Kubernetes test environment.",
+    stack: ["Python", "PyTorch", "FastAPI", "Sentence Transformers", "Qwen", "Ollama", "vLLM", "Kubernetes"],
     categories: ["ML & AI", "Full-Stack"],
     context: "WORK",
     contextColor: "#fb923c",
@@ -64,9 +64,9 @@ const projects: Project[] = [
     featured: true,
   },
   {
-    title: "JIAGIA Content API",
+    title: "JIAGIA Studios Content API",
     description:
-      "Fastify + PostgreSQL REST API for JIAGIA's content platform, serving its research library, artworks and exhibitions, topic lists, and drafts. Typed config with Zod, pagination helpers, Helmet/CORS hardening, health and readiness checks, and a private Railway database reached over an SSH tunnel.",
+      "Co-developed with the lead developer: a Fastify + PostgreSQL REST API for JIAGIA Studios' content platform, serving its research library, artworks and exhibitions, topic lists, and drafts. Typed config with Zod, pagination helpers, Helmet/CORS hardening, health and readiness checks, and a private Railway database reached over an SSH tunnel.",
     stack: ["TypeScript", "Node.js", "Fastify", "PostgreSQL", "Zod", "Railway"],
     categories: ["Full-Stack"],
     context: "WORK",
@@ -106,7 +106,7 @@ const projects: Project[] = [
   {
     title: "WordPress Security & Modernization — LAITS",
     description:
-      "Moving UT Liberal Arts WordPress sites to secure, containerized Bedrock builds: Composer-managed dependencies, Docker images, Woodpecker CI/CD, and Kubernetes clusters managed through Rancher. Migrated sites such as Correlates of War with the WordPress Importer. Also built a WordPress plugin that adds REST-exposed custom user-profile fields, and a FastAPI + React tracker that organizes the team's sites and TODOs by label and urgency.",
+      "Containerizing UT Liberal Arts WordPress sites as secure Bedrock builds with Composer-managed dependencies and Docker. Built the full local stack, and worked with the senior developer on Woodpecker CI/CD and Rancher (Kubernetes) deployment. Migrated sites such as Correlates of War with the WordPress Importer. Also built a WordPress plugin that adds REST-exposed custom user-profile fields, and a FastAPI + React tracker that organizes the team's sites and TODOs by label and urgency.",
     stack: ["PHP", "WordPress", "Bedrock", "Docker", "Woodpecker CI", "Rancher", "FastAPI", "React"],
     categories: ["Infrastructure", "Full-Stack", "Security"],
     context: "WORK",

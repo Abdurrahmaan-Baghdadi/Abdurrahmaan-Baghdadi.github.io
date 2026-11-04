@@ -157,8 +157,16 @@ npm run build:resume
 ```
 
 This prints it to `public/resume.pdf` with a headless Chromium browser (Chrome, Brave or
-Edge; set `CHROME_PATH` for another one). The script **fails if the resume runs onto a
-second page**, so trim wording until it passes. The in-page viewer and download buttons
+Edge; set `CHROME_PATH` for another one), then reads the PDF back the way an applicant
+tracking system (ATS) does. The script **fails** if the resume:
+
+- runs onto a second page (trim wording until it passes),
+- contains characters parsers often garble (`→`, `²`, `κ`, `~`, or "fi"/"fl" ligatures), or
+- is missing an email, phone number, LinkedIn URL, or an Education / Experience / Skills heading.
+
+It also prints keyword coverage for ML engineer, software engineer and AI-in-health research
+roles. For a specific application, compare the job posting's required skills against the
+resume and reuse its exact wording where it's true for you. The in-page viewer and download buttons
 all point to `/resume.pdf`. When you change roles or dates, update the About page's
 Experience list too.
 
