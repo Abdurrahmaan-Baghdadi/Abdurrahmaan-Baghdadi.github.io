@@ -47,6 +47,23 @@ const Icons = {
       <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
     </svg>
   ),
+  research: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+      <path d="M9 3h6M10 3v6L4.5 18.5A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.5-2.5L14 9V3" />
+      <line x1="7" y1="15" x2="17" y2="15" />
+    </svg>
+  ),
+  cloud: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+      <path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z" />
+    </svg>
+  ),
+  mobile: (
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-6 h-6">
+      <rect x="6" y="2" width="12" height="20" rx="2" ry="2" />
+      <line x1="11" y1="18" x2="13" y2="18" />
+    </svg>
+  ),
 };
 
 const skillCategories: SkillCategory[] = [
@@ -57,7 +74,7 @@ const skillCategories: SkillCategory[] = [
     accentTextClass: "text-cyan-400 border-cyan-400/40 bg-cyan-400/10",
     description:
       "Proficient across multiple paradigms — scripting, OOP, and statically typed systems. Python is my primary language for data and ML work; JavaScript/TypeScript drives my web projects.",
-    skills: ["Python", "JavaScript", "TypeScript", "SQL", "Java", "PHP", "C#"],
+    skills: ["Python", "JavaScript", "TypeScript", "SQL", "Swift", "Java", "PHP", "C#", "Bash"],
   },
   {
     icon: Icons.web,
@@ -65,8 +82,8 @@ const skillCategories: SkillCategory[] = [
     accentClass: "border-emerald-400",
     accentTextClass: "text-emerald-400 border-emerald-400/40 bg-emerald-400/10",
     description:
-      "Full-stack development from RESTful APIs to interactive UIs. Comfortable designing backends in Node/Express/Flask and wiring up React frontends.",
-    skills: ["React", "Node.js", "Express", "Flask", "Bootstrap", "jQuery", "EJS"],
+      "Full-stack development from RESTful APIs to interactive UIs. Comfortable designing typed backends in FastAPI, Fastify, Express, or Flask and wiring up React frontends.",
+    skills: ["React", "Node.js", "FastAPI", "Fastify", "Express", "Flask", "Tailwind CSS", "Vite", "WordPress / Multisite", "Bootstrap", "jQuery"],
   },
   {
     icon: Icons.ml,
@@ -74,8 +91,8 @@ const skillCategories: SkillCategory[] = [
     accentClass: "border-violet-400",
     accentTextClass: "text-violet-400 border-violet-400/40 bg-violet-400/10",
     description:
-      "Applied ML for classification, regression, and feature engineering. Competed in industry-sponsored AI competitions and conducted research in academic labs.",
-    skills: ["Pandas", "Scikit-learn", "XGBoost", "NumPy", "PyTorch"],
+      "Deep learning, LLM systems, and applied ML, from retrieval-plus-reader pipelines and parameter-efficient fine-tuning to rigorous evaluation with cross-validation and bootstrap confidence intervals.",
+    skills: ["PyTorch", "Hugging Face", "LoRA / QLoRA", "Embeddings & RAG", "vLLM", "Ollama", "LightGBM", "XGBoost", "Scikit-learn", "Pandas", "NumPy"],
   },
   {
     icon: Icons.database,
@@ -84,7 +101,7 @@ const skillCategories: SkillCategory[] = [
     accentTextClass: "text-amber-400 border-amber-400/40 bg-amber-400/10",
     description:
       "Relational and document-store database design, schema modeling, and query optimization for both transactional and analytical workloads.",
-    skills: ["MySQL", "MongoDB"],
+    skills: ["PostgreSQL", "MySQL", "SQLite", "MongoDB"],
   },
   {
     icon: Icons.security,
@@ -101,8 +118,35 @@ const skillCategories: SkillCategory[] = [
     accentClass: "border-sky-400",
     accentTextClass: "text-sky-400 border-sky-400/40 bg-sky-400/10",
     description:
-      "Developer workflow, cloud infrastructure, research writing, and game dev tooling used across academic and personal projects.",
-    skills: ["Git", "Jupyter", "AWS EC2", "TensorBoard", "Unity", "LaTeX", "Excel"],
+      "Developer workflow, experiment tracking, research writing, and game dev tooling used across academic and personal projects.",
+    skills: ["Git", "Jupyter", "TensorBoard", "Unity", "LaTeX", "Excel"],
+  },
+  {
+    icon: Icons.research,
+    label: "Research & HPC",
+    accentClass: "border-teal-400",
+    accentTextClass: "text-teal-400 border-teal-400/40 bg-teal-400/10",
+    description:
+      "Computational pathology research on whole-slide images: foundation-model embeddings, sparse-autoencoder interpretability, and large batch jobs on TACC supercomputers.",
+    skills: ["Pathology Foundation Models", "Vision-Language Models", "Sparse Autoencoders", "TRIDENT", "OpenSlide", "SLURM", "TACC"],
+  },
+  {
+    icon: Icons.cloud,
+    label: "Cloud & DevOps",
+    accentClass: "border-orange-400",
+    accentTextClass: "text-orange-400 border-orange-400/40 bg-orange-400/10",
+    description:
+      "Containerizing and shipping services: Docker images, Kubernetes deployments through Rancher, CI pipelines, and managed cloud databases.",
+    skills: ["Docker", "Kubernetes", "Rancher", "Woodpecker CI", "GitHub Actions", "Railway", "AWS EC2"],
+  },
+  {
+    icon: Icons.mobile,
+    label: "Mobile",
+    accentClass: "border-fuchsia-400",
+    accentTextClass: "text-fuchsia-400 border-fuchsia-400/40 bg-fuchsia-400/10",
+    description:
+      "Native iOS apps in Swift, from storyboard-driven UIKit screens to declarative SwiftUI views with SwiftData persistence.",
+    skills: ["Swift", "SwiftUI", "UIKit", "SwiftData", "Xcode"],
   },
 ];
 

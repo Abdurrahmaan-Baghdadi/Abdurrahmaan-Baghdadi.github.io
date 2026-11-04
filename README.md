@@ -38,7 +38,8 @@ then push.
 | Skills (languages, frameworks, tools) | `src/view/pages/Skills.tsx` | `skillCategories` array |
 | Certifications | `src/view/pages/Skills.tsx` | `certs` array |
 | Bio, journey timeline, philosophy | `src/view/pages/About.tsx` | "Hero" section (inline JSX) |
-| Education | `src/view/pages/About.tsx` | "Education" section (inline JSX) |
+| Current roles (lab, LAITS, JIAGIA) | `src/view/pages/About.tsx` | list in the "Experience" section |
+| Education, coursework | `src/view/pages/About.tsx` | "Education" section (inline JSX) |
 | Values / community blurbs | `src/view/pages/About.tsx` | "Personal Ethos & Community" section |
 | Interests list | `src/view/pages/About.tsx` | `personal_stack.json` list in "Interests + Resume" |
 | Interest photo gallery | `src/view/pages/About.tsx` | `photos` array at the top |
@@ -78,14 +79,17 @@ array is the order on the page, so put new or important work near the top.
 },
 ```
 
-**Discipline categories:** `"ML & AI"`, `"Full-Stack"`, `"Data Science"`, `"Security"`,
-`"CS Fundamentals"`, `"Game Dev"`. TypeScript will flag a typo. To add a new one, add it
+**Discipline categories:** `"ML & AI"`, `"Healthcare AI"`, `"Full-Stack"`,
+`"Data Science"`, `"Infrastructure"`, `"Mobile"`, `"Security"`, `"CS Fundamentals"`,
+`"Game Dev"`. TypeScript will flag a typo. To add a new one, add it
 to both the `CategoryFilter` type and the `FILTERS` array at the top of the file.
 
 **Context labels and colors** (from `CONTEXT_FILTERS`):
 
 | context | contextColor |
 | --- | --- |
+| `RESEARCH` | `#2dd4bf` |
+| `WORK` | `#fb923c` |
 | `COMPETITION` | `#f59e0b` |
 | `GRAD COURSE` | `#a78bfa` |
 | `TEAM PROJECT` | `#38bdf8` |

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-type CategoryFilter = "All" | "ML & AI" | "Full-Stack" | "Data Science" | "Security" | "CS Fundamentals" | "Game Dev";
+type CategoryFilter = "All" | "ML & AI" | "Healthcare AI" | "Full-Stack" | "Data Science" | "Infrastructure" | "Mobile" | "Security" | "CS Fundamentals" | "Game Dev";
 
 interface Project {
   title: string;
@@ -19,14 +19,130 @@ interface Project {
 const FILTERS: CategoryFilter[] = [
   "All",
   "ML & AI",
+  "Healthcare AI",
   "Full-Stack",
   "Data Science",
+  "Infrastructure",
+  "Mobile",
   "Security",
   "CS Fundamentals",
   "Game Dev",
 ];
 
 const projects: Project[] = [
+  {
+    title: "Interpretable Pathology Embeddings — PICASSO Reproduction",
+    description:
+      "Reproducing PICASSO (Kim et al., 2026), a TopK sparse autoencoder that splits pathology foundation-model tile embeddings into sparse, human-readable tissue concepts. Extending it to compare the UNI2 and Virchow2 encoders on ~1,700 TCGA brain tumor (GBM/LGG) slides, with patient-level splits, ablation configs, and SLURM jobs for UT's TACC supercomputers.",
+    stack: ["Python", "PyTorch", "Sparse Autoencoders", "TRIDENT", "SLURM", "TACC"],
+    categories: ["ML & AI", "Healthcare AI"],
+    context: "RESEARCH",
+    contextColor: "#2dd4bf",
+    accentColor: "#2dd4bf",
+    featured: true,
+  },
+  {
+    title: "Pathology Foundation Models for Pediatric Brain Tumors",
+    description:
+      "Pediatric Brain Tumor AI Lab work evaluating pathology foundation models and vision-language models (UNI, CONCH, MedSigLIP, MedGemma) on pediatric brain tumor whole-slide images: zero- and few-shot classification, t-SNE/UMAP latent-space studies, cosine-similarity heatmaps, and activation atlases. Runs feature extraction as sharded job arrays on TACC Vista's H200 GPU nodes.",
+    stack: ["Python", "PyTorch", "UNI", "CONCH", "MedSigLIP", "OpenSlide", "TACC Vista"],
+    categories: ["ML & AI", "Healthcare AI"],
+    context: "RESEARCH",
+    contextColor: "#2dd4bf",
+    accentColor: "#a78bfa",
+    featured: true,
+  },
+  {
+    title: "LAITS Help-Chat Router",
+    description:
+      "Chatbot routing for the College of Liberal Arts helpdesk, so staff no longer sift through tickets and emails for basic questions. It sends each question to the right page among 64 help pages, or to a ticket when unsure. Self-hosted Qwen 3.8 27B on Ollama, with Claude orchestrating the local model's coding tasks. Benchmarked embedding models, built an ensemble retriever, and added an LLM reader that cut wrong-page answers from 34% to 13% in judged simulations. Shipped as a tested FastAPI endpoint on LAITS' Kubernetes embeddings service.",
+    stack: ["Python", "FastAPI", "Embeddings", "Qwen", "Ollama", "vLLM", "Docker", "Kubernetes"],
+    categories: ["ML & AI", "Full-Stack"],
+    context: "WORK",
+    contextColor: "#fb923c",
+    accentColor: "#fb923c",
+    featured: true,
+  },
+  {
+    title: "JIAGIA Content API",
+    description:
+      "Fastify + PostgreSQL REST API for JIAGIA's content platform, serving its research library, artworks and exhibitions, topic lists, and drafts. Typed config with Zod, pagination helpers, Helmet/CORS hardening, health and readiness checks, and a private Railway database reached over an SSH tunnel.",
+    stack: ["TypeScript", "Node.js", "Fastify", "PostgreSQL", "Zod", "Railway"],
+    categories: ["Full-Stack"],
+    context: "WORK",
+    contextColor: "#fb923c",
+    accentColor: "#38bdf8",
+  },
+  {
+    title: "Sleep Staging from Apple Watch Data",
+    description:
+      "End-to-end health-ML pipeline that stages sleep from Apple Watch heart rate and motion, using 247 nights with EEG-scored labels. LightGBM plus HMM smoothing (forward–backward) raised Cohen's κ in every cross-validation fold (mean 0.42 → 0.45). Evaluated with subject-level bootstrap confidence intervals and compared against published sleep-scoring benchmarks.",
+    stack: ["Python", "LightGBM", "PyTorch", "HMM", "Pandas", "Jupyter"],
+    categories: ["ML & AI", "Healthcare AI", "Data Science"],
+    context: "GRAD COURSE",
+    contextColor: "#a78bfa",
+    accentColor: "#10b981",
+  },
+  {
+    title: "Advances in Deep Learning — UT Austin",
+    description:
+      "Implemented memory-efficient training from scratch in PyTorch: half precision, LoRA, 4-bit block quantization, and QLoRA for a 19M-parameter network. Built an autoregressive image generator: patch autoencoder → Binary Spherical Quantization tokenizer → autoregressive transformer that both generates and compresses SuperTuxKart images.",
+    stack: ["Python", "PyTorch", "LoRA", "QLoRA", "Quantization", "Transformers"],
+    categories: ["ML & AI"],
+    context: "GRAD COURSE",
+    contextColor: "#a78bfa",
+    accentColor: "#f43f5e",
+  },
+  {
+    title: "AI in Healthcare — Clinical Data (MIMIC)",
+    description:
+      "Graduate coursework on real clinical data: SQL cohort analysis on MIMIC-III, diabetes and heart-disease prediction from MIMIC-IV labs and ICD-9/10 diagnosis groups, and clinical NLP over MIMIC-III notes, including a hypertrophic cardiomyopathy case study.",
+    stack: ["Python", "SQL", "Scikit-learn", "spaCy", "Pandas", "Jupyter"],
+    categories: ["Healthcare AI", "Data Science"],
+    context: "GRAD COURSE",
+    contextColor: "#a78bfa",
+    accentColor: "#0ea5e9",
+  },
+  {
+    title: "WordPress Security & Modernization — LAITS",
+    description:
+      "Moving UT Liberal Arts WordPress sites to secure, containerized Bedrock builds: Composer-managed dependencies, Docker images, Woodpecker CI/CD, and Kubernetes clusters managed through Rancher. Migrated sites such as Correlates of War with the WordPress Importer. Also built a WordPress plugin that adds REST-exposed custom user-profile fields, and a FastAPI + React tracker that organizes the team's sites and TODOs by label and urgency.",
+    stack: ["PHP", "WordPress", "Bedrock", "Docker", "Woodpecker CI", "Rancher", "FastAPI", "React"],
+    categories: ["Infrastructure", "Full-Stack", "Security"],
+    context: "WORK",
+    contextColor: "#fb923c",
+    accentColor: "#64748b",
+  },
+  {
+    title: "Research Lab Site Redesigns — LAITS Labs Multisite",
+    description:
+      "Rebuilding outdated faculty research-lab websites (including the Stice and Swann labs) on LAITS' WordPress Labs multisite and moving them to a new shared theme standard. Also auditing older lab sites with faculty to decide what stays live.",
+    stack: ["WordPress", "Multisite", "CMS", "PHP", "MySQL"],
+    categories: ["Full-Stack"],
+    context: "WORK",
+    contextColor: "#fb923c",
+    accentColor: "#bf5700",
+  },
+  {
+    title: "STA Knowledge Base Redesign",
+    description:
+      "Redesign mockup for LAITS' internal Student Technology Assistant knowledge base, organized around each STA role so onboarding and documentation stay relevant. A four-week learning track with in-lesson exercises, diagnostic feedback, and a hint ladder sits beside a searchable reference half (Diátaxis structure). Ships as one self-contained HTML file that opens without a server.",
+    stack: ["React", "Vite", "Tailwind CSS", "JavaScript"],
+    categories: ["Full-Stack"],
+    context: "WORK",
+    contextColor: "#fb923c",
+    accentColor: "#e879f9",
+  },
+  {
+    title: "iOS App Development",
+    description:
+      "Swift apps for iPhone built in UIKit and SwiftUI: storyboard segues, table views, alerts, segmented controls, programmatic layouts, and SwiftData persistence.",
+    stack: ["Swift", "SwiftUI", "UIKit", "SwiftData", "Xcode"],
+    categories: ["Mobile"],
+    context: "COURSE PROJECT",
+    contextColor: "#94a3b8",
+    accentColor: "#f97316",
+  },
   {
     title: "Energy AI Hackathon — Mission Impossible",
     description:
@@ -285,6 +401,8 @@ function ProjectCard({ project }: { project: Project }) {
 
 const CONTEXT_FILTERS = [
   { label: "All",           color: null },
+  { label: "RESEARCH",      color: "#2dd4bf" },
+  { label: "WORK",          color: "#fb923c" },
   { label: "COMPETITION",   color: "#f59e0b" },
   { label: "GRAD COURSE",   color: "#a78bfa" },
   { label: "TEAM PROJECT",  color: "#38bdf8" },

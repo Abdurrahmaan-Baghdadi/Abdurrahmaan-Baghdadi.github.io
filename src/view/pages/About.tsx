@@ -169,7 +169,10 @@ export default function About() {
                 <p className="text-cyan-500/80 font-mono text-[10px] mb-1 uppercase tracking-widest italic font-bold">Current Frontier — UT Austin | M.S. AI</p>
                 <h3 className="text-white font-bold text-lg">Deep Learning & Multimodal Diagnostics</h3>
                 <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
-                  Currently a Graduate Researcher in the <span className="text-slate-200 font-semibold">Pediatric Brain Tumor AI Lab</span>. I am benchmarking Vision-Language Models to assist in multimodal tumor diagnosis. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium text-[13px]">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
+                  Currently a Graduate Researcher in the <span className="text-slate-200 font-semibold">Pediatric Brain Tumor AI Lab</span>. I benchmark pathology foundation models and Vision-Language Models on whole-slide images, and I train sparse autoencoders that turn their embeddings into interpretable tissue concepts, running the large jobs on TACC supercomputers. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium text-[13px]">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
+                </p>
+                <p className="text-slate-400 font-mono text-sm leading-relaxed mt-3">
+                  Outside the lab, I build production software. As a Student Technology Assistant at <span className="text-slate-200 font-semibold">LAITS</span>, I'm building an LLM-backed helpdesk router and modernizing the college's WordPress sites. For <span className="text-slate-200 font-semibold">JIAGIA</span>, I work on a Fastify + PostgreSQL API.
                 </p>
               </div>
             </div>
@@ -196,6 +199,38 @@ export default function About() {
         </div>
       </div>
 
+      {/* ── Experience ──────────────────────────────────────────── */}
+      <div className="space-y-3">
+        <p className="text-slate-300 font-mono text-sm">// current_work</p>
+        <ul className="space-y-3">
+          {[
+            {
+              org: "Pediatric Brain Tumor AI Lab",
+              role: "Graduate Researcher",
+              focus: "Pathology foundation models, VLM benchmarking, and sparse-autoencoder interpretability on TACC HPC",
+            },
+            {
+              org: "LAITS · UT Austin College of Liberal Arts",
+              role: "Student Technology Assistant",
+              focus: "COLA helpdesk chatbot routing, WordPress security modernization on Rancher, research-lab site redesigns, and the STA knowledge-base redesign",
+            },
+            {
+              org: "JIAGIA",
+              role: "Backend Developer",
+              focus: "Fastify + PostgreSQL content API on Railway",
+            },
+          ].map(({ org, role, focus }) => (
+            <li key={org} className="border-l-2 border-cyan-400/50 pl-4 font-mono">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4">
+                <span className="text-slate-100 text-sm font-semibold">{org}</span>
+                <span className="text-slate-500 text-xs tracking-widest uppercase">{role}</span>
+              </div>
+              <div className="text-slate-400 text-xs mt-0.5">{focus}</div>
+            </li>
+          ))}
+        </ul>
+      </div>
+
       {/* ── Education ───────────────────────────────────────────── */}
       <div className="space-y-3">
         <p className="text-slate-300 font-mono text-sm">// education</p>
@@ -206,10 +241,14 @@ export default function About() {
               <span className="text-slate-500 text-xs tracking-widest">IN PROGRESS</span>
             </div>
             <div className="text-slate-400 text-xs mt-0.5">University of Texas at Austin</div>
+            <div className="text-slate-500 text-[11px] mt-1">
+              Coursework: Advances in Deep Learning · Deep Learning · Machine Learning · AI in Healthcare
+            </div>
           </li>
           <li className="border-l-2 border-slate-600 pl-4 font-mono">
             <div className="flex flex-wrap items-baseline justify-between gap-x-4">
               <span className="text-slate-100 text-sm font-semibold">B.S. Computer Science</span>
+              <span className="text-slate-500 text-xs tracking-widest">SUMMA CUM LAUDE</span>
             </div>
             <div className="text-slate-400 text-xs mt-0.5">University of Texas at San Antonio</div>
           </li>
