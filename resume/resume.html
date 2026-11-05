@@ -110,8 +110,8 @@
     <span class="date">03/2026 – Present</span>
   </div>
   <ul>
-    <li>Benchmark vision-language models (<b class="nw">WSI-LLaVA</b>, <b>Quilt-LLaVA</b>, <b>Concept Bottleneck Models</b>, <b>WSI-VQA</b>) for multimodal pathology to support pediatric brain tumor diagnosis from whole-slide images (WSIs)</li>
-    <li>Run PICASSO's TopK <b>sparse autoencoder</b> on <b>TACC</b> supercomputers to compare <b>UNI2</b> and <b>Virchow2</b> foundation-model embeddings across 1,700 TCGA GBM/LGG slides, with patient-level splits, ablations, and <b>SLURM</b> jobs</li>
+    <li>Benchmark multimodal vision-language models (<b class="nw">WSI-LLaVA</b>, <b>Quilt-LLaVA</b>, <b>Concept Bottleneck Models</b>, <b>WSI-VQA</b>) to find which can reliably support pediatric brain tumor diagnosis from whole-slide images (WSIs)</li>
+    <li>Run PICASSO's TopK <b>sparse autoencoder</b> on <b>TACC</b> to test whether <b>UNI2</b> and <b>Virchow2</b> foundation-model embeddings split into tissue concepts pathologists can interpret, across 1,700 TCGA GBM/LGG slides (patient-level splits, <b>SLURM</b>)</li>
     <li>Preprocessed whole-slide images, co-authored a TACC allocation request to run <b>I2MoE</b> (multimodal mixture-of-experts), and designed publication figures for lab papers</li>
   </ul>
 </div>
@@ -133,10 +133,10 @@
     <span class="date">09/2026 – Present</span>
   </div>
   <ul>
-    <li>Designed a four-stage helpdesk router (<b>similarity filter</b>, <b>embedding search</b>, <b>LLM reader</b>, <b>decision step</b>) that routes web-help questions to the correct page among 64, asks a clarifying question, or opens a support ticket</li>
-    <li>Fine-tuned <b>arctic-embed-m-v1.5</b> with contrastive <b>MultipleNegativesRankingLoss</b> and ensembled it with <b class="nw">mxbai-embed-large-v1</b> for retrieval; added a self-hosted <b>Qwen 3.8 27B</b> reader on <b>Ollama</b>, directed with <b>Claude Code</b></li>
-    <li>Benchmarked 11 embedding models, rerankers, and LLM readers in pre-registered tests; raised users helped from <b class="nw">43% to 75%</b> and cut wrong pages from <b>40% to 6%</b> vs. the legacy system; deployed via <b>FastAPI</b> to <b>Kubernetes</b> (test)</li>
-    <li>Built a full local <b>WordPress</b> stack (<b>Bedrock</b>, <b>Docker</b>, <b>Composer</b>) for containerizing college sites; partnered with the senior developer on <b>Woodpecker CI</b> and <b>Rancher</b> deployment; rebuilt faculty research-lab sites on the Labs multisite</li>
+    <li>Built a four-stage helpdesk router so staff handle only requests needing a person: it routes web-help questions to the right page among 64, asks a clarifying question, or opens a ticket; in judged tests, users helped rose <b class="nw">43% to 75%</b> and wrong pages fell <b class="nw">40% to 6%</b> vs. the old chatbot</li>
+    <li>Raised users helped from <b class="nw">69% to 75%</b> (p = 0.004) by fine-tuning <b>arctic-embed-m-v1.5</b> on the help pages with contrastive <b>MultipleNegativesRankingLoss</b> and ensembling it with <b class="nw">mxbai-embed-large-v1</b> for retrieval</li>
+    <li>Cut wrong-page answers from over 35% to under 10% with a self-hosted <b>Qwen 3.8 27B</b> reader on <b>Ollama</b> that picks among the top 5 pages or hands off, keeping data local; built with <b>Claude Code</b>, deployed via <b>FastAPI</b> to <b>Kubernetes</b> (test)</li>
+    <li>Built a full local <b>WordPress</b> stack (<b>Bedrock</b>, <b>Docker</b>, <b>Composer</b>) so college sites can move to secure, auto-deployed containers; partnered with the senior developer on <b>Woodpecker CI</b> and <b>Rancher</b>; rebuilt faculty lab sites</li>
   </ul>
 </div>
 <div class="entry">
@@ -168,7 +168,7 @@
 <p class="line"><b>Languages:</b> Python, TypeScript, JavaScript, SQL, Swift, Java, PHP, C, C#, Bash, R, HTML/CSS</p>
 <p class="line"><b>Machine Learning &amp; AI:</b> PyTorch, Hugging Face Transformers, LLMs, Retrieval-Augmented Generation (RAG), LoRA/QLoRA, Computer Vision, NLP, vLLM, Ollama, LightGBM, XGBoost, Scikit-learn, Pandas</p>
 <p class="line"><b>Web, Mobile &amp; Data:</b> FastAPI, Fastify, Flask, React, Node.js, WordPress, SwiftUI, PostgreSQL, MySQL, MongoDB</p>
-<p class="line"><b>Infrastructure &amp; Security:</b> Docker, Kubernetes, Rancher, SLURM, HPC (TACC), Git, GitHub Actions, AWS EC2, Linux, Wireshark, Elastic Stack, Autopsy</p>
+<p class="line"><b>Infrastructure &amp; Security:</b> Docker, Kubernetes, Rancher, SLURM, HPC (TACC), Git, GitHub Actions, AWS EC2, Linux, Wireshark</p>
 
 </body>
 </html>
