@@ -136,7 +136,7 @@
     <li>Built a four-stage helpdesk router so staff handle only requests needing a person: it routes web-help questions to the right page among 64, asks a clarifying question, or opens a ticket; in judged tests, users helped rose <b class="nw">43% to 75%</b> and wrong pages fell <b class="nw">40% to 6%</b> vs. the old chatbot</li>
     <li>Raised users helped from <b class="nw">69% to 75%</b> (p = 0.004) by fine-tuning <b>arctic-embed-m-v1.5</b> on the help pages with contrastive <b>MultipleNegativesRankingLoss</b> and ensembling it with <b class="nw">mxbai-embed-large-v1</b> for retrieval</li>
     <li>Cut wrong-page answers from over 35% to under 10% with a self-hosted <b>Qwen 3.8 27B</b> reader on <b>Ollama</b> that picks among the top 5 pages or hands off, keeping data local; built with <b>Claude Code</b>, deployed via <b>FastAPI</b> to <b>Kubernetes</b> (test)</li>
-    <li>Built a full local <b>WordPress</b> stack (<b>Bedrock</b>, <b>Docker</b>, <b>Composer</b>) so college sites can move to secure, auto-deployed containers; partnered with the senior developer on <b>Woodpecker CI</b> and <b>Rancher</b>; rebuilt faculty lab sites</li>
+    <li>Hardened college <b>WordPress</b> sites for LAITS' <b>security migration</b> to <b>Rancher</b> (Kubernetes): worked with the senior developer on a <b>Bedrock</b> template (<b>Composer</b>-managed core and plugins, security-advisory audits, secrets in environment files), built the full <b>Docker</b> stack locally, and migrated the Correlates of War site; deployments run through <b>Woodpecker CI</b></li>
   </ul>
 </div>
 <div class="entry">

@@ -106,7 +106,7 @@ const projects: Project[] = [
   {
     title: "WordPress Security & Modernization — LAITS",
     description:
-      "Containerizing UT Liberal Arts WordPress sites as secure Bedrock builds with Composer-managed dependencies and Docker. Built the full local stack, and worked with the senior developer on Woodpecker CI/CD and Rancher (Kubernetes) deployment. Migrated sites such as Correlates of War with the WordPress Importer. Also built a WordPress plugin that adds REST-exposed custom user-profile fields, and a FastAPI + React tracker that organizes the team's sites and TODOs by label and urgency.",
+      "Part of LAITS' WordPress security migration, moving UT Liberal Arts sites onto Rancher (Kubernetes). Worked with the senior developer on a hardened Bedrock template: Composer-managed core and plugins, security-advisory audits, and secrets kept in environment files. Built the full Docker stack locally, migrated the Correlates of War site with the WordPress Importer, and stayed on call through the Woodpecker CI/CD and Rancher deployment. Also built a WordPress plugin that adds REST-exposed custom user-profile fields, and a FastAPI + React tracker that organizes the team's sites and TODOs by label and urgency.",
     stack: ["PHP", "WordPress", "Bedrock", "Docker", "Woodpecker CI", "Rancher", "FastAPI", "React"],
     categories: ["Infrastructure", "Full-Stack", "Security"],
     context: "WORK",
