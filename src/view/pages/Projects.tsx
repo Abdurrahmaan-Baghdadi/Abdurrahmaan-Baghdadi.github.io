@@ -212,7 +212,8 @@ export default function Projects() {
                 className="px-2.5 py-1 font-mono text-[10px] font-bold rounded tracking-widest transition-all"
                 style={{
                   backgroundColor: isActive ? `${color}30` : `${color}12`,
-                  color: ink(isActive ? color : `${color}99`),
+                  // full-strength text either way; the active filter stands out by its background and border
+                  color: ink(color),
                   border: `1px solid ${isActive ? color : `${color}40`}`,
                   boxShadow: isActive ? `0 0 8px ${color}30` : "none",
                 }}

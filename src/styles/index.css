@@ -51,6 +51,14 @@ body {
   --accent-ink: 100%;   /* how much of a project's accent color text keeps (rest is black) */
 }
 
+/* Dark theme: only the two faint text grays are raised (the defaults measure about
+   2.5:1 on the near-black page); everything else keeps Tailwind's default palette.
+   Both now read at 4.5:1 or better, the WCAG AA bar for small text. */
+[data-theme="dark"] {
+  --color-slate-500: oklch(66% 0.04 257);
+  --color-slate-600: oklch(62% 0.04 257);
+}
+
 [data-theme="light"] {
   color-scheme: light;
 
