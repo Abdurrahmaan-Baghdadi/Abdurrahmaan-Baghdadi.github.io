@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import { useSearchParams } from "react-router-dom";
 import { contactLinks, CALENDLY_URL } from "../../model/content/profile";
 
 const SERVICE_ID          = import.meta.env.VITE_EMAILJS_SERVICE_ID          as string;
@@ -29,7 +30,10 @@ export default function Contact() {
 
   const [name,    setName]    = useState<string>(saved.name    ?? "");
   const [email,   setEmail]   = useState<string>(saved.email   ?? "");
-  const [message, setMessage] = useState<string>(saved.message ?? "");
+  // The footer's Feedback link opens this page with ?topic=feedback
+  const [params] = useSearchParams();
+  const isFeedback = params.get("topic") === "feedback";
+  const [message, setMessage] = useState<string>(saved.message || (isFeedback ? "Site feedback: " : ""));
   const [sendState, setSendState] = useState<SendState>("idle");
   const [cooldownSec, setCooldownSec] = useState(0);
   const honeypotRef = useRef<HTMLInputElement>(null);
@@ -137,7 +141,7 @@ export default function Contact() {
 
       {/* ── Contact form ────────────────────────────────────────── */}
       <div className="space-y-3">
-        <p className="text-slate-300 font-mono text-sm">// send a message</p>
+        <p className="text-slate-300 font-mono text-sm">{isFeedback ? "// site feedback" : "// send a message"}</p>
 
         <form onSubmit={handleSubmit} className="space-y-3">
 
@@ -183,7 +187,7 @@ export default function Contact() {
             <textarea
               value={message}
               onChange={(e) => setMessage(e.target.value)}
-              placeholder="What's on your mind?"
+              placeholder={isFeedback ? "What worked, what didn't, what's missing?" : "What's on your mind?"}
               required
               rows={5}
               className={`${inputClass} resize-none`}
