@@ -192,6 +192,25 @@ extra to keep in sync.
 
 ---
 
+## Light and dark themes
+
+The interactive site is dark by default; the ☀ LIGHT / ☾ DARK buttons (homepage corner and
+footer bar) switch it, and the choice is remembered per browser. `?theme=light` forces light,
+which is handy when presenting on a projector. The Simple view is always light.
+
+How it works (`src/styles/index.css`): the interactive view's root element gets
+`data-theme="light"`, which redefines Tailwind's `--color-*` variables. Neutrals flip
+(slate-950 ↔ slate-50, ...) and accents darken, so every existing color class re-themes with
+no per-component changes. Colors that can't be classes (SVG strokes, inline styles) use the
+`--circuit-*`, `--card-*` and `--accent-ink` variables defined there.
+
+- **New UI:** use the existing Tailwind color classes and both themes just work.
+- **New hard-coded color** (SVG or inline style): add a variable with dark and light values
+  in `index.css` and reference it with `style={{ stroke: "var(--...)" }}`. SVG color
+  attributes like `stroke="var(...)"` aren't reliable.
+
+---
+
 ## Adding a whole new section (rarely needed)
 
 Only do this for a new top-level area such as "Experience" or "Blog", not for new

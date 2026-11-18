@@ -49,11 +49,11 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
       >
         <defs>
           <pattern id="gridSmall" width="40" height="40" patternUnits="userSpaceOnUse">
-            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" strokeWidth="0.5" opacity="0.4" />
+            <path d="M 40 0 L 0 0 0 40" fill="none" style={{ stroke: "var(--circuit-grid-minor)" }} strokeWidth="0.5" opacity="0.4" />
           </pattern>
           <pattern id="gridLarge" width="200" height="200" patternUnits="userSpaceOnUse">
             <rect width="200" height="200" fill="url(#gridSmall)" />
-            <path d="M 200 0 L 0 0 0 200" fill="none" stroke="#334155" strokeWidth="0.8" opacity="0.3" />
+            <path d="M 200 0 L 0 0 0 200" fill="none" style={{ stroke: "var(--circuit-grid-major)" }} strokeWidth="0.8" opacity="0.3" />
           </pattern>
         </defs>
         <rect width="100%" height="100%" fill="url(#gridLarge)" />
@@ -90,19 +90,19 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
             </feMerge>
           </filter>
           <linearGradient id="signalGradient">
-            <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0" />
-            <stop offset="40%" stopColor="#38bdf8" stopOpacity="0.6" />
-            <stop offset="50%" stopColor="#7dd3fc" stopOpacity="1" />
-            <stop offset="60%" stopColor="#38bdf8" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0" />
+            <stop offset="0%" style={{ stopColor: "var(--circuit-trace)" }} stopOpacity="0" />
+            <stop offset="40%" style={{ stopColor: "var(--circuit-signal-mid)" }} stopOpacity="0.6" />
+            <stop offset="50%" style={{ stopColor: "var(--circuit-signal-peak)" }} stopOpacity="1" />
+            <stop offset="60%" style={{ stopColor: "var(--circuit-signal-mid)" }} stopOpacity="0.6" />
+            <stop offset="100%" style={{ stopColor: "var(--circuit-trace)" }} stopOpacity="0" />
           </linearGradient>
           <radialGradient id="chipBg" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#1e293b" />
             <stop offset="100%" stopColor="#0f172a" />
           </radialGradient>
           <radialGradient id="viaPad" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0.6" />
-            <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0" />
+            <stop offset="0%" style={{ stopColor: "var(--circuit-trace)" }} stopOpacity="0.6" />
+            <stop offset="100%" style={{ stopColor: "var(--circuit-trace)" }} stopOpacity="0" />
           </radialGradient>
         </defs>
 
@@ -178,7 +178,7 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
                   {/* Base dark trace */}
                   <motion.path
                     d={route.tracePath}
-                    stroke="#1e3a5f"
+                    style={{ stroke: "var(--circuit-trace-base)" }}
                     strokeWidth="5"
                     fill="none"
                     strokeLinecap="round"
@@ -191,7 +191,7 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
                   {/* Bright center trace */}
                   <motion.path
                     d={route.tracePath}
-                    stroke="#0ea5e9"
+                    style={{ stroke: "var(--circuit-trace)" }}
                     strokeWidth={isHovered || isNavigating ? "3" : "2"}
                     fill="none"
                     filter={isHovered || isNavigating ? "url(#strongGlow)" : "url(#glow)"}
@@ -238,12 +238,11 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
                     cx={route.endX}
                     cy={route.endY}
                     r={isHovered ? "6" : "4"}
-                    fill="#0ea5e9"
                     filter={isHovered ? "url(#strongGlow)" : "url(#glow)"}
                     initial={{ opacity: 0, scale: 0 }}
                     animate={{ opacity: isHovered ? 1 : 0.8, scale: 1 }}
                     transition={{ duration: 0.3, delay: traceDelay(i) + 0.8 }}
-                    style={{ transformOrigin: `${route.endX}px ${route.endY}px` }}
+                    style={{ fill: "var(--circuit-trace)", transformOrigin: `${route.endX}px ${route.endY}px` }}
                   />
                 </g>
               );
@@ -257,7 +256,7 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
               <motion.path
                 key={`deco-${i}`}
                 d={path}
-                stroke="#0c4a6e"
+                style={{ stroke: "var(--circuit-trace-deco)" }}
                 strokeWidth="1.5"
                 fill="none"
                 strokeLinecap="round"
@@ -285,13 +284,13 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
                   transition={{ duration: 0.3, delay: startExpanded ? i * 0.02 : i * 0.06 + 1.2 }}
                 />
                 <motion.circle
-                  cx={via.x} cy={via.y} r="2.5" fill="none" stroke="#0ea5e9" strokeWidth="0.8"
+                  cx={via.x} cy={via.y} r="2.5" fill="none" style={{ stroke: "var(--circuit-trace)" }} strokeWidth="0.8"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.6 }}
                   transition={{ duration: 0.3, delay: startExpanded ? i * 0.02 : i * 0.06 + 1.2 }}
                 />
                 <motion.circle
-                  cx={via.x} cy={via.y} r="1" fill="#0ea5e9"
+                  cx={via.x} cy={via.y} r="1" style={{ fill: "var(--circuit-trace)" }}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 0.5 }}
                   transition={{ duration: 0.3, delay: startExpanded ? i * 0.02 : i * 0.06 + 1.2 }}
@@ -308,7 +307,7 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
               y={40}
               textAnchor="middle"
               dominantBaseline="central"
-              fill="#22d3ee"
+              style={{ fill: "var(--circuit-label)" }}
               fontSize="16"
               fontFamily="monospace"
               letterSpacing="8"
@@ -343,14 +342,13 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
                   y={route.labelY}
                   textAnchor={route.anchor}
                   dominantBaseline="central"
-                  fill={isHovered ? "#a5f3fc" : "#22d3ee"}
                   fontSize="18"
                   fontFamily="monospace"
                   fontWeight="500"
                   letterSpacing="4"
                   filter={isHovered ? "url(#textGlow)" : undefined}
                   className="cursor-pointer select-none"
-                  style={{ pointerEvents: "auto" }}
+                  style={{ pointerEvents: "auto", fill: isHovered ? "var(--circuit-label-hover)" : "var(--circuit-label)" }}
                   onClick={() => handleSectionClick(route.name)}
                   onMouseEnter={() => !navigatingTo && setHoveredRoute(route.name)}
                   onMouseLeave={() => setHoveredRoute(null)}
@@ -431,7 +429,7 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
         className="absolute inset-0 pointer-events-none"
         style={{
           zIndex: 2,
-          background: "radial-gradient(ellipse at center, transparent 40%, rgba(2,6,23,0.6) 100%)",
+          background: "radial-gradient(ellipse at center, transparent 40%, var(--circuit-vignette) 100%)",
         }}
       />
     </motion.div>

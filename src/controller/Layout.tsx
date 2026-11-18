@@ -22,6 +22,21 @@ function prefersSimpleView(search: string): boolean {
   }
 }
 
+// Light or dark theme for the interactive view (the Simple view is always light)
+export type Theme = "dark" | "light";
+const THEME_KEY = "theme";
+
+// ?theme=light (handy for presenting) wins; otherwise the visitor's last choice; dark by default
+function preferredTheme(search: string): Theme {
+  const theme = new URLSearchParams(search).get("theme");
+  if (theme === "light" || theme === "dark") return theme;
+  try {
+    return localStorage.getItem(THEME_KEY) === "light" ? "light" : "dark";
+  } catch {
+    return "dark";
+  }
+}
+
 // Page content components
 import About from "../view/pages/About";
 import Projects from "../view/pages/Projects";
@@ -109,20 +124,38 @@ export default function Layout() {
     [navigate, location.pathname]
   );
 
+  const [theme, setTheme] = useState<Theme>(() => preferredTheme(location.search));
+
+  const toggleTheme = useCallback(() => {
+    const next: Theme = theme === "dark" ? "light" : "dark";
+    setTheme(next);
+    try {
+      localStorage.setItem(THEME_KEY, next);
+    } catch {
+      // storage blocked; the choice just won't be remembered
+    }
+  }, [theme]);
+
   if (simple) {
     return <SimpleView onExit={() => switchView(false)} />;
   }
 
+  const cornerButton =
+    "px-3 py-1.5 font-mono text-[11px] tracking-widest text-slate-400 border border-slate-700 rounded bg-gray-950/80 hover:text-cyan-400 hover:border-cyan-400/50 transition-colors";
+
   return (
-    <div className="relative w-full h-screen bg-gray-950 overflow-hidden">
-      {/* Homepage shortcut for visitors who want the plain version */}
+    // data-theme switches every color on this page via the variables in styles/index.css
+    <div data-theme={theme} className="relative w-full h-screen bg-gray-950 overflow-hidden">
+      {/* Homepage shortcuts: plain version and light/dark */}
       {!currentSection && (
-        <button
-          onClick={() => switchView(true)}
-          className="absolute top-4 right-4 z-30 px-3 py-1.5 font-mono text-[11px] tracking-widest text-slate-400 border border-slate-700 rounded bg-gray-950/80 hover:text-cyan-400 hover:border-cyan-400/50 transition-colors"
-        >
-          SIMPLE VIEW
-        </button>
+        <div className="absolute top-4 right-4 z-30 flex gap-2">
+          <button onClick={toggleTheme} className={cornerButton} aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}>
+            {theme === "dark" ? "☀ LIGHT" : "☾ DARK"}
+          </button>
+          <button onClick={() => switchView(true)} className={cornerButton}>
+            SIMPLE VIEW
+          </button>
+        </div>
       )}
       <AnimatePresence mode="wait">
         {!currentSection ? (
@@ -141,7 +174,7 @@ export default function Layout() {
           </SectionPage>
         )}
       </AnimatePresence>
-      <Footer onSimpleView={() => switchView(true)} />
+      <Footer onSimpleView={() => switchView(true)} theme={theme} onToggleTheme={toggleTheme} />
     </div>
   );
 }

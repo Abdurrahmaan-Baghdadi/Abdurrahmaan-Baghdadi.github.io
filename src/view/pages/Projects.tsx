@@ -3,6 +3,9 @@ import { useState } from "react";
 import { projects, FILTERS, CONTEXT_FILTERS } from "../../model/content/projects";
 import type { Project, CategoryFilter, ContextFilter } from "../../model/content/projects";
 
+// Accent colors used as text: unchanged in dark mode, darkened in light mode (--accent-ink)
+const ink = (color: string) => `color-mix(in oklab, ${color} var(--accent-ink), black)`;
+
 /* ── Card ───────────────────────────────────────────────────────── */
 function ProjectCard({ project }: { project: Project }) {
   const accent = project.accentColor ?? "#22d3ee";
@@ -10,7 +13,7 @@ function ProjectCard({ project }: { project: Project }) {
     <div
       className="group rounded-lg overflow-hidden bg-slate-800/50 flex flex-col transition-all duration-200 hover:shadow-xl hover:shadow-slate-950/60 hover:-translate-y-0.5"
       style={{
-        border: "1px solid rgb(51 65 85)",
+        border: "1px solid var(--card-border)",
         borderLeft: `3px solid ${accent}`,
       }}
     >
@@ -32,7 +35,7 @@ function ProjectCard({ project }: { project: Project }) {
           <div
             className="w-full h-full relative overflow-hidden"
             style={{
-              background: `linear-gradient(135deg, #0f172a 0%, ${accent}15 60%, #0f172a 100%)`,
+              background: `linear-gradient(135deg, var(--card-art-bg) 0%, ${accent}15 60%, var(--card-art-bg) 100%)`,
             }}
           >
             <svg
@@ -61,7 +64,7 @@ function ProjectCard({ project }: { project: Project }) {
           className="absolute top-2 left-2 px-1.5 py-0.5 font-mono text-[9px] font-bold rounded tracking-widest"
           style={{
             backgroundColor: `${project.contextColor}20`,
-            color: project.contextColor,
+            color: ink(project.contextColor),
             border: `1px solid ${project.contextColor}50`,
           }}
         >
@@ -209,7 +212,7 @@ export default function Projects() {
                 className="px-2.5 py-1 font-mono text-[10px] font-bold rounded tracking-widest transition-all"
                 style={{
                   backgroundColor: isActive ? `${color}30` : `${color}12`,
-                  color: isActive ? color : `${color}99`,
+                  color: ink(isActive ? color : `${color}99`),
                   border: `1px solid ${isActive ? color : `${color}40`}`,
                   boxShadow: isActive ? `0 0 8px ${color}30` : "none",
                 }}
@@ -243,7 +246,7 @@ export default function Projects() {
               <> · <span className="text-cyan-400">{activeCategory}</span></>
             )}
             {activeContext !== "All" && (
-              <> · <span style={{ color: CONTEXT_FILTERS.find(c => c.label === activeContext)?.color ?? "#22d3ee" }}>{activeContext}</span></>
+              <> · <span style={{ color: ink(CONTEXT_FILTERS.find(c => c.label === activeContext)?.color ?? "#22d3ee") }}>{activeContext}</span></>
             )}
           </p>
         </div>

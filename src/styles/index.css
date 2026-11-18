@@ -25,3 +25,79 @@ body {
     background: #fff;
   }
 }
+
+/* ── Themes ────────────────────────────────────────────────────────────────
+   Dark is the default. The interactive view's root element gets
+   data-theme="light" when the visitor picks light mode (Layout.tsx).
+   Tailwind v4 color classes read --color-* variables, so redefining them here
+   re-themes every class at once: neutrals flip, and accents get darker so text
+   stays readable on a light background. Hard-coded SVG/inline colors use the
+   --circuit-* / --card-* variables below. The Simple view sits outside this
+   element and isn't affected. */
+:root {
+  --circuit-grid-minor: #1e293b;
+  --circuit-grid-major: #334155;
+  --circuit-trace: #0ea5e9;
+  --circuit-trace-base: #1e3a5f;
+  --circuit-trace-deco: #0c4a6e;
+  --circuit-signal-edge: #0ea5e9;
+  --circuit-signal-mid: #38bdf8;
+  --circuit-signal-peak: #7dd3fc;
+  --circuit-label: #22d3ee;
+  --circuit-label-hover: #a5f3fc;
+  --circuit-vignette: rgba(2, 6, 23, 0.6);
+  --card-border: rgb(51 65 85);
+  --card-art-bg: #0f172a;
+  --accent-ink: 100%;   /* how much of a project's accent color text keeps (rest is black) */
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* Neutrals: the scale flips (950 <-> 50, 900 <-> 100, ...) */
+  --color-slate-50: oklch(12.9% 0.042 264.695);
+  --color-slate-100: oklch(20.8% 0.042 265.755);
+  --color-slate-200: oklch(27.9% 0.041 260.031);
+  --color-slate-300: oklch(37.2% 0.044 257.287);
+  --color-slate-400: oklch(44.6% 0.043 257.281);
+  --color-slate-500: oklch(50% 0.046 257.417);
+  --color-slate-600: oklch(62% 0.04 256.788);
+  --color-slate-700: oklch(86.9% 0.022 252.894);
+  --color-slate-800: oklch(92.9% 0.013 255.508);
+  --color-slate-900: oklch(96.8% 0.007 247.896);
+  --color-slate-950: oklch(98.4% 0.003 247.858);
+  --color-gray-950: oklch(98.5% 0.002 247.839);
+  --color-white: oklch(12.9% 0.042 264.695);
+  --color-black: oklch(96.8% 0.007 247.896);
+
+  /* Accents: 200/300/400 -> 800/800/700, 500 -> 600 */
+  --color-cyan-200: oklch(45% 0.085 224.283);
+  --color-cyan-300: oklch(45% 0.085 224.283);
+  --color-cyan-400: oklch(52% 0.105 223.128);
+  --color-cyan-500: oklch(60.9% 0.126 221.723);
+  --color-sky-400: oklch(50% 0.134 242.749);
+  --color-teal-400: oklch(51.1% 0.096 186.391);
+  --color-emerald-400: oklch(50.8% 0.118 165.612);
+  --color-emerald-500: oklch(59.6% 0.145 163.225);
+  --color-violet-400: oklch(49.1% 0.27 292.581);
+  --color-fuchsia-400: oklch(51.8% 0.253 323.949);
+  --color-rose-400: oklch(51.4% 0.222 16.935);
+  --color-amber-400: oklch(55.5% 0.163 48.998);
+  --color-orange-400: oklch(55.3% 0.195 38.402);
+
+  /* Hard-coded colors in the circuit, header divider and project cards */
+  --circuit-grid-minor: #cbd5e1;
+  --circuit-grid-major: #94a3b8;
+  --circuit-trace: #0284c7;
+  --circuit-trace-base: #bae6fd;
+  --circuit-trace-deco: #94a3b8;
+  --circuit-signal-edge: #0284c7;
+  --circuit-signal-mid: #0ea5e9;
+  --circuit-signal-peak: #38bdf8;
+  --circuit-label: #0e7490;
+  --circuit-label-hover: #155e75;
+  --circuit-vignette: rgba(148, 163, 184, 0.25);
+  --card-border: rgb(203 213 225);
+  --card-art-bg: #f1f5f9;
+  --accent-ink: 62%;
+}

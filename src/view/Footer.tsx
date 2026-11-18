@@ -22,10 +22,12 @@ const linkClass =
 
 interface FooterProps {
   onSimpleView: () => void;   // switch to the one-page Simple view
+  theme: "dark" | "light";
+  onToggleTheme: () => void;
 }
 
 /** Bar pinned to the bottom of every page: quick links to socials, resume and feedback. */
-export default function Footer({ onSimpleView }: FooterProps) {
+export default function Footer({ onSimpleView, theme, onToggleTheme }: FooterProps) {
   return (
     <footer
       className="absolute bottom-0 inset-x-0 border-t border-slate-800/80 bg-gray-950/85 backdrop-blur-sm font-mono text-[11px]"
@@ -40,6 +42,15 @@ export default function Footer({ onSimpleView }: FooterProps) {
             title="One plain page with everything: easier to skim, print or project"
           >
             SIMPLE VIEW
+          </button>
+          <button
+            onClick={onToggleTheme}
+            className="px-2 py-1 border border-slate-700 rounded tracking-widest text-slate-400 hover:text-cyan-400 hover:border-cyan-400/50 transition-colors"
+            aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+            title="Light mode is easier to read on projectors and in bright rooms"
+          >
+            {theme === "dark" ? "☀" : "☾"}
+            <span className="hidden sm:inline ml-1.5">{theme === "dark" ? "LIGHT" : "DARK"}</span>
           </button>
         </div>
 

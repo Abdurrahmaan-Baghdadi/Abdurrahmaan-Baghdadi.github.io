@@ -71,18 +71,18 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
               </feMerge>
             </filter>
             <linearGradient id="headerSignal" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" stopColor="#0ea5e9" stopOpacity="0" />
-              <stop offset="40%" stopColor="#38bdf8" stopOpacity="0.6" />
-              <stop offset="50%" stopColor="#7dd3fc" stopOpacity="1" />
-              <stop offset="60%" stopColor="#38bdf8" stopOpacity="0.6" />
-              <stop offset="100%" stopColor="#0ea5e9" stopOpacity="0" />
+              <stop offset="0%" style={{ stopColor: "var(--circuit-trace)" }} stopOpacity="0" />
+              <stop offset="40%" style={{ stopColor: "var(--circuit-signal-mid)" }} stopOpacity="0.6" />
+              <stop offset="50%" style={{ stopColor: "var(--circuit-signal-peak)" }} stopOpacity="1" />
+              <stop offset="60%" style={{ stopColor: "var(--circuit-signal-mid)" }} stopOpacity="0.6" />
+              <stop offset="100%" style={{ stopColor: "var(--circuit-trace)" }} stopOpacity="0" />
             </linearGradient>
           </defs>
 
           {/* Dark base trace */}
           <motion.line
             x1="0" y1="8" x2="100%" y2="8"
-            stroke="#1e3a5f"
+            style={{ stroke: "var(--circuit-trace-base)" }}
             strokeWidth="4"
             strokeLinecap="round"
             initial={{ pathLength: 0 }}
@@ -93,7 +93,7 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
           {/* Bright center line */}
           <motion.line
             x1="0" y1="8" x2="100%" y2="8"
-            stroke="#0ea5e9"
+            style={{ stroke: "var(--circuit-trace)" }}
             strokeWidth="1.5"
             strokeLinecap="round"
             filter="url(#headerGlow)"
@@ -126,7 +126,7 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
           {/* Small endpoint pad at the beginning */}
           <motion.circle
             cx="4" cy="8" r="3"
-            fill="#0ea5e9"
+            style={{ fill: "var(--circuit-trace)" }}
             filter="url(#headerGlow)"
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.8 }}
