@@ -20,17 +20,30 @@ const Icons: Record<string, ReactNode> = {
 const linkClass =
   "flex items-center gap-1.5 text-slate-500 hover:text-cyan-400 transition-colors";
 
+interface FooterProps {
+  onSimpleView: () => void;   // switch to the one-page Simple view
+}
+
 /** Bar pinned to the bottom of every page: quick links to socials, resume and feedback. */
-export default function Footer() {
+export default function Footer({ onSimpleView }: FooterProps) {
   return (
     <footer
       className="absolute bottom-0 inset-x-0 border-t border-slate-800/80 bg-gray-950/85 backdrop-blur-sm font-mono text-[11px]"
       style={{ zIndex: 20 }}
     >
       <div className="flex items-center justify-between gap-4 px-4 sm:px-10 py-2.5">
-        <p className="hidden sm:block text-slate-600">&copy; {new Date().getFullYear()} Abdurrahmaan Baghdadi</p>
+        <div className="flex items-center gap-4">
+          <p className="hidden lg:block text-slate-600">&copy; {new Date().getFullYear()} Abdurrahmaan Baghdadi</p>
+          <button
+            onClick={onSimpleView}
+            className="px-2 py-1 border border-slate-700 rounded tracking-widest text-slate-400 hover:text-cyan-400 hover:border-cyan-400/50 transition-colors"
+            title="One plain page with everything: easier to skim, print or project"
+          >
+            SIMPLE VIEW
+          </button>
+        </div>
 
-        <nav aria-label="Quick links" className="flex items-center gap-5 mx-auto sm:mx-0">
+        <nav aria-label="Quick links" className="flex items-center gap-5">
           {contactLinks.map(({ type, href, label }) => (
             <a
               key={type}

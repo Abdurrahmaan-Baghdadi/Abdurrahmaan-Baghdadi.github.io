@@ -146,7 +146,7 @@ Roles, degrees and photos come from `src/model/content/`; the journey timeline a
   it applies.
 - **Photo gallery:** put the full-size photo in `image-originals/interests/`, run
   `npm run optimize:images` (writes a ~1600 px web copy to `public/images/interests/`),
-  then add an entry to `photos`. Don't put camera originals straight into `public/`,
+  then add an entry to `interestPhotos` in `src/model/content/photos.ts`. Don't put camera originals straight into `public/`,
   because a 10 MB photo makes the gallery slow to load. `colSpan: "col-span-2 sm:col-span-2"` makes a wide tile, and `"col-span-1"`
   makes a normal one.
 
@@ -172,6 +172,22 @@ resume and reuse its exact wording where it's true for you. The in-page viewer a
 all point to `/resume.pdf?v=<build id>` (`RESUME_URL` in `About.tsx`). The build id changes on
 every deploy (`__BUILD_ID__` in `vite.config.ts`), so visitors never get a stale cached copy. When you change roles or dates, update the About page's
 Experience list too.
+
+---
+
+## Simple view
+
+A one-page, light, high-contrast version of the site for people who just want the
+information (recruiters, projectors, printing). It lives in `src/view/SimpleView.tsx` and
+reads the same `src/model/content/` files as the interactive pages, so there's nothing
+extra to keep in sync.
+
+- **Share it:** `https://abdurrahmaan-baghdadi.github.io/?view=simple` opens it directly
+  (`?view=interactive` forces the circuit version).
+- **Toggle:** "SIMPLE VIEW" buttons on the homepage and in the footer bar; the Simple view
+  has a "Switch to interactive view" button. The choice is remembered per browser.
+- **Featured projects** (`featured: true`) get full descriptions; the rest are listed compactly.
+- **Printing** from the Simple view hides the buttons and fits the page to paper.
 
 ---
 

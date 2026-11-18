@@ -17,3 +17,11 @@ body {
   color: #e2e8f0;
   font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 }
+/* Printing (the Simple view is print-friendly): let the page flow onto paper */
+@media print {
+  html, body {
+    height: auto;
+    overflow: visible;
+    background: #fff;
+  }
+}

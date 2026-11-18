@@ -3,8 +3,24 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
 import { PortfolioIntro } from "../view/PortfolioIntro";
 import { SectionPage } from "../view/SectionPage";
+import { SimpleView } from "../view/SimpleView";
 import Footer from "../view/Footer";
 import { routes, getRouteByName } from "../model/routes";
+
+// Remembers whether this visitor prefers the Simple view
+const VIEW_KEY = "view_mode";
+
+// ?view=simple (shareable link) wins; otherwise use the visitor's last choice
+function prefersSimpleView(search: string): boolean {
+  const view = new URLSearchParams(search).get("view");
+  if (view === "simple") return true;
+  if (view === "interactive") return false;
+  try {
+    return localStorage.getItem(VIEW_KEY) === "simple";
+  } catch {
+    return false;   // storage blocked (private mode etc.)
+  }
+}
 
 // Page content components
 import About from "../view/pages/About";
@@ -70,8 +86,37 @@ export default function Layout() {
     navigate("/");
   }, [navigate]);
 
+  // Simple view: one light page with everything, for people who just want the info
+  const [simple, setSimple] = useState(() => prefersSimpleView(location.search));
+
+  const switchView = useCallback(
+    (toSimple: boolean) => {
+      setSimple(toSimple);
+      try {
+        localStorage.setItem(VIEW_KEY, toSimple ? "simple" : "interactive");
+      } catch {
+        // storage blocked; the choice just won't be remembered
+      }
+      navigate({ pathname: location.pathname, search: toSimple ? "?view=simple" : "" }, { replace: true });
+    },
+    [navigate, location.pathname]
+  );
+
+  if (simple) {
+    return <SimpleView onExit={() => switchView(false)} />;
+  }
+
   return (
     <div className="relative w-full h-screen bg-gray-950 overflow-hidden">
+      {/* Homepage shortcut for visitors who want the plain version */}
+      {!currentSection && (
+        <button
+          onClick={() => switchView(true)}
+          className="absolute top-4 right-4 z-30 px-3 py-1.5 font-mono text-[11px] tracking-widest text-slate-400 border border-slate-700 rounded bg-gray-950/80 hover:text-cyan-400 hover:border-cyan-400/50 transition-colors"
+        >
+          SIMPLE VIEW
+        </button>
+      )}
       <AnimatePresence mode="wait">
         {!currentSection ? (
           <PortfolioIntro
@@ -89,7 +134,7 @@ export default function Layout() {
           </SectionPage>
         )}
       </AnimatePresence>
-      <Footer />
+      <Footer onSimpleView={() => switchView(true)} />
     </div>
   );
 }
