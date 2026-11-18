@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import emailjs from "@emailjs/browser";
+import { contactLinks, CALENDLY_URL } from "../../model/content/profile";
 
 const SERVICE_ID          = import.meta.env.VITE_EMAILJS_SERVICE_ID          as string;
 const TEMPLATE_AUTOREPLY  = import.meta.env.VITE_EMAILJS_TEMPLATE_AUTOREPLY  as string; // → sends dark themed reply to sender
@@ -9,27 +10,6 @@ const PUBLIC_KEY          = import.meta.env.VITE_EMAILJS_PUBLIC_KEY           as
 const RATE_LIMIT_MS = 5 * 60 * 1000; // 5 minutes between submissions
 const RATE_LIMIT_KEY = "contact_last_sent";
 const DRAFT_KEY      = "contact_draft";
-
-const contactLinks = [
-  {
-    type: "EMAIL",
-    glyph: "✉",
-    label: "abdurrahmaanbaghdadi0@gmail.com",
-    href: "mailto:abdurrahmaanbaghdadi0@gmail.com",
-  },
-  {
-    type: "GITHUB",
-    glyph: "{ }",
-    label: "github.com/Abdurrahmaan-Baghdadi",
-    href: "https://github.com/Abdurrahmaan-Baghdadi",
-  },
-  {
-    type: "LINKEDIN",
-    glyph: "in",
-    label: "linkedin.com/in/abdurrahmaan-baghdadi",
-    href: "https://www.linkedin.com/in/abdurrahmaan-baghdadi/",
-  },
-];
 
 type SendState = "idle" | "sending" | "success" | "error" | "ratelimited";
 
@@ -248,7 +228,7 @@ export default function Contact() {
         <p className="text-slate-300 font-mono text-sm">// schedule a call</p>
 
         <a
-          href="https://calendly.com/abdurrahmaanbaghdadi/30min"
+          href={CALENDLY_URL}
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-4 px-4 py-4 rounded-lg border border-slate-700 bg-slate-800/30 hover:border-emerald-400/40 hover:bg-emerald-400/5 transition-all duration-200"
