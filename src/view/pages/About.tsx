@@ -13,7 +13,7 @@ const resumeFile = { url: window.location.origin + RESUME_URL };
 
 /** Section heading in the site's code-comment style */
 function SectionLabel({ children }: { children: ReactNode }) {
-  return <p className="text-cyan-400/80 font-mono text-sm tracking-wide">// {children}</p>;
+  return <p className="text-cyan-400 font-mono text-sm tracking-wide">// {children}</p>;
 }
 
 export default function About() {
@@ -92,13 +92,13 @@ export default function About() {
             <p className="text-slate-500 font-mono text-[11px] mb-1 uppercase tracking-widest">2019 – 2024 — UTSA | B.S. CS (Summa Cum Laude)</p>
             <h3 className="text-slate-100 font-bold text-lg group-hover:text-cyan-400 transition-colors">IoT Forensics & Voice-Controlled Robotics</h3>
             <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
-              At UTSA, I focused on making hardware smarter. I built a <span className="text-cyan-500/80 underline decoration-cyan-500/30">voice-controlled RC car</span> and researched how consumer IoT devices leave forensic traces. Alongside the security work, I grew into full-stack development, building tools the lab used day to day.
+              At UTSA, I focused on making hardware smarter. I built a <span className="text-cyan-500 underline decoration-cyan-500/30">voice-controlled RC car</span> and researched how consumer IoT devices leave forensic traces. Alongside the security work, I grew into full-stack development, building tools the lab used day to day.
             </p>
           </div>
 
           <div className="relative group">
             <div className="absolute -left-[37px] top-1 w-4 h-4 rounded-full bg-slate-950 border-2 border-cyan-500 shadow-[0_0_10px_rgba(34,211,238,0.4)] animate-pulse" />
-            <p className="text-cyan-500/80 font-mono text-[11px] mb-1 uppercase tracking-widest italic font-bold">Current Frontier — UT Austin | M.S. AI</p>
+            <p className="text-cyan-500 font-mono text-[11px] mb-1 uppercase tracking-widest italic font-bold">Current Frontier — UT Austin | M.S. AI</p>
             <h3 className="text-white font-bold text-lg">Deep Learning & Multimodal Diagnostics</h3>
             <p className="text-slate-400 font-mono text-sm leading-relaxed mt-2">
               Currently a Graduate Researcher in the <span className="text-slate-200 font-semibold">Pediatric Brain Tumor AI Lab</span>, studying how vision-language models and pathology foundation models can support brain tumor diagnosis, and how to make what they learn interpretable. Beyond the research, I advocate for AI that fosters <span className="text-slate-200 italic font-medium">compassion over efficiency</span>, ensuring technology serves as a bridge for human connection.
@@ -109,7 +109,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="pt-4 flex items-center gap-4 opacity-60 hover:opacity-100 transition-opacity">
+        <div className="pt-4 flex items-center gap-4 opacity-90 hover:opacity-100 transition-opacity">
           <div className="h-[1px] flex-grow bg-slate-800" />
           <p className="text-slate-500 font-mono text-[11px] italic whitespace-nowrap">
             // fun_fact: my first code reviewer was my cat (2009-2022)

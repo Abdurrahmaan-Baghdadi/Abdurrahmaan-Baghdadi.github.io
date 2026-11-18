@@ -54,36 +54,38 @@ body {
 [data-theme="light"] {
   color-scheme: light;
 
-  /* Neutrals: the scale flips (950 <-> 50, 900 <-> 100, ...) */
+  /* Neutrals: dark-theme text shades become dark text (darker than a plain flip,
+     so small labels stay readable on projectors); dark surfaces become a light-gray
+     page with white cards and visible borders. */
   --color-slate-50: oklch(12.9% 0.042 264.695);
-  --color-slate-100: oklch(20.8% 0.042 265.755);
-  --color-slate-200: oklch(27.9% 0.041 260.031);
-  --color-slate-300: oklch(37.2% 0.044 257.287);
-  --color-slate-400: oklch(44.6% 0.043 257.281);
-  --color-slate-500: oklch(50% 0.046 257.417);
-  --color-slate-600: oklch(62% 0.04 256.788);
-  --color-slate-700: oklch(86.9% 0.022 252.894);
-  --color-slate-800: oklch(92.9% 0.013 255.508);
-  --color-slate-900: oklch(96.8% 0.007 247.896);
-  --color-slate-950: oklch(98.4% 0.003 247.858);
-  --color-gray-950: oklch(98.5% 0.002 247.839);
+  --color-slate-100: oklch(18% 0.042 265.755);
+  --color-slate-200: oklch(24% 0.042 262);
+  --color-slate-300: oklch(27.9% 0.041 260.031);
+  --color-slate-400: oklch(37.2% 0.044 257.287);
+  --color-slate-500: oklch(44.6% 0.043 257.281);
+  --color-slate-600: oklch(46% 0.043 257.3);
+  --color-slate-700: oklch(89% 0.016 255);
+  --color-slate-800: oklch(88% 0.016 255);
+  --color-slate-900: oklch(100% 0 0);
+  --color-slate-950: oklch(96.5% 0.006 255);
+  --color-gray-950: oklch(96.5% 0.006 255);
   --color-white: oklch(12.9% 0.042 264.695);
-  --color-black: oklch(96.8% 0.007 247.896);
+  --color-black: oklch(96.5% 0.006 255);
 
-  /* Accents: 200/300/400 -> 800/800/700, 500 -> 600 */
-  --color-cyan-200: oklch(45% 0.085 224.283);
-  --color-cyan-300: oklch(45% 0.085 224.283);
-  --color-cyan-400: oklch(52% 0.105 223.128);
-  --color-cyan-500: oklch(60.9% 0.126 221.723);
-  --color-sky-400: oklch(50% 0.134 242.749);
-  --color-teal-400: oklch(51.1% 0.096 186.391);
-  --color-emerald-400: oklch(50.8% 0.118 165.612);
-  --color-emerald-500: oklch(59.6% 0.145 163.225);
-  --color-violet-400: oklch(49.1% 0.27 292.581);
-  --color-fuchsia-400: oklch(51.8% 0.253 323.949);
-  --color-rose-400: oklch(51.4% 0.222 16.935);
-  --color-amber-400: oklch(55.5% 0.163 48.998);
-  --color-orange-400: oklch(55.3% 0.195 38.402);
+  /* Accents: text shades 400/500 -> 800, hover shades 200/300 -> 900 */
+  --color-cyan-200: oklch(39.8% 0.07 227.392);
+  --color-cyan-300: oklch(39.8% 0.07 227.392);
+  --color-cyan-400: oklch(45% 0.085 224.283);
+  --color-cyan-500: oklch(45% 0.085 224.283);
+  --color-sky-400: oklch(44.3% 0.11 240.79);
+  --color-teal-400: oklch(43.7% 0.078 188.216);
+  --color-emerald-400: oklch(43.2% 0.095 166.913);
+  --color-emerald-500: oklch(43.2% 0.095 166.913);
+  --color-violet-400: oklch(43.2% 0.232 292.759);
+  --color-fuchsia-400: oklch(45.2% 0.211 324.591);
+  --color-rose-400: oklch(45.5% 0.188 13.697);
+  --color-amber-400: oklch(47.3% 0.137 46.201);
+  --color-orange-400: oklch(47% 0.157 37.304);
 
   /* Hard-coded colors in the circuit, header divider and project cards */
   --circuit-grid-minor: #cbd5e1;
@@ -94,10 +96,10 @@ body {
   --circuit-signal-edge: #0284c7;
   --circuit-signal-mid: #0ea5e9;
   --circuit-signal-peak: #38bdf8;
-  --circuit-label: #0e7490;
-  --circuit-label-hover: #155e75;
+  --circuit-label: #155e75;
+  --circuit-label-hover: #164e63;
   --circuit-vignette: rgba(148, 163, 184, 0.25);
   --card-border: rgb(203 213 225);
   --card-art-bg: #f1f5f9;
-  --accent-ink: 62%;
+  --accent-ink: 50%;
 }

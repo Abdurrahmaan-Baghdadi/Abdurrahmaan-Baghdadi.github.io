@@ -379,12 +379,12 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
           />
           {/* Hint, since the chip alone doesn't say it's clickable */}
           <motion.p
-            className="absolute font-mono text-[11px] tracking-[0.3em] text-cyan-400/70 uppercase pointer-events-none"
+            className="absolute font-mono text-[11px] tracking-[0.3em] text-cyan-400 uppercase pointer-events-none"
             // Just below the chip's pins at any screen size: the circuit SVG scales by
             // min(width / VW, height / VH) per viewBox unit, so offset by that same factor
             style={{ top: `calc(50% + min(100vw / ${VW}, 100vh / ${VH}) * ${CHIP_SIZE + 22} + 10px)` }}
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0.4, 1, 0.4] }}
+            animate={{ opacity: [0.8, 1, 0.8] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
           >
             <span className="sm:hidden">tap the chip to explore</span>
@@ -424,7 +424,7 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
 
       {/* Terminal line typing out roles, just above the footer bar */}
       <div className="absolute bottom-16 inset-x-0 flex justify-center pointer-events-none px-4" style={{ zIndex: 15 }}>
-        <TerminalTyper phrases={profile.roles} prefix="$ whoami → " className="text-xs sm:text-sm text-cyan-400/80 tracking-wide" />
+        <TerminalTyper phrases={profile.roles} prefix="$ whoami → " className="text-xs sm:text-sm text-cyan-400 tracking-wide" />
       </div>
 
       {/* Vignette overlay */}

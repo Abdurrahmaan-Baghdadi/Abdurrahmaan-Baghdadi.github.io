@@ -6,7 +6,7 @@ export default function Photography() {
   return (
     <div className="max-w-5xl mx-auto space-y-8">
       <div className="space-y-3 max-w-2xl">
-        <p className="text-cyan-400/80 font-mono text-sm tracking-wide">// photography</p>
+        <p className="text-cyan-400 font-mono text-sm tracking-wide">// photography</p>
         <p className="text-slate-400 font-mono text-sm leading-relaxed">
           Wildlife, water and everyday objects, mostly shot on a Canon EOS Rebel T3i between 2019 and 2024.
         </p>
