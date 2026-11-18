@@ -379,7 +379,10 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
           />
           {/* Hint, since the chip alone doesn't say it's clickable */}
           <motion.p
-            className="absolute top-1/2 mt-10 sm:mt-20 font-mono text-[11px] tracking-[0.3em] text-cyan-400/70 uppercase pointer-events-none"
+            className="absolute font-mono text-[11px] tracking-[0.3em] text-cyan-400/70 uppercase pointer-events-none"
+            // Just below the chip's pins at any screen size: the circuit SVG scales by
+            // min(width / VW, height / VH) per viewBox unit, so offset by that same factor
+            style={{ top: `calc(50% + min(100vw / ${VW}, 100vh / ${VH}) * ${CHIP_SIZE + 22} + 10px)` }}
             initial={{ opacity: 0 }}
             animate={{ opacity: [0.4, 1, 0.4] }}
             transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
