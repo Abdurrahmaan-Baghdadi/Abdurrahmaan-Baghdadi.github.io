@@ -27,6 +27,7 @@ import About from "../view/pages/About";
 import Projects from "../view/pages/Projects";
 import Skills from "../view/pages/Skills";
 import Contact from "../view/pages/Contact";
+import Photography from "../view/pages/Photography";
 
 // Map section names to their page content components
 const pageContent: Record<string, React.ReactNode> = {
@@ -34,10 +35,16 @@ const pageContent: Record<string, React.ReactNode> = {
   Projects: <Projects />,
   Skills: <Skills />,
   Contact: <Contact />,
+  Photography: <Photography />,
+};
+
+// Pages reached by links rather than a circuit trace on the homepage
+const extraPages: Record<string, string> = {
+  "/photography": "Photography",
 };
 
 // Map React Router paths to section names
-const pathToSection: Record<string, string> = {};
+const pathToSection: Record<string, string> = { ...extraPages };
 routes.forEach((r) => {
   pathToSection[r.path] = r.name;
 });

@@ -42,6 +42,7 @@ then push.
 | Name, headline, summary, status | `src/model/content/profile.ts` | `profile` object |
 | Email / GitHub / LinkedIn / Calendly links | `src/model/content/profile.ts` | `contactLinks`, `CALENDLY_URL` |
 | Interest photo gallery | `src/model/content/photos.ts` | `interestPhotos` array |
+| Photography page (`/photography`) | `src/model/content/photos.ts` | `photographyPhotos` array; originals in `image-originals/photography/` |
 | Bio, journey timeline, values | `src/view/pages/About.tsx` | "journey" and "values" sections (inline JSX) |
 | Interests list | `src/view/pages/About.tsx` | "interests" section |
 | Headshot | `public/images/headshot.jpg` | replace the file (keep the name) |

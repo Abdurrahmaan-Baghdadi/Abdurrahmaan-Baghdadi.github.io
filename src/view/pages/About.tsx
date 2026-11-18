@@ -1,4 +1,5 @@
 import { useState, type ReactNode } from "react";
+import { Link } from "react-router-dom";
 import { Document, Page } from "react-pdf";
 import "../../lib/pdf/pdfWorker"; // sets up PDF.js worker
 import { profile, RESUME_URL, RESUME_DOWNLOAD_NAME } from "../../model/content/profile";
@@ -219,6 +220,12 @@ export default function About() {
         </div>
         <p className="text-slate-600 font-mono text-[11px] tracking-widest uppercase">click a photo to expand</p>
         <PhotoGallery photos={interestPhotos} />
+        <Link
+          to="/photography"
+          className="inline-flex items-center gap-2 font-mono text-xs tracking-widest text-cyan-400 hover:text-cyan-300 border border-cyan-400/40 hover:border-cyan-400 px-4 py-2 rounded transition-colors"
+        >
+          VIEW MY PHOTOGRAPHY →
+        </Link>
       </section>
 
       {/* ── Resume ──────────────────────────────────────────────── */}

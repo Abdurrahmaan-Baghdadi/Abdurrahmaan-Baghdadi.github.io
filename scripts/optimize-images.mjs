@@ -15,7 +15,7 @@ const __dir = dirname(fileURLToPath(import.meta.url));
 const root  = join(__dir, "..");
 
 const MAX_EDGE = 1600;   // long side in px; enough for the full-screen lightbox
-const folders  = ["interests", "projects"];
+const folders  = ["interests", "projects", "photography"];
 
 for (const folder of folders) {
   const src = join(root, "image-originals", folder);
