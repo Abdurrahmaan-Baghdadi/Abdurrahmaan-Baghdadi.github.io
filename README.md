@@ -167,7 +167,8 @@ tracking system (ATS) does. The script **fails** if the resume:
 It also prints keyword coverage for ML engineer, software engineer and AI-in-health research
 roles. For a specific application, compare the job posting's required skills against the
 resume and reuse its exact wording where it's true for you. The in-page viewer and download buttons
-all point to `/resume.pdf`. When you change roles or dates, update the About page's
+all point to `/resume.pdf?v=<build id>` (`RESUME_URL` in `About.tsx`). The build id changes on
+every deploy (`__BUILD_ID__` in `vite.config.ts`), so visitors never get a stale cached copy. When you change roles or dates, update the About page's
 Experience list too.
 
 ---

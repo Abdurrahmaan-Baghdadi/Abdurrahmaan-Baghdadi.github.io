@@ -1,6 +1,10 @@
 import { useState, useEffect } from "react";
 import { Document, Page } from "react-pdf";
 import "../../lib/pdf/pdfWorker"; // sets up PDF.js worker
+
+// New URL on every deploy, so visitors never see a cached old resume
+const RESUME_URL = `/resume.pdf?v=${__BUILD_ID__}`;
+
 interface InterestPhoto {
   src: string;
   label: string;
@@ -404,7 +408,7 @@ export default function About() {
             <p className="text-slate-300 font-mono text-sm">// resume</p>
             <div className="flex items-center gap-3">
               <a
-                href="/resume.pdf"
+                href={RESUME_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="font-mono text-[10px] tracking-widest text-cyan-400 hover:text-cyan-300 transition-colors"
@@ -412,7 +416,7 @@ export default function About() {
                 open ↗
               </a>
               <a
-                href="/resume.pdf"
+                href={RESUME_URL}
                 download="AbdurrahmaanBaghdadi_Resume.pdf"
                 className="font-mono text-[10px] tracking-widest text-slate-500 hover:text-cyan-400 transition-colors"
               >
@@ -430,7 +434,7 @@ export default function About() {
           <div className="w-full flex justify-center">
             <Document
               file={{
-                url: window.location.origin + "/resume.pdf",
+                url: window.location.origin + RESUME_URL,
               }}
               onLoadSuccess={onDocumentLoadSuccess}
               onLoadError={(err) => {
@@ -457,7 +461,7 @@ export default function About() {
           )}
           <div className="flex gap-3">
             <a
-              href="/resume.pdf"
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="font-mono text-xs tracking-widest text-cyan-400 hover:text-cyan-300 border border-cyan-400/40 px-4 py-2 rounded transition-colors"
@@ -466,7 +470,7 @@ export default function About() {
             </a>
 
             <a
-              href="/resume.pdf"
+              href={RESUME_URL}
               download="AbdurrahmaanBaghdadi_Resume.pdf"
               className="font-mono text-xs tracking-widest text-slate-400 hover:text-cyan-400 border border-slate-600 px-4 py-2 rounded transition-colors"
             >
@@ -482,7 +486,7 @@ export default function About() {
           </p>
 
           <a
-            href="/resume.pdf"
+            href={RESUME_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="font-mono text-xs tracking-widest text-cyan-400 hover:text-cyan-300 border border-cyan-400/40 px-4 py-2 rounded transition-colors"
