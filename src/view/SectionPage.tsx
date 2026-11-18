@@ -137,7 +137,7 @@ export function SectionPage({ section, onBack, children }: SectionPageProps) {
 
       {/* Page content area - renders page-specific content */}
       <motion.div
-        className="flex-1 px-4 sm:px-10 pt-8 pb-10 overflow-y-auto"
+        className="flex-1 px-4 sm:px-10 pt-8 pb-24 overflow-y-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.6 }}

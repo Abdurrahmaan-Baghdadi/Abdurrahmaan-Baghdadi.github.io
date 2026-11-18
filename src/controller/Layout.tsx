@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { AnimatePresence } from "motion/react";
 import { PortfolioIntro } from "../view/PortfolioIntro";
@@ -44,6 +44,14 @@ export default function Layout() {
   const initialSection = pathToSection[location.pathname] || null;
   const [currentSection, setCurrentSection] = useState<string | null>(initialSection);
   const hasInitialized = useRef(initialSection !== null);
+
+  // Follow the URL, so in-page links (like the footer's Feedback link) and the
+  // browser's back/forward buttons switch sections too
+  useEffect(() => {
+    const section = pathToSection[location.pathname] || null;
+    if (section) hasInitialized.current = true;
+    setCurrentSection(section);
+  }, [location.pathname]);
 
   const handleNavigate = useCallback(
     (section: string) => {

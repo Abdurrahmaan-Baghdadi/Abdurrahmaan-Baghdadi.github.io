@@ -377,6 +377,16 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
             className="w-36 h-36 rounded cursor-pointer opacity-0"
             aria-label="Activate circuit board"
           />
+          {/* Hint, since the chip alone doesn't say it's clickable */}
+          <motion.p
+            className="absolute top-1/2 mt-10 sm:mt-20 font-mono text-[11px] tracking-[0.3em] text-cyan-400/70 uppercase pointer-events-none"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.4, 1, 0.4] }}
+            transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut", delay: 0.8 }}
+          >
+            <span className="sm:hidden">tap the chip to explore</span>
+            <span className="hidden sm:inline">click the chip to explore</span>
+          </motion.p>
         </div>
       )}
 
@@ -386,7 +396,8 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
           className="sm:hidden absolute inset-0 flex flex-col items-center justify-center gap-2 pointer-events-none"
           style={{ zIndex: 20 }}
         >
-          <div className="flex flex-col items-center gap-1 pointer-events-auto w-48">
+          {/* Solid backdrop so the circuit traces don't run behind the buttons */}
+          <div className="flex flex-col items-center gap-1.5 pointer-events-auto w-56 p-3 rounded-lg border border-slate-800 bg-gray-950/90 backdrop-blur-sm">
             {routes.map((route) => {
               const isNav = navigatingTo === route.name;
               return (
@@ -397,7 +408,7 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
                   className={`w-full py-2.5 font-mono text-sm tracking-widest border rounded transition-all duration-200 ${
                     isNav
                       ? "text-cyan-200 border-cyan-400/60 bg-cyan-400/10 opacity-60"
-                      : "text-cyan-400 border-slate-700 bg-slate-900/70 hover:border-cyan-400/50 hover:bg-cyan-400/5"
+                      : "text-cyan-400 border-slate-700 bg-slate-900 hover:border-cyan-400/50 hover:bg-cyan-400/5"
                   }`}
                 >
                   {route.name}

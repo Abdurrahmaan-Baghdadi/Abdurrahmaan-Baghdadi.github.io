@@ -11,6 +11,7 @@ export interface Project {
   context: string;
   contextColor: string;
   demoUrl?: string;   // live demo under public/
+  demoLabel?: string; // button text for demoUrl (default "UI Preview")
   repoUrl?: string;   // public source code
   slidesUrl?: string; // presentation slides
   imageUrl?: string;
@@ -43,6 +44,7 @@ export const projects: Project[] = [
     contextColor: "#2dd4bf",
     accentColor: "#2dd4bf",
     featured: true,
+    repoUrl: "https://github.com/Abdurrahmaan-Baghdadi/PICASSO_reproduce",
   },
   {
     title: "Multimodal Pathology AI for Pediatric Brain Tumors",
@@ -85,6 +87,8 @@ export const projects: Project[] = [
     context: "GRAD COURSE",
     contextColor: "#a78bfa",
     accentColor: "#10b981",
+    demoUrl: "/sleep-staging-demo/index.html",
+    demoLabel: "Notebook",
   },
   {
     title: "Advances in Deep Learning — UT Austin",
@@ -242,6 +246,7 @@ export const projects: Project[] = [
     context: "LAB WORK",
     contextColor: "#f472b6",
     accentColor: "#06b6d4",
+    slidesUrl: "https://github.com/Abdurrahmaan-Baghdadi/Project-Slides/blob/main/IoT%20Research%20Project%20Slides.pdf",
   },
   {
     title: "Easy-Encryption",
@@ -253,6 +258,7 @@ export const projects: Project[] = [
     contextColor: "#34d399",
     accentColor: "#8b5cf6",
     demoUrl: "/encryption-demo/index.html",
+    slidesUrl: "https://github.com/Abdurrahmaan-Baghdadi/Project-Slides/blob/main/Easy%20Encryption%20Project%20Slides.pdf",
   },
   {
     title: "Cache Simulation",
@@ -274,6 +280,7 @@ export const projects: Project[] = [
     contextColor: "#94a3b8",
     imageUrl: "/images/projects/soul-pearl-screenshot.png",
     imageFit: "cover",
+    repoUrl: "https://github.com/Abdurrahmaan-Baghdadi/CS-4423-Final-Project",
   },
   {
     title: "Choose Your Own Adventure RPG",

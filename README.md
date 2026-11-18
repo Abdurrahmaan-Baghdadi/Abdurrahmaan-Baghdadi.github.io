@@ -28,29 +28,29 @@ To publish changes: commit and push to `main`. See [Deploying](#deploying).
 
 ## Updating content
 
-**There is no admin page or CMS. All content lives in the page source files**, and you
+**There is no admin page or CMS. Content lives in `src/model/content/` and the page files**, and you
 do **not** need a new page to add info. Edit the file below, check it with `npm run dev`,
 then push.
 
 | What you want to change | File | Where in the file |
 | --- | --- | --- |
-| Add / edit / remove a project | `src/view/pages/Projects.tsx` | `projects` array at the top |
-| Skills (languages, frameworks, tools) | `src/view/pages/Skills.tsx` | `skillCategories` array |
-| Certifications | `src/view/pages/Skills.tsx` | `certs` array |
-| Bio, journey timeline, philosophy | `src/view/pages/About.tsx` | "Hero" section (inline JSX) |
-| Experience (roles and dates) | `src/view/pages/About.tsx` | list in the "Experience" section (keep in sync with the resume) |
-| Education, coursework | `src/view/pages/About.tsx` | "Education" section (inline JSX) |
-| Values / community blurbs | `src/view/pages/About.tsx` | "Personal Ethos & Community" section |
-| Interests list | `src/view/pages/About.tsx` | `personal_stack.json` list in "Interests + Resume" |
-| Interest photo gallery | `src/view/pages/About.tsx` | `photos` array at the top |
+| Add / edit / remove a project | `src/model/content/projects.ts` | `projects` array |
+| Skills (languages, frameworks, tools) | `src/model/content/skills.ts` | `skillCategories` array |
+| Certifications | `src/model/content/skills.ts` | `certs` array |
+| Experience (roles and dates) | `src/model/content/experience.ts` | `experience` array (keep in sync with the resume) |
+| Education, coursework | `src/model/content/experience.ts` | `education` array |
+| Name, headline, summary, status | `src/model/content/profile.ts` | `profile` object |
+| Email / GitHub / LinkedIn / Calendly links | `src/model/content/profile.ts` | `contactLinks`, `CALENDLY_URL` |
+| Interest photo gallery | `src/model/content/photos.ts` | `interestPhotos` array |
+| Bio, journey timeline, values | `src/view/pages/About.tsx` | "journey" and "values" sections (inline JSX) |
+| Interests list | `src/view/pages/About.tsx` | "interests" section |
 | Headshot | `public/images/headshot.jpg` | replace the file (keep the name) |
 | Resume | `resume/resume.html` | edit, then `npm run build:resume` |
-| Email / GitHub / LinkedIn links | `src/view/pages/Contact.tsx` | `contactLinks` array |
-| Calendly link, "seeking roles" banner, title line | `src/view/pages/Contact.tsx` | inline JSX |
-| Footer | `src/view/Footer.tsx` | |
+| "Seeking roles" banner, title line | `src/view/pages/Contact.tsx` | inline JSX |
+| Footer quick-links bar | `src/view/Footer.tsx` | reads links from `profile.ts` |
 | Browser tab title, favicon | `index.html` | `<title>`, `<link rel="icon">` |
 
-Projects, Skills, certs and photos are **data arrays**: copy an existing entry, paste it,
+Everything under `src/model/content/` is **plain data**, shared by the pages and the Simple view: copy an existing entry, paste it,
 and edit the values. The About page text is written directly in JSX, so edit the text
 between the tags and leave the `className` attributes alone.
 
@@ -60,7 +60,7 @@ between the tags and leave the `className` attributes alone.
 
 ### Add a project
 
-In `src/view/pages/Projects.tsx`, add an object to the `projects` array. Order in the
+In `src/model/content/projects.ts`, add an object to the `projects` array. Order in the
 array is the order on the page, so put new or important work near the top.
 
 ```ts
@@ -114,13 +114,15 @@ Demos are plain static HTML, CSS and JS folders under `public/`, e.g.
    inside the demo.
 2. Set `demoUrl: "/<name>-demo/index.html"` on the project.
 
-Existing demos: `hackathon-demo`, `foothies-demo`, `ese-demo`, `roadrunner-demo`,
+Optional `demoLabel` changes the button text (e.g. `"Notebook"`), and `repoUrl` / `slidesUrl` add Code and Slides buttons.
+
+Existing demos: `hackathon-demo`, `foothies-demo`, `ese-demo`, `roadrunner-demo`, `sleep-staging-demo` (exported notebook),
 `encryption-demo`. Backend features in those demos are mocked with local
 `demo-data.js` files, so nothing calls a real server.
 
 ### Add a skill or certification
 
-In `src/view/pages/Skills.tsx`:
+In `src/model/content/skills.ts`:
 
 - **Skill:** add the name to the `skills: [...]` list of the matching category in
   `skillCategories`. To add a whole new category, copy a category object and pick a
@@ -132,7 +134,7 @@ In `src/view/pages/Skills.tsx`:
 
 ### Update the About page
 
-`src/view/pages/About.tsx` is the one page that's mostly hand-written JSX instead of data.
+Roles, degrees and photos come from `src/model/content/`; the journey timeline and values text are hand-written JSX in `src/view/pages/About.tsx`.
 
 - **Status badge** ("OPEN TO ROLES") and **subtitle** ("GRADUATE SWE · AUSTIN, TX") are
   near the top of the Hero section. The same subtitle also appears on the Contact page.

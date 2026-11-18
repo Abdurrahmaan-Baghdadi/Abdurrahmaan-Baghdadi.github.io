@@ -55,7 +55,7 @@ export const skillCategories: SkillCategory[] = [
     accentClass: "border-rose-400",
     accentTextClass: "text-rose-400 border-rose-400/40 bg-rose-400/10",
     description:
-      "Digital forensics and network traffic analysis tools studied through academic coursework — packet inspection, log analysis, and firmware analysis.",
+      "Digital forensics, network traffic and firmware analysis: packet inspection, log analysis, honeypot monitoring, and compliance checks against NIST guidance.",
     skills: ["Wireshark", "Elastic Stack", "Emba", "Autopsy"],
   },
   {
@@ -64,7 +64,7 @@ export const skillCategories: SkillCategory[] = [
     accentClass: "border-sky-400",
     accentTextClass: "text-sky-400 border-sky-400/40 bg-sky-400/10",
     description:
-      "Developer workflow, experiment tracking, research writing, and game dev tooling used across academic and personal projects.",
+      "Version control, notebooks, experiment tracking, technical writing in LaTeX, and game-engine tooling.",
     skills: ["Git", "Jupyter", "TensorBoard", "Unity", "LaTeX", "Excel"],
   },
   {
@@ -73,7 +73,7 @@ export const skillCategories: SkillCategory[] = [
     accentClass: "border-teal-400",
     accentTextClass: "text-teal-400 border-teal-400/40 bg-teal-400/10",
     description:
-      "Computational pathology research on whole-slide images: foundation-model embeddings, sparse-autoencoder interpretability, and large batch jobs on TACC supercomputers.",
+      "Working with gigapixel whole-slide images, pathology foundation-model embeddings, interpretability methods, and batch jobs on HPC clusters.",
     skills: ["Pathology Foundation Models", "Vision-Language Models", "Sparse Autoencoders", "TRIDENT", "OpenSlide", "SLURM", "TACC"],
   },
   {
