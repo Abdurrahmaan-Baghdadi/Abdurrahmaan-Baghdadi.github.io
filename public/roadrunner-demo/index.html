@@ -1,82 +1,186 @@
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Roadrunner Roasts</title>
-  <link href="assets/css/bootstrap.cdn.css" rel="stylesheet" />
-  <link href="assets/css/theme.css" rel="stylesheet" />
-  <link href="assets/css/nav-menu.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <style>
-    .demo-banner { margin:0; border-radius:0; border-left:none; border-right:none; }
-    .welcome-content { padding: 30px 40px; }
-    .welcome-content h2 { color: #12213e; }
-    .browse-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 28px;
-      background-color: #df6335;
-      color: #fff;
-      font-size: 16px;
-      border-radius: 4px;
-      text-decoration: none;
-      border: none;
-      cursor: pointer;
-    }
-    .browse-btn:hover { background-color: #c0522a; color: #fff; text-decoration: none; }
-    .footer-contact { padding: 20px 40px; color: #555; font-size: 13px; }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Roadrunner Roasts · Order ahead</title>
+  <meta name="description" content="Portfolio demo: an order-ahead coffee app redesigned from a UTSA team project." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="app.css" />
 </head>
 <body>
+  <a class="skip-link" href="#menu">Skip to menu</a>
 
-<div class="header">
-  <h1>&nbsp;</h1>
-  <div class="rightShift">
-    <img src="assets/images/banner.jpg" alt="close-up of coffee beans" title="Site Banner" width="100%" />
-    <h1 class="center">&nbsp;Roadrunner Roasts</h1>
+  <div class="demo-strip" role="note">
+    <span><strong>Portfolio demo.</strong> A 2026 redesign of a UTSA team project. No real orders or payments.</span>
+    <span class="demo-links">
+      <a href="#redesign">What changed</a>
+      <a href="original/index.html">View the original</a>
+      <a href="/projects">Back to portfolio</a>
+    </span>
   </div>
-</div>
 
-<div class="alert alert-info demo-banner">
-  <strong>Demo Mode:</strong> Static demo of a PHP/MySQL application originally hosted on a UTSA server. Ordering and login are disabled; cart uses browser session data.
-</div>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="Roadrunner Roasts home">
+      <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="19" fill="#0c2340"/><path d="M20 8c6 3 8 9 6 15s-8 9-12 9c4-4 6-9 5-14S16 11 20 8z" fill="#f15a22"/><path d="M19 12c-2 5-1 11 1 17" stroke="#0c2340" stroke-width="2" fill="none"/></svg>
+      <span>Roadrunner <em>Roasts</em></span>
+    </a>
+    <nav class="topnav" aria-label="Main">
+      <a href="#menu">Menu</a>
+      <a href="#rewards">Rewards</a>
+      <a href="#redesign">About this redesign</a>
+    </nav>
+    <div class="topbar-actions">
+      <span class="stars-pill" id="stars-pill" title="Roadrunner Rewards stars">★ <span id="stars-count">0</span></span>
+      <button class="cart-button" id="open-cart" aria-label="Open your order">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z M6 6L5 3H2 M9 20a1 1 0 1 0 0-.01 M18 20a1 1 0 1 0 0-.01" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span>Order</span>
+        <span class="cart-count" id="cart-count" hidden>0</span>
+      </button>
+    </div>
+  </header>
 
-<div class="sidenav">
-  <button role="presentation" class="active box dropdown-btn">&#9776;</button>
-  <div class="dropdown-container">
-    <a href="index.html"><button class="button navBox">Home</button></a>
-    <a href="shop.html"><button class="button navBox">Shop</button></a>
-    <a href="cart.html"><button class="button navBox">Cart <span class="cart-badge" id="nav-cart-badge"></span></button></a>
-    <a href="login.html"><button class="button navBox">Sign In</button></a>
-  </div>
-</div>
+  <main id="top">
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Open today · 7 AM – 8 PM · Student Union</p>
+        <h1>Skip the line between classes.</h1>
+        <p class="lede">Order ahead from Roadrunner Roasts, customize it the way you like, and pick it up at the counter in about 8 minutes.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#menu">Start an order</a>
+          <a class="btn btn-ghost" href="#how">How it works</a>
+        </div>
+        <ul class="hero-facts">
+          <li><strong>~8 min</strong> average pickup</li>
+          <li><strong>14</strong> drinks &amp; bakes</li>
+          <li><strong>1 ★</strong> per dollar spent</li>
+        </ul>
+      </div>
+      <div class="hero-art" id="hero-art"></div>
+    </section>
 
-<div class="rightShift">
-  <div class="welcome-content">
-    <h2>Welcome to Roadrunner Roasts!</h2>
-    <p>Your campus coffee destination. Browse our menu of handcrafted espresso drinks, cold brews, and fresh pastries — all made to order.</p>
-    <p>Built by a team of UTSA students as a full-semester Software Engineering course project using PHP, MySQL, and Bootstrap.</p>
-    <a href="shop.html" class="browse-btn">Browse Menu</a>
-  </div>
-  <div class="footer-contact center">
-    <p>Contact us: &nbsp; Email: RoadrunnerRoast@utsa.edu &nbsp; | &nbsp; Phone: 210-111-1111</p>
-  </div>
-</div>
+    <!-- How it works -->
+    <section class="how" id="how" aria-labelledby="how-title">
+      <h2 id="how-title" class="visually-hidden">How it works</h2>
+      <ol class="steps">
+        <li><span class="step-num">1</span><h3>Pick &amp; customize</h3><p>Size, milk, an extra shot, sweetness: the price updates as you go.</p></li>
+        <li><span class="step-num">2</span><h3>Choose a pickup time</h3><p>As soon as possible, or schedule it around your next class.</p></li>
+        <li><span class="step-num">3</span><h3>Grab it and go</h3><p>Track your order live and skip the register.</p></li>
+      </ol>
+    </section>
 
-<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-<script src="assets/js/demo-data.js"></script>
-<script src="assets/js/cart.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() { renderCartBadge(); });
-  var dropdown = document.getElementsByClassName("dropdown-btn");
-  for (var i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function() {
-      this.classList.toggle("active");
-      var dc = this.nextElementSibling;
-      dc.style.display = (dc.style.display === "block") ? "none" : "block";
-    });
-  }
-</script>
+    <!-- Menu -->
+    <section class="menu" id="menu" aria-labelledby="menu-title">
+      <div class="section-head">
+        <div>
+          <p class="eyebrow">Menu</p>
+          <h2 id="menu-title">What are you craving?</h2>
+        </div>
+        <label class="search">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="visually-hidden">Search the menu</span>
+          <input id="search" type="search" placeholder="Search drinks and bakes" autocomplete="off" />
+        </label>
+      </div>
+      <div class="chips" id="chips" role="toolbar" aria-label="Filter by category"></div>
+      <div class="grid" id="grid"></div>
+      <p class="empty" id="empty" hidden>Nothing matches that search. Try "latte" or "cold".</p>
+    </section>
+
+    <!-- Rewards -->
+    <section class="rewards" id="rewards" aria-labelledby="rewards-title">
+      <div>
+        <p class="eyebrow light">Roadrunner Rewards</p>
+        <h2 id="rewards-title">Earn a star for every dollar.</h2>
+        <p>Collect 50 stars for a free drink of any size. Stars are saved in this browser for the demo.</p>
+      </div>
+      <div class="rewards-card">
+        <p class="rewards-count"><span id="rewards-stars">0</span> / 50 ★</p>
+        <div class="progress" role="progressbar" aria-label="Stars toward a free drink" aria-valuemin="0" aria-valuemax="50" aria-valuenow="0" id="rewards-bar"><span></span></div>
+        <p class="rewards-note" id="rewards-note">Place an order to start earning.</p>
+      </div>
+    </section>
+
+    <!-- About the redesign -->
+    <section class="redesign" id="redesign" aria-labelledby="redesign-title">
+      <p class="eyebrow">Case study</p>
+      <h2 id="redesign-title">From course project to product</h2>
+      <p class="redesign-intro">
+        Roadrunner Roasts started as a full-semester team project in a UTSA software engineering course: a PHP/MySQL ordering site with Bootstrap 3.
+        This redesign keeps its core idea (a campus coffee menu, a cart and checkout) and rebuilds the experience the way I'd ship it today.
+      </p>
+      <div class="compare">
+        <div class="compare-col before">
+          <h3>Original team project</h3>
+          <ul>
+            <li>Separate PHP pages, full reload on every click</li>
+            <li>Fixed items with no way to customize a drink</li>
+            <li>Shipping-address form for a coffee order</li>
+            <li>Mixed clip-art and low-resolution photos</li>
+            <li>Sidebar menu that hides navigation on phones</li>
+          </ul>
+          <a class="btn btn-ghost small" href="original/index.html">Open the original</a>
+        </div>
+        <div class="compare-col after">
+          <h3>2026 redesign</h3>
+          <ul>
+            <li>Single-page order flow with a slide-out cart</li>
+            <li>Size, milk, extra shot and sweetness with live pricing</li>
+            <li>Order-ahead pickup times instead of shipping</li>
+            <li>Consistent hand-drawn SVG illustrations</li>
+            <li>Mobile-first, keyboard-friendly dialogs, reduced-motion support</li>
+            <li>Promo codes, Texas sales tax, rewards stars and live order tracking</li>
+          </ul>
+          <p class="stack">HTML · CSS · JavaScript (ES modules) · no framework, no build step</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Roadrunner Roasts is a portfolio demo by <a href="/">Abdurrahmaan Baghdadi</a>. Not affiliated with UTSA.</p>
+  </footer>
+
+  <!-- Customize item -->
+  <dialog id="customize" class="modal" aria-labelledby="customize-title">
+    <form method="dialog" id="customize-form">
+      <div class="modal-art" id="customize-art"></div>
+      <div class="modal-body">
+        <h2 id="customize-title"></h2>
+        <p class="modal-desc" id="customize-desc"></p>
+        <div id="customize-options"></div>
+        <div class="modal-footer">
+          <div class="qty" aria-label="Quantity">
+            <button type="button" class="qty-btn" data-qty="-1" aria-label="One fewer">−</button>
+            <output id="customize-qty">1</output>
+            <button type="button" class="qty-btn" data-qty="1" aria-label="One more">+</button>
+          </div>
+          <button type="submit" class="btn btn-primary" id="customize-add" value="add">Add to order · <span id="customize-price"></span></button>
+        </div>
+      </div>
+      <button type="button" class="close" data-close aria-label="Close">×</button>
+    </form>
+  </dialog>
+
+  <!-- Cart and checkout -->
+  <dialog id="cart" class="sheet" aria-labelledby="cart-title">
+    <div class="sheet-head">
+      <h2 id="cart-title">Your order</h2>
+      <button type="button" class="close" data-close aria-label="Close your order">×</button>
+    </div>
+    <div class="sheet-body" id="cart-body"></div>
+  </dialog>
+
+  <!-- Order tracker -->
+  <dialog id="tracker" class="modal tracker" aria-labelledby="tracker-title">
+    <div class="modal-body" id="tracker-body"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script type="module" src="app.js"></script>
 </body>
 </html>

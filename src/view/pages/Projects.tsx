@@ -99,7 +99,7 @@ function ProjectCard({ project }: { project: Project }) {
             ))}
           </div>
         </div>
-        {(project.demoUrl || project.repoUrl || project.slidesUrl) && (
+        {(project.demoUrl || project.repoUrl || project.slidesUrl || project.beforeUrl) && (
           <div className="shrink-0 flex flex-col gap-1.5">
             {project.demoUrl && (
               <a
@@ -108,6 +108,16 @@ function ProjectCard({ project }: { project: Project }) {
                 className="px-3 py-1.5 border border-cyan-400/50 text-cyan-400 font-mono text-xs text-center rounded hover:bg-cyan-400/10 transition-colors"
               >
                 {project.demoLabel ?? "UI Preview"}
+              </a>
+            )}
+            {project.beforeUrl && (
+              <a
+                href={project.beforeUrl}
+                target="_self"
+                className="px-3 py-1.5 border border-slate-600 text-slate-300 font-mono text-xs text-center rounded hover:border-cyan-400/50 hover:text-cyan-400 transition-colors"
+                title="The earlier version, for comparison"
+              >
+                Original
               </a>
             )}
             {project.repoUrl && (

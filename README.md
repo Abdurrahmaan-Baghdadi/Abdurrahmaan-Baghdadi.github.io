@@ -117,7 +117,7 @@ Demos are plain static HTML, CSS and JS folders under `public/`, e.g.
 
 Optional `demoLabel` changes the button text (e.g. `"Notebook"`), and `repoUrl` / `slidesUrl` add Code and Slides buttons.
 
-Existing demos: `hackathon-demo`, `foothies-demo`, `ese-demo`, `roadrunner-demo`, `sleep-staging-demo` (exported notebook),
+Existing demos: `hackathon-demo`, `foothies-demo`, `ese-demo`, `roadrunner-demo` (2026 redesign; the original team version is in `roadrunner-demo/original/`, linked via `beforeUrl`), `sleep-staging-demo` (exported notebook),
 `encryption-demo`. Backend features in those demos are mocked with local
 `demo-data.js` files, so nothing calls a real server.
 

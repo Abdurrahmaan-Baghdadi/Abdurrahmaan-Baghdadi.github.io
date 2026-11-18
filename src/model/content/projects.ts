@@ -14,6 +14,7 @@ export interface Project {
   demoLabel?: string; // button text for demoUrl (default "UI Preview")
   repoUrl?: string;   // public source code
   slidesUrl?: string; // presentation slides
+  beforeUrl?: string; // earlier version of the demo, shown as "Original" for a before/after
   imageUrl?: string;
   imageFit?: "cover" | "contain";
   accentColor?: string;
@@ -77,6 +78,20 @@ export const projects: Project[] = [
     context: "WORK",
     contextColor: "#fb923c",
     accentColor: "#38bdf8",
+  },
+  {
+    title: "Roadrunner Roasts — Order-Ahead Coffee App",
+    description:
+      "Started as a semester-long team project (PHP, MySQL, Bootstrap) for a UTSA software engineering course; I redesigned it solo in 2026 as a modern order-ahead app. Drink customization with live pricing, a slide-out cart with promo codes and Texas sales tax, pickup-time scheduling, rewards stars and live order tracking, all mobile-first and keyboard accessible. Open both versions to compare.",
+    stack: ["JavaScript", "HTML", "CSS", "Accessibility", "PHP", "MySQL"],
+    categories: ["Full-Stack"],
+    context: "TEAM PROJECT",
+    contextColor: "#38bdf8",
+    accentColor: "#f15a22",
+    demoUrl: "/roadrunner-demo/index.html",
+    demoLabel: "Live demo",
+    beforeUrl: "/roadrunner-demo/original/index.html",
+    featured: true,
   },
   {
     title: "Sleep Staging from Apple Watch Data",
@@ -215,17 +230,6 @@ export const projects: Project[] = [
     contextColor: "#94a3b8",
     accentColor: "#8b5cf6",
     demoUrl: "/ese-demo/index.html",
-  },
-  {
-    title: "RoadRunnerRoasts",
-    description:
-      "Team-built restaurant ordering application featuring a dynamic menu, shopping cart, and MySQL backend. Developed collaboratively via Git with multiple contributor branches across a full semester.",
-    stack: ["PHP", "MySQL", "Bootstrap", "jQuery"],
-    categories: ["Full-Stack"],
-    context: "TEAM PROJECT",
-    contextColor: "#38bdf8",
-    accentColor: "#d97706",
-    demoUrl: "/roadrunner-demo/index.html",
   },
   {
     title: "Data Science Projects",

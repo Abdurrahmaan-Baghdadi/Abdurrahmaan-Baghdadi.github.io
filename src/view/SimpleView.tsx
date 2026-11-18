@@ -26,6 +26,7 @@ function Section({ title, children }: { title: string; children: ReactNode }) {
 function ProjectLinks({ project }: { project: Project }) {
   const links = [
     project.demoUrl && { href: project.demoUrl, label: project.demoLabel ?? "Live demo" },
+    project.beforeUrl && { href: project.beforeUrl, label: "Original version" },
     project.repoUrl && { href: project.repoUrl, label: "Code" },
     project.slidesUrl && { href: project.slidesUrl, label: "Slides" },
   ].filter(Boolean) as { href: string; label: string }[];
