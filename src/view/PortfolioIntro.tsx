@@ -2,6 +2,8 @@ import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { VW, VH, CX, CY, CHIP_SIZE, decorativeTraces, vias, pinOffsets } from "../model/circuitData";
 import { routes } from "../model/routes";
+import { profile } from "../model/content/profile";
+import { TerminalTyper } from "./TerminalTyper";
 
 interface PortfolioIntroProps {
   onNavigate: (section: string) => void;
@@ -418,6 +420,11 @@ export function PortfolioIntro({ onNavigate, startExpanded = false }: PortfolioI
           </div>
         </div>
       )}
+
+      {/* Terminal line typing out roles, just above the footer bar */}
+      <div className="absolute bottom-16 inset-x-0 flex justify-center pointer-events-none px-4" style={{ zIndex: 15 }}>
+        <TerminalTyper phrases={profile.roles} prefix="$ whoami → " className="text-xs sm:text-sm text-cyan-400/80 tracking-wide" />
+      </div>
 
       {/* Vignette overlay */}
       <div

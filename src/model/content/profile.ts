@@ -6,6 +6,13 @@ export const profile = {
   headline: "Graduate SWE · M.S. Artificial Intelligence, UT Austin",
   location: "Austin, TX",
   status: "Open to roles",
+  // Typed and retyped on the homepage and About page (interactive view only)
+  roles: [
+    "pathology AI researcher",
+    "LLM systems builder",
+    "security-minded developer",
+    "full-stack engineer",
+  ],
   // Keep close to the Summary in resume/resume.html
   summary:
     "M.S. Artificial Intelligence student at UT Austin researching interpretable pathology AI and building large language model (LLM) systems, with 5+ years of research experience in machine learning, IoT security, and full-stack development.",

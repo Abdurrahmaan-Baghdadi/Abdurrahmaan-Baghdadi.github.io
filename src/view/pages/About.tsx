@@ -6,6 +6,7 @@ import { profile, RESUME_URL, RESUME_DOWNLOAD_NAME } from "../../model/content/p
 import { experience, education } from "../../model/content/experience";
 import { interestPhotos } from "../../model/content/photos";
 import { PhotoGallery } from "../PhotoGallery";
+import { TerminalTyper } from "../TerminalTyper";
 
 // Created once so react-pdf doesn't reload the PDF on every render
 const resumeFile = { url: window.location.origin + RESUME_URL };
@@ -55,6 +56,7 @@ export default function About() {
             <p className="font-mono text-xs text-slate-500 tracking-widest mt-2 uppercase">
               Graduate SWE &nbsp;·&nbsp; {profile.location}
             </p>
+            <TerminalTyper phrases={profile.roles} className="mt-3 text-sm text-cyan-400" />
           </div>
 
           <h2 className="text-2xl font-bold text-slate-100 tracking-tight leading-snug">
